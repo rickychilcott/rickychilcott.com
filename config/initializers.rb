@@ -1,15 +1,4 @@
 Bridgetown.configure do |config|
-  # You can configure aspects of your Bridgetown site here instead of using
-  # `bridgetown.config.yml`. For example:
-  #
-  # permalink "simple"
-  # timezone "America/Los_Angeles"
-  #
-  # You can also modify options on the configuration object directly, like so:
-  #
-  # config.autoload_paths << "models"
-  #
-
   # You can configure the inflector used by Zeitwerk. In v2.0,
   # ActiveSupport::Inflector will become the default.
   #
@@ -36,6 +25,8 @@ Bridgetown.configure do |config|
   #
   # init :dotenv
   #
+
+  init :"bridgetown-quick-search"
 
   # Uncomment to use Bridgetown SSR (aka dynamic rendering of content via Roda):
   #
