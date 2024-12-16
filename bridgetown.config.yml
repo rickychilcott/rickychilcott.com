@@ -28,10 +28,12 @@ timezone: America/New_York
 pagination:
   enabled: true
 
-local_sync:
-  - from: ~/github/Home/Personal/Website/posts/
-    to: src/_posts/
-  - from: ~/github/Home/Personal/Website/projects/
-    to: src/_projects/
-  - from: ~/github/Home/Personal/Website/til/
-    to: src/_til/
+obsidian_local_sync:
+  vault_base_path: ~/github/Home/
+  locations:
+    - from: Personal/Website/posts
+      to: _posts
+    - from: Personal/Website/projects
+      to: _projects
+    - from: Personal/Website/til
+      to: _til
