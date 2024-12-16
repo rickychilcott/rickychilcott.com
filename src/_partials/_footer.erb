@@ -1,3 +1,31 @@
 <footer>
-  Contact me at <a href="mailto:<%= metadata.email %>"><%= metadata.email %></a>
+  <p>
+    Copyright &copy; <%= Time.now.year %>
+  </p>
+  <div style="display: flex; justify-content: center; gap: 1em; margin-top: 1em;">
+    <div>
+      <a href="mailto:<%= metadata.social.email %>">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    </div>
+    <div>
+      <a href="https://github.com/<%= site.metadata.social.github %>">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    </div>
+    <div>
+      <a href="https://linkedin.com/in/<%= site.metadata.social.linkedin %>">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    </div>
+  </div>
 </footer>

@@ -1,10 +1,8 @@
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.metadata.title }}, {{ site.metadata.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.metadata.myvariable }}.
-
 title: Ricky Chilcott
 tagline: Entrepreneur, product, people and software developer. On the hunt...
-email: ricky@rickychilcott.com
 description: I live in Southeast Ohio, believe in full-stack dev, and love me some **Rails.**
+
+social:
+  email: ricky@rickychilcott.com
+  linkedin: rickychilcott
+  github: rickychilcott
