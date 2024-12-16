@@ -1,6 +1,8 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem "dotenv", "~> 3.0", require: "dotenv/load"
+
 gem "bridgetown", "2.0.0.beta3"
 # gem "bridgetown-routes", "2.0.0.beta3"
 
