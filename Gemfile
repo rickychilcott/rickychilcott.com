@@ -16,3 +16,5 @@ gem "puma", "< 7"
 # gem "nokolexbor", "~> 0.4"
 
 gem "bridgetown-quick-search", "~> 3.0"
+
+gem "standardrb", "~> 1.0"

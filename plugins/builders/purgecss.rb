@@ -35,10 +35,10 @@ class Builders::Purgecss < SiteBuilder
 
         if newsize < oldsize
           Bridgetown.logger.info "PurgeCSS",
-                                 "Done! File size reduced from #{oldsize}kB to #{newsize}kB"
+            "Done! File size reduced from #{oldsize}kB to #{newsize}kB"
         else
           Bridgetown.logger.info "PurgeCSS",
-                                 "Done. No apparent change in file size (#{newsize}kB)."
+            "Done. No apparent change in file size (#{newsize}kB)."
         end
       end
     end
