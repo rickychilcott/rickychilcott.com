@@ -3,40 +3,48 @@ require "faraday"
 require "active_support/all"
 
 class Builders::PrStats < SiteBuilder
-  GithubPAT = ENV.fetch("GITHUB_PAT")
-  Author = "rickychilcott"
+  AUTHOR = "rickychilcott"
+  GITHUB_PAT = ENV.fetch("GITHUB_PAT")
+  PR_STATS_FILE = "src/_data/pr_stats.yml"
 
   def build
     hook :site, :post_read do
-      data =
-        merged_prs_by_repo.map do |repo, prs|
-          prs =
-            prs
-              .map do |pr|
-                pr
-                  .slice(:pr_created_at, :pr_title, :pr_url, :pr_id)
-                  .stringify_keys
-                  .transform_keys { |key| key.gsub("pr_", "") }
-              end
+      if 2.hours.ago.after?(File.mtime(PR_STATS_FILE))
+        info "PR stats file is up to date"
+        next
+      end
 
-          {
-            "name" => repo[:repository],
-            "repository_name" => repo[:repository_name],
-            "url" => repo[:repository_url],
-            "prs" => prs
-          }
-        end
-
-      YAML.dump(data, File.open("src/_data/pr_stats.yml", "w"))
+      info "Writing PR stats to #{PR_STATS_FILE}"
+      YAML.dump(pr_data, File.open(PR_STATS_FILE, "w"))
     end
   end
 
   private
 
+  def pr_data
+    merged_prs_by_repo.map do |repo, prs|
+      prs =
+        prs
+          .map do |pr|
+            pr
+              .slice(:pr_created_at, :pr_title, :pr_url, :pr_id)
+              .stringify_keys
+              .transform_keys { |key| key.gsub("pr_", "") }
+          end
+
+      {
+        "name" => repo[:repository],
+        "repository_name" => repo[:repository_name],
+        "url" => repo[:repository_url],
+        "prs" => prs
+      }
+    end
+  end
+
   def github
     Faraday.new(url: "https://api.github.com") do |faraday|
       faraday.headers["Accept"] = "application/vnd.github+json"
-      faraday.headers["Authorization"] = GithubPAT
+      faraday.headers["Authorization"] = GITHUB_PAT
       faraday.headers["X-GitHub-Api-Version"] = "2022-11-28"
 
       faraday.response :json
@@ -64,7 +72,7 @@ class Builders::PrStats < SiteBuilder
 
   def merged_prs = get_prs.select { |pr| pr.dig("state") == "closed" && pr.dig("pull_request", "merged_at") }
 
-  def get_prs(author = Author, page = 1)
+  def get_prs(author = AUTHOR, page = 1)
     response =
       github
         .get("/search/issues?q=author:#{author}+type:pr&page=#{page}")
