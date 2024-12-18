@@ -6,6 +6,7 @@ class Builders::ObsidianLocalSync < SiteBuilder
   REGEX_IMAGES = /!\[\[(.+?)\]\]/
 
   def build
+    return if ENV["BRIDGETOWN_ENV"] == "production"
     return unless locations
 
     hook :site, :post_read do
@@ -14,7 +15,7 @@ class Builders::ObsidianLocalSync < SiteBuilder
         to = source_dir.join(sync_options.fetch("to"))
         rsync_options = sync_options.fetch("rsync_options", "-av --delete")
 
-        Bridgetown.logger.info "Local Sync", "syncing #{from}/ to #{to}/..."
+        info "syncing #{from}/ to #{to}/..."
         execute "rsync #{rsync_options} #{from}/ #{to}/"
       end
     end

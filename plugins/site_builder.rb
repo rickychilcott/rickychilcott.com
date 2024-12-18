@@ -1,3 +1,7 @@
 class SiteBuilder < Bridgetown::Builder
-  # write builders which subclass SiteBuilder in plugins/builders
+  private
+
+  def info(*args)
+    Bridgetown.logger.info(self.class.name, *args)
+  end
 end
