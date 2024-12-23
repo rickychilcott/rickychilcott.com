@@ -62,7 +62,7 @@ class Builders::PrStats < SiteBuilder
           pr_id: pr.dig("id"),
           repository: pr.dig("repository_url").split("/").slice(-2, 2).join("/"),
           repository_name: pr.dig("repository_url").split("/").last,
-          repository_url: pr.dig("repository_url")
+          repository_url: pr.dig("html_url").split("/").slice(..-3).join("/")
         }
       end
       .sort_by { |pr| pr[:pr_created_at] }

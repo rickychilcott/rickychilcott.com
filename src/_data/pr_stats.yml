@@ -1,7 +1,7 @@
 ---
 - name: Rakefire/jekyll-ical-tag
   repository_name: jekyll-ical-tag
-  url: https://api.github.com/repos/Rakefire/jekyll-ical-tag
+  url: https://github.com/Rakefire/jekyll-ical-tag
   prs:
   - created_at: 2024-07-18 20:46:40.000000000 Z
     title: Add recurring events support
@@ -33,7 +33,7 @@
     id: 593339105
 - name: thredded/thredded
   repository_name: thredded
-  url: https://api.github.com/repos/thredded/thredded
+  url: https://github.com/thredded/thredded
   prs:
   - created_at: 2024-07-18 17:35:13.000000000 Z
     title: Switch to GitHub Actions
@@ -61,7 +61,7 @@
     id: 850021274
 - name: patterns-ai-core/langchainrb
   repository_name: langchainrb
-  url: https://api.github.com/repos/patterns-ai-core/langchainrb
+  url: https://github.com/patterns-ai-core/langchainrb
   prs:
   - created_at: 2024-02-05 02:10:10.000000000 Z
     title: 'Improve Ollama to implement #summarize and #default_dimension'
@@ -105,7 +105,7 @@
     id: 1709173759
 - name: ruby-docx/docx
   repository_name: docx
-  url: https://api.github.com/repos/ruby-docx/docx
+  url: https://github.com/ruby-docx/docx
   prs:
   - created_at: 2023-12-01 18:47:48.000000000 Z
     title: Fully Support Styles
@@ -113,7 +113,7 @@
     id: 2021411386
 - name: ViewComponent/view_component
   repository_name: view_component
-  url: https://api.github.com/repos/ViewComponent/view_component
+  url: https://github.com/ViewComponent/view_component
   prs:
   - created_at: 2023-07-04 00:43:00.000000000 Z
     title: Add Causey to Projects List
@@ -121,7 +121,7 @@
     id: 1786967970
 - name: bridgetownrb/bridgetown
   repository_name: bridgetown
-  url: https://api.github.com/repos/bridgetownrb/bridgetown
+  url: https://github.com/bridgetownrb/bridgetown
   prs:
   - created_at: 2022-11-30 03:29:03.000000000 Z
     title: Parse using JSON.parse for more resilient parsing
@@ -133,7 +133,7 @@
     id: 1452076657
 - name: avo-hq/avo
   repository_name: avo
-  url: https://api.github.com/repos/avo-hq/avo
+  url: https://github.com/avo-hq/avo
   prs:
   - created_at: 2022-11-07 16:08:55.000000000 Z
     title: Make placeholder and help callable
@@ -174,7 +174,7 @@
     id: 1144842082
 - name: KonnorRogers/mrujs
   repository_name: mrujs
-  url: https://api.github.com/repos/KonnorRogers/mrujs
+  url: https://github.com/KonnorRogers/mrujs
   prs:
   - created_at: 2021-10-27 21:22:14.000000000 Z
     title: Pass value of select elements
@@ -186,7 +186,7 @@
     id: 1030270442
 - name: discourse/onebox
   repository_name: onebox
-  url: https://api.github.com/repos/discourse/onebox
+  url: https://github.com/discourse/onebox
   prs:
   - created_at: 2021-07-12 22:25:35.000000000 Z
     title: Update addressable to address CVE-2021-32740
@@ -194,7 +194,7 @@
     id: 942501055
 - name: stimulusreflex/futurism
   repository_name: futurism
-  url: https://api.github.com/repos/stimulusreflex/futurism
+  url: https://github.com/stimulusreflex/futurism
   prs:
   - created_at: 2021-05-04 01:11:12.000000000 Z
     title: Better errors
@@ -234,7 +234,7 @@
     id: 718204022
 - name: mikker/passwordless
   repository_name: passwordless
-  url: https://api.github.com/repos/mikker/passwordless
+  url: https://github.com/mikker/passwordless
   prs:
   - created_at: 2020-10-28 14:55:12.000000000 Z
     title: Add passwordless test helpers
@@ -242,7 +242,7 @@
     id: 731519114
 - name: redfield/hypdf
   repository_name: hypdf
-  url: https://api.github.com/repos/redfield/hypdf
+  url: https://github.com/redfield/hypdf
   prs:
   - created_at: 2020-09-13 17:26:11.000000000 Z
     title: Relax httparty version dependency
@@ -250,7 +250,7 @@
     id: 700611511
 - name: rickychilcott/hypdf
   repository_name: hypdf
-  url: https://api.github.com/repos/rickychilcott/hypdf
+  url: https://github.com/rickychilcott/hypdf
   prs:
   - created_at: 2020-09-13 17:22:49.000000000 Z
     title: Relax httparty version dependency
@@ -258,7 +258,7 @@
     id: 700610995
 - name: gively/ntee
   repository_name: ntee
-  url: https://api.github.com/repos/gively/ntee
+  url: https://github.com/gively/ntee
   prs:
   - created_at: 2019-09-29 20:55:06.000000000 Z
     title: Remove unicode characters from name string
@@ -270,7 +270,7 @@
     id: 361906669
 - name: thoughtbot/clearance
   repository_name: clearance
-  url: https://api.github.com/repos/thoughtbot/clearance
+  url: https://github.com/thoughtbot/clearance
   prs:
   - created_at: 2019-08-20 15:53:59.000000000 Z
     title: Allow cookie_domain to be a string or a callable
@@ -278,7 +278,7 @@
     id: 482945620
 - name: 255kb/stack-on-a-budget
   repository_name: stack-on-a-budget
-  url: https://api.github.com/repos/255kb/stack-on-a-budget
+  url: https://github.com/255kb/stack-on-a-budget
   prs:
   - created_at: 2018-11-20 13:33:04.000000000 Z
     title: Add Apify to web-scraping
@@ -286,7 +286,7 @@
     id: 382665101
 - name: sillylogger/jekyll-directory
   repository_name: jekyll-directory
-  url: https://api.github.com/repos/sillylogger/jekyll-directory
+  url: https://github.com/sillylogger/jekyll-directory
   prs:
   - created_at: 2018-10-11 21:09:11.000000000 Z
     title: Allow wildcards in path
@@ -294,7 +294,7 @@
     id: 369306032
 - name: askn/faker
   repository_name: faker
-  url: https://api.github.com/repos/askn/faker
+  url: https://github.com/askn/faker
   prs:
   - created_at: 2018-09-22 13:03:43.000000000 Z
     title: Generate unique address
@@ -306,7 +306,7 @@
     id: 362599637
 - name: Rakefire/appreciation-app
   repository_name: appreciation-app
-  url: https://api.github.com/repos/Rakefire/appreciation-app
+  url: https://github.com/Rakefire/appreciation-app
   prs:
   - created_at: 2018-08-09 19:51:43.000000000 Z
     title: Disallow unverified users from logging in
@@ -314,7 +314,7 @@
     id: 349266383
 - name: thoughtbot/suspenders
   repository_name: suspenders
-  url: https://api.github.com/repos/thoughtbot/suspenders
+  url: https://github.com/thoughtbot/suspenders
   prs:
   - created_at: 2018-05-21 20:50:44.000000000 Z
     title: Use HTTPS url for Github Hub script
@@ -322,7 +322,7 @@
     id: 325054933
 - name: PotentialLabs/meetglow.com
   repository_name: meetglow.com
-  url: https://api.github.com/repos/PotentialLabs/meetglow.com
+  url: https://github.com/PotentialLabs/meetglow.com
   prs:
   - created_at: 2018-01-23 18:49:56.000000000 Z
     title: Add iOS and Android screenshot to home page
@@ -338,7 +338,7 @@
     id: 251017463
 - name: munkiserver/munkiserver
   repository_name: munkiserver
-  url: https://api.github.com/repos/munkiserver/munkiserver
+  url: https://github.com/munkiserver/munkiserver
   prs:
   - created_at: 2017-12-28 05:36:59.000000000 Z
     title: updating setup for automated installation
@@ -358,7 +358,7 @@
     id: 207876063
 - name: ambethia/recaptcha
   repository_name: recaptcha
-  url: https://api.github.com/repos/ambethia/recaptcha
+  url: https://github.com/ambethia/recaptcha
   prs:
   - created_at: 2017-09-01 03:26:09.000000000 Z
     title: Fix invisible_recaptcha_tags to work in testing modes
@@ -366,7 +366,7 @@
     id: 254525788
 - name: nicemohawk/nml-website
   repository_name: nml-website
-  url: https://api.github.com/repos/nicemohawk/nml-website
+  url: https://github.com/nicemohawk/nml-website
   prs:
   - created_at: 2017-03-29 15:10:59.000000000 Z
     title: Jekyll Migration
@@ -374,7 +374,7 @@
     id: 217909463
 - name: sharpstone/heroku-bouncer
   repository_name: heroku-bouncer
-  url: https://api.github.com/repos/sharpstone/heroku-bouncer
+  url: https://github.com/sharpstone/heroku-bouncer
   prs:
   - created_at: 2016-09-25 01:18:34.000000000 Z
     title: Change readme reflect new heroku-cli-oauth api
@@ -382,7 +382,7 @@
     id: 179061640
 - name: Athensworks/coffeetalk
   repository_name: coffeetalk
-  url: https://api.github.com/repos/Athensworks/coffeetalk
+  url: https://github.com/Athensworks/coffeetalk
   prs:
   - created_at: 2016-09-16 04:41:32.000000000 Z
     title: Adding a homepage and signup form
@@ -390,7 +390,7 @@
     id: 177344031
 - name: Athensworks/athensworks.github.io
   repository_name: athensworks.github.io
-  url: https://api.github.com/repos/Athensworks/athensworks.github.io
+  url: https://github.com/Athensworks/athensworks.github.io
   prs:
   - created_at: 2016-01-21 04:59:47.000000000 Z
     title: Make standalone — No Octopress plugins, scripts, etc.
@@ -398,7 +398,7 @@
     id: 127844898
 - name: ygini/Hello-IT
   repository_name: Hello-IT
-  url: https://api.github.com/repos/ygini/Hello-IT
+  url: https://github.com/ygini/Hello-IT
   prs:
   - created_at: 2015-09-26 19:30:07.000000000 Z
     title: Adding a LaunchAgent
@@ -406,7 +406,7 @@
     id: 108488388
 - name: chilcote/outset
   repository_name: outset
-  url: https://api.github.com/repos/chilcote/outset
+  url: https://github.com/chilcote/outset
   prs:
   - created_at: 2014-05-07 20:05:28.000000000 Z
     title: Adding every boot functionality
@@ -414,7 +414,7 @@
     id: 33019740
 - name: prose/prose
   repository_name: prose
-  url: https://api.github.com/repos/prose/prose
+  url: https://github.com/prose/prose
   prs:
   - created_at: 2013-10-14 23:37:07.000000000 Z
     title: 'Making try/catch blocks consient for jsyaml.safeLoad calls. Should fix
@@ -423,7 +423,7 @@
     id: 20988396
 - name: jnraine/munkiserver
   repository_name: munkiserver
-  url: https://api.github.com/repos/jnraine/munkiserver
+  url: https://github.com/jnraine/munkiserver
   prs:
   - created_at: 2013-10-10 18:19:44.000000000 Z
     title: Delete unused package files
@@ -470,7 +470,7 @@
     id: 1735016
 - name: pmbuko/Assetter
   repository_name: Assetter
-  url: https://api.github.com/repos/pmbuko/Assetter
+  url: https://github.com/pmbuko/Assetter
   prs:
   - created_at: 2013-10-03 13:58:59.000000000 Z
     title: Upgrading to Xcode5
@@ -478,7 +478,7 @@
     id: 20455537
 - name: WinRb/Viewpoint
   repository_name: Viewpoint
-  url: https://api.github.com/repos/WinRb/Viewpoint
+  url: https://github.com/WinRb/Viewpoint
   prs:
   - created_at: 2013-09-11 15:00:11.000000000 Z
     title: Update README.md
@@ -486,7 +486,7 @@
     id: 19324657
 - name: RBSavvy/gistr
   repository_name: gistr
-  url: https://api.github.com/repos/RBSavvy/gistr
+  url: https://github.com/RBSavvy/gistr
   prs:
   - created_at: 2013-08-08 01:33:58.000000000 Z
     title: Strip ActiveRecord as dependency
@@ -494,7 +494,7 @@
     id: 17783866
 - name: NUBIC/surveyor
   repository_name: surveyor
-  url: https://api.github.com/repos/NUBIC/surveyor
+  url: https://github.com/NUBIC/surveyor
   prs:
   - created_at: 2013-05-29 16:26:07.000000000 Z
     title: Update kitchen_sink_survey.rb
@@ -502,7 +502,7 @@
     id: 14899110
 - name: hashicorp/puppet-bootstrap
   repository_name: puppet-bootstrap
-  url: https://api.github.com/repos/hashicorp/puppet-bootstrap
+  url: https://github.com/hashicorp/puppet-bootstrap
   prs:
   - created_at: 2013-02-13 19:03:04.000000000 Z
     title: Hide puppet user at loginwindow on Mac OS X
@@ -510,7 +510,7 @@
     id: 10966766
 - name: phil-monroe/powser
   repository_name: powser
-  url: https://api.github.com/repos/phil-monroe/powser
+  url: https://github.com/phil-monroe/powser
   prs:
   - created_at: 2011-11-27 18:09:24.000000000 Z
     title: Allow powser to be used for multiple apps
@@ -518,7 +518,7 @@
     id: 2361270
 - name: unixorn/luggage
   repository_name: luggage
-  url: https://api.github.com/repos/unixorn/luggage
+  url: https://github.com/unixorn/luggage
   prs:
   - created_at: 2011-09-03 18:06:46.000000000 Z
     title: 'Adding documentation for the pkgls command and fixing #1'
