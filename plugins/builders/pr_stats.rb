@@ -9,7 +9,7 @@ class Builders::PrStats < SiteBuilder
 
   def build
     hook :site, :post_read do
-      if 2.hours.ago.after?(File.mtime(PR_STATS_FILE))
+      if File.mtime(PR_STATS_FILE).after?(2.hours.ago)
         info "PR stats file is up to date"
         next
       end
