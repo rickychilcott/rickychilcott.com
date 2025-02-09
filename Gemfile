@@ -19,4 +19,6 @@ gem "puma", "< 7"
 
 gem "bridgetown-quick-search", "~> 3.0"
 
+gem "commonmarker", "~> 2.0"
+gem "ferrum", "~> 0.16"
 gem "standardrb", "~> 1.0"

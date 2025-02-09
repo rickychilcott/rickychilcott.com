@@ -21,6 +21,7 @@ url: "https://www.rickychilcott.com" # the base hostname & protocol for your sit
 
 permalink: pretty
 template_engine: erb
+markdown: CommonMark
 
 base_path: "/"
 
@@ -37,3 +38,7 @@ obsidian_local_sync:
       to: _projects
     - from: Personal/Website/til
       to: _til
+
+generate_pdf:
+  - input: resume/index.html
+    output: resume.pdf
