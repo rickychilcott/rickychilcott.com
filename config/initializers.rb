@@ -21,16 +21,9 @@ Bridgetown.configure do |config|
   #   inflect.acronym "RESTful"
   # end
 
-  # You can use `init` to initialize various Bridgetown features or plugin gems.
-  # For example, you can use the Dotenv gem to load environment variables from
-  # `.env`. Just `bundle add dotenv` and then uncomment this:
-  #
-  # init :dotenv
-  #
-
   init :"bridgetown-quick-search"
-
   init :"bridgetown-sitemap"
+  init :dotenv
 
   # Uncomment to use Bridgetown SSR (aka dynamic rendering of content via Roda):
   #

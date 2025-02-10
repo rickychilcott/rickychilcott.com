@@ -1,4 +1,3 @@
-require "dotenv/load"
 require "faraday"
 require "active_support/all"
 
