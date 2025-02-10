@@ -1,3 +1,5 @@
+Bundler.require(:default, Bridgetown.environment)
+
 Bridgetown.configure do |config|
   # You can configure the inflector used by Zeitwerk. In v2.0,
   # ActiveSupport::Inflector will become the default.
