@@ -30,6 +30,8 @@ Bridgetown.configure do |config|
 
   init :"bridgetown-quick-search"
 
+  init :"bridgetown-sitemap"
+
   # Uncomment to use Bridgetown SSR (aka dynamic rendering of content via Roda):
   #
   # init :ssr

@@ -18,6 +18,7 @@ gem "puma", "< 7"
 # gem "nokolexbor", "~> 0.4"
 
 gem "bridgetown-quick-search", "~> 3.0"
+gem "bridgetown-sitemap", "~> 2.0"
 gem "commonmarker", "~> 2.0"
 gem "faraday", "~> 2.0"
 
