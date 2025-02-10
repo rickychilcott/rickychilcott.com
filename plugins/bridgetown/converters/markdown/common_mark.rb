@@ -23,7 +23,8 @@ class Bridgetown::Converters::Markdown::CommonMark
       extension: {
         tagfilter: false,
         spoiler: true,
-        alerts: true
+        alerts: true,
+        underline: true
       },
       plugins: {
         syntax_highlighter: {
