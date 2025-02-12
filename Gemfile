@@ -9,6 +9,8 @@ gem "bridgetown", "2.0.0.beta3"
 gem "commonmarker", "~> 2.0"
 gem "dotenv", "~> 3.0", require: "dotenv/load"
 gem "faraday", "~> 2.0"
+gem "nokogiri"
+gem "truncato", "~> 0.7"
 
 group :development do
   gem "puma", "< 7"

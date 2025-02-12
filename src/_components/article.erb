@@ -1,0 +1,10 @@
+<article class="h-entry">
+  <h2><%= @title %></h2>
+  <aside role="note">
+    <time class="dt-published" datetime="<%= @date.to_s %>"><%= @date.strftime("%B %d, %Y") %></time>
+  </aside>
+  <div class="p-summary">
+    <%= @body %>
+  </div>
+  <a class="u-url " href="<%= @url %>">Continue reading…</a>
+</article>
