@@ -5,7 +5,7 @@
     <li><a href="<%= relative_url '/' %>">Home</a></li>
     <li><a href="<%= relative_url '/posts' %>">Posts</a></li>
     <li><a href="<%= relative_url '/out-and-about' %>">Out And About</a></li>
-    <li><a href="<%= relative_url '/resume' %>">Resume</a></li>
+    <li><a href="<%= relative_url '/resume' %>?changed=<%= Time.now.to_i %>">Resume</a></li>
     <li><%= liquid_render "bridgetown_quick_search/search" %></li>
   </ul>
 </nav>

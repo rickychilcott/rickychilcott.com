@@ -168,7 +168,7 @@ Oversaw the IT and Technical Production Operations for the Scripps College of Co
 - Leadership Athens County 2022-2023 Cohort participant - Athens County Foundation
 - Co-founder and manager of Athensworks, a co-op coworking space supporting local entrepreneurs since 2013
 
-PDF version of this resume at [https://www.rickychilcott.com/resume.pdf](https://www.rickychilcott.com/resume.pdf).
+PDF version of this resume at [https://www.rickychilcott.com/resume.pdf](https://www.rickychilcott.com/resume.pdf?changed=<%= Time.now.to_i %>).
 
 <div style="page-break-after: always;"></div>
 
