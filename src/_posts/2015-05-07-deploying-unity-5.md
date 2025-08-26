@@ -9,8 +9,8 @@ tags:
   - unity
 header-img: img/home-bg.jpg
 published: 2015-05-07
+kind: professional
 ---
-
 *Note: You should also read the [Unity 5 Security Concerns]({% post_url 2015-05-07-deploying-unity-5 %})*
 
 The Scripps College of Communication teaches Unity for game development.  Over the past few years, we've been able to download the Unity from their website and easily deploy via munki.  Largely, there was no changes that needed to happen to the package, because the metapackage contained all the needed compontents.  Since moving to Unity 5, however, Unity has change the way they deploy the software.

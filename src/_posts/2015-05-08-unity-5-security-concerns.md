@@ -10,9 +10,8 @@ tags:
   - security
 header-img: img/home-bg.jpg
 publish: 2025-05-08
+kind: professional
 ---
-
-
 In my last blog post, I talked about how to [Deploy Unity 5]({% post_url 2015-05-07-deploying-unity-5 %}).  While working on that project, I uncovered a small, but important attack vector that should be fixed by Unity.
 
 As I describe in the blog post, I introspect the ```Unity Download Assistant.app``` for a Settings.ini file which yields some URLs.  This settings.ini file has 4 URLs, all of which are served over HTTP.  The first 3 URLs seem to work, but the 4th has been unrepsonsive every time I try. 

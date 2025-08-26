@@ -6,6 +6,7 @@ tags:
   - garden
   - yard
 abstract: We’re planning to build a garden and have been gathering ideas, documenting our dreams, and refining the design process as we go. Our goal is to create a space that reflects our vision while evolving through thoughtful planning and creativity.
+kind: personal
 ---
 Didi (my wife) and I have long wanted to have a proper garden space and to finally landscape and design our outdoor space to make use of our ~1-acre land in the city limits. We've used raised-bed gardens in the past to great effect, but I've also been a passive connoisseur of permaculture-related topics -- mostly through [permies](https://permies.com/) and [Wheaton Labs](https://wheaton-labs.com/)
 

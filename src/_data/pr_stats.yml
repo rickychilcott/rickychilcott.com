@@ -1,4 +1,28 @@
 ---
+- name: RailsEventStore/rails_event_store
+  repository_name: rails_event_store
+  url: https://github.com/RailsEventStore/rails_event_store
+  prs:
+  - created_at: 2025-07-09 04:30:41.000000000 Z
+    title: Update browser time to follow ISO 8601 standard
+    url: https://github.com/RailsEventStore/rails_event_store/pull/1909
+    id: 3214454147
+- name: Shopify/roast
+  repository_name: roast
+  url: https://github.com/Shopify/roast
+  prs:
+  - created_at: 2025-05-12 14:04:47.000000000 Z
+    title: Specify correct gem name
+    url: https://github.com/Shopify/roast/pull/19
+    id: 3057101753
+- name: yippee-fun/literal
+  repository_name: literal
+  url: https://github.com/yippee-fun/literal
+  prs:
+  - created_at: 2025-05-06 01:16:58.000000000 Z
+    title: Allow defaults to reference methods inside class
+    url: https://github.com/yippee-fun/literal/pull/320
+    id: 3041208487
 - name: Rakefire/jekyll-ical-tag
   repository_name: jekyll-ical-tag
   url: https://github.com/Rakefire/jekyll-ical-tag
@@ -492,13 +516,13 @@
     title: Strip ActiveRecord as dependency
     url: https://github.com/RBSavvy/gistr/pull/1
     id: 17783866
-- name: NUBIC/surveyor
+- name: NUARIG/surveyor
   repository_name: surveyor
-  url: https://github.com/NUBIC/surveyor
+  url: https://github.com/NUARIG/surveyor
   prs:
   - created_at: 2013-05-29 16:26:07.000000000 Z
     title: Update kitchen_sink_survey.rb
-    url: https://github.com/NUBIC/surveyor/pull/458
+    url: https://github.com/NUARIG/surveyor/pull/458
     id: 14899110
 - name: hashicorp/puppet-bootstrap
   repository_name: puppet-bootstrap

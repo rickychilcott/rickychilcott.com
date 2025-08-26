@@ -1,11 +1,14 @@
 ---
 layout: post
-title: "Forcing Mac OS X Updates"
-author: "Ricky"
-tags: [OSX, management, munki]
-header-img: "img/home-bg.jpg"
+title: Forcing Mac OS X Updates
+author: Ricky
+tags:
+  - OSX
+  - management
+  - munki
+header-img: img/home-bg.jpg
+kind: professional
 ---
-
 Our university is in the process of making our Mac OS X installs a little more enterprise-y with AD authentication, management via MCX, centralized software update servers, and Apple Software Updates on a regular basis.  In our journey to do the last thing on that list, I looked around to see how others were making it happen.
 
 Plenty of times, I've used ARD to force a client to download and install all the updates, but I can't remember to do that regularly.  Moreover, what if installs need a reboot, or really, several reboots -- _it could be way out of date_.  How am I to know?
