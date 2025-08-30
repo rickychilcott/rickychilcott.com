@@ -6,11 +6,11 @@ template_engine: erb
 
 # Ricky Chilcott
 
-##### Full-stack, product-focused engineer and entrepreneur.
-
-###### Athens, OH | hey@rickychilcott.com | 440-223-5715
+###### Athens, OH | hey@rickychilcott.com | [440-223-5715](tel://+14402235715)
 
 ###### [www.rickychilcott.com](https://www.rickychilcott.com) | [linkedin.com/in/rickychilcott](https://linkedin.com/in/rickychilcott) | [github.com/rickychilcott](https://github.com/rickychilcott)
+
+Full-stack engineer and product-focused entrepreneur with 15+ years building and scaling SaaS platforms. Expertise in Ruby on Rails, system architecture, and operational efficiency. Proven track record co-founding startups (Causey, Stoked, Mission Met) and delivering products from concept to $120k ARR and beyond.
 
 ## SUMMARY
 
@@ -18,8 +18,8 @@ template_engine: erb
 
 - **Co-Founder** @ Stoked (2025 - Current)
 - **CTO/Operator** @ Causey (2025 - Current)
-- **Co-Founder/CTO** @ Mission Met (2019 - 2025)
 - **Co-Founder & Principal Software Engineer** @ Rakefire (2011 - Current)
+- **Co-Founder/CTO** @ Mission Met (2019 - 2025)
 - **Technology and Facilities Manager** @ Scripps College, Ohio University (2009 - 2017)
 
 ### Education
@@ -41,6 +41,7 @@ template_engine: erb
 - Web Application Performance and Operational Efficiency
 - TDD (Test-driven Development)
 - Mentoring Software Engineers
+- Code generation and gen-AI-based feature development
 - Online Payments + Subscriptions
 - Strategy Planning & Execution
 - Running a Business and Solving Problems
@@ -101,21 +102,6 @@ template_engine: erb
 - Expanded permissioning to include more granular control
 - Address bugs and monitor performance of application
 
-### Co-Founder/CTO - Mission Met
-
-**Athens, OH** (November 2019 - 2025)
-
-- Co-founded a bootstrapped startup focused on strategic planning software, training, and consulting for mission-driven leaders.
-- Designed and built the web-based Causey platform, growing it from concept to $120k ARR and securing partnerships with 10+ strategic planning consultants/firms and over 80 customers.
-- Led engineering team management, application architecture, product development, company strategy, and overall process improvement.
-
-#### Notable Projects:
-
-- Built i18n and custom-labeling infrastructure to to support language across consulting firms and multiple languages.
-- Cut hosting costs 30% by migrating from Heroku to Render + AWS RDS
-- Developed an affiliate consultant program yielding 10+ ongoing relationships.
-- Designed an intentional training program that transformed a junior engineer into a competent mid-level contributor within 18 months.
-
 ### Co-Founder & Principal Software Engineer - Rakefire
 
 **Athens, OH** (September 2011 - Current)
@@ -131,6 +117,21 @@ template_engine: erb
 - Developed a basic web-based digital signage platform and equipment check-in/check-out system for the [Ohio University Patton College of Education](https://www.ohio.edu/education/) in Ruby on Rails.
 - Wrote e-commerce website crawling framework and implementations for 10+ brands for Maven Labs (personal selling platform) with internal tooling to review crawl results in React and Crystal.
 
+### Co-Founder/CTO - Mission Met
+
+**Athens, OH** (November 2019 - 2025)
+
+- Co-founded a bootstrapped startup focused on strategic planning software, training, and consulting for mission-driven leaders.
+- Designed and built the web-based Causey platform, growing it from concept to $120k ARR and securing partnerships with 10+ strategic planning consultants/firms and over 80 customers.
+- Led engineering team management, application architecture, product development, company strategy, and overall process improvement.
+
+#### Notable Projects:
+
+- Built i18n and custom-labeling infrastructure to to support language across consulting firms and multiple languages.
+- Cut hosting costs 30% by migrating from Heroku to Render + AWS RDS
+- Developed an affiliate consultant program yielding 10+ ongoing relationships.
+- Designed an intentional training program that transformed a junior engineer into a competent mid-level contributor within 18 months.
+
 ### Technology and Facilities Manager - Ohio University Scripps College of Communication
 
 **Athens, OH** (March 2009 - October 2017)
@@ -143,9 +144,15 @@ Oversaw the IT and Technical Production Operations for the Scripps College of Co
 
 #### Notable Projects:
 
-- Stood up a campus-wide (and transitioned to central control) a [Munkiserver](https://github.com/munkiserver/munkiserver) deployment that was used to deploy hundreds of software packages across 1,000+ Mac computers.
+- Stood up a campus-wide (and transitioned to Office of Information Technology control) a [Munkiserver](https://github.com/munkiserver/munkiserver) deployment that was used to deploy hundreds of software packages across 1,000+ Mac computers campus-wide.
 - Managed the IT/Media budget and equipment installation for the Schoonover Center remodel of $800,000.
 - Coordinate the movement of 200+ faculty/staff computers and 150 lab machines during a multi-phase Schoonover renovation project.
+
+## COMMUNITY INVOLVEMENT
+
+- Rotary, Club of Athens Ohio, District 6690 Member and Strategic Planning Chair/Public Image Chair - Aug 2023 - Present
+- Leadership Athens County (LAC) Cohort participant - Athens County Foundation - 2022-2023
+- Co-founder and manager of Athensworks, a co-op coworking space supporting local entrepreneurs - 2013 - 2025
 
 ## EDUCATION
 
@@ -162,12 +169,6 @@ Oversaw the IT and Technical Production Operations for the Scripps College of Co
 - Minors: Music and Business
 - Graduated: June 2011, Magna Cum Laude
 - Took several computer science classes
-
-## COMMUNITY INVOLVEMENT
-
-- Rotary, Club of Athens Ohio, District 6690 Member and Strategic Planning Chair - [Aug 2023 - Present]
-- Leadership Athens County 2022-2023 Cohort participant - Athens County Foundation
-- Co-founder and manager of Athensworks, a co-op coworking space supporting local entrepreneurs since 2013
 
 PDF version of this resume at [https://www.rickychilcott.com/resume.pdf](https://www.rickychilcott.com/resume.pdf?changed=<%= Time.now.to_i %>).
 
