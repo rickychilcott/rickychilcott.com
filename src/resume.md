@@ -96,25 +96,25 @@ template_engine: erb
 
 **Athens, OH** (April 2025 - Current)
 
-- With a change in ownership of Mission Met (sale to business partner), I am running Causey, largely in maintenance mode
+- With a change in ownership of Mission Met (sale to business partner), I am running Causey, largely in maintenance mode.
 - Added SSO - OpenID Connect (OIDC) integration to the platform for enterprise customers
-- Expanded permissioning to include more grandular control
+- Expanded permissioning to include more granular control
 - Address bugs and monitor performance of application
 
 ### Co-Founder/CTO - Mission Met
 
-**Athens, OH** (November 2019 - Current)
+**Athens, OH** (November 2019 - 2025)
 
-- Co-founded a bootstraped startup focused on strategic planning software, training, and consulting for mission-driven leaders.
+- Co-founded a bootstrapped startup focused on strategic planning software, training, and consulting for mission-driven leaders.
 - Designed and built the web-based Causey platform, growing it from concept to $120k ARR and securing partnerships with 10+ strategic planning consultants/firms and over 80 customers.
 - Led engineering team management, application architecture, product development, company strategy, and overall process improvement.
 
 #### Notable Projects:
 
-- Built i18n and custom-labeling infrastructure to ensure strategic planning firms could customize for their clients and multi-language support.
-- Migrated from hosts from Heroku to Render.com + AWS RDS achieving operational efficiency and 30% cost reductions.
+- Built i18n and custom-labeling infrastructure to to support language across consulting firms and multiple languages.
+- Cut hosting costs 30% by migrating from Heroku to Render + AWS RDS
 - Developed an affiliate consultant program yielding 10+ ongoing relationships.
-- Designed an intential training program that transformed a junior engineer into a competent mid-level contributor within 18 months.
+- Designed an intentional training program that transformed a junior engineer into a competent mid-level contributor within 18 months.
 
 ### Co-Founder & Principal Software Engineer - Rakefire
 
@@ -126,11 +126,12 @@ template_engine: erb
 
 - Developed a solar racking quoting tool for Ecolibrium Solar's EcoX pitched-roof racking product (acquired by [Unirac](https://unirac.com/)).
 - Developed a IOT Backend and GraphQL API for [Glow](https://www.kickstarter.com/projects/1178650747/glow-the-smart-energy-tracker-for-your-home).
-- Developed the a Healthy Heart score calculation system based on emerging research in food and lifestyle choice for [Ohio University Health Sciences and Professions](https://www.ohio.edu/chsp/).
-- Developed a Radio Signal Visualizer Map for emergency radio comunication across the state of Ohio.
-- Developed a basic web-based digital signage platform and equipment check-in/check-out system for the [Ohio University Patton College of Education](https://www.ohio.edu/education/).
+- Developed the Healthy Heart score calculation system based on emerging research in food and lifestyle choice for [Ohio University Health Sciences and Professions](https://www.ohio.edu/chsp/) in Ruby on Rails, Hotwire, and Stimulus.
+- Developed a Radio Signal Visualizer Map for emergency radio communication across the state of Ohio in Ruby on Rails, Hotwire, and Stimulus.
+- Developed a basic web-based digital signage platform and equipment check-in/check-out system for the [Ohio University Patton College of Education](https://www.ohio.edu/education/) in Ruby on Rails.
+- Wrote e-commerce website crawling framework and implementations for 10+ brands for Maven Labs (personal selling platform) with internal tooling to review crawl results in React and Crystal.
 
-### Technology and Facilities Manager - Ohio Univesrsity Scripps College of Communication
+### Technology and Facilities Manager - Ohio University Scripps College of Communication
 
 **Athens, OH** (March 2009 - October 2017)
 Oversaw the IT and Technical Production Operations for the Scripps College of Communication.
