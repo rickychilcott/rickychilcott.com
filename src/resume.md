@@ -86,7 +86,7 @@ Full-stack engineer and product-focused entrepreneur with 15+ years building and
 
 **Athens, OH** (January 2025 - Current)
 
-- Co-founded a bootstraped startup focused on brand advocate programs at Direct To Consumer (DTC) brands. Key customers include Bunch Bike and FounderWell
+- Co-founded a bootstrapped startup focused on brand advocate programs at Direct To Consumer (DTC) brands. Key customers include Bunch Bike and FounderWell
 - Implemented features in Rails using Event-based architecture based on [Active Event Store](https://github.com/palkan/active_event_store)
 - Developed an internal library based upon [Literal](https://github.com/yippee-fun/literal) and the _command pattern_ and leaned into `===` type matching
 - Used Cursor, ChatGPT CODEX, and other AI code-gen platforms to increase development
