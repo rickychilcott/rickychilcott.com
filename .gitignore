@@ -2,14 +2,10 @@
 output
 .bridgetown-cache
 .bridgetown-metadata
-.bridgetown-webpack
 .routes.json
-tmp/
 
 # Dependency folders
 node_modules
-bower_components
-vendor
 
 # Caches
 .sass-cache
@@ -27,3 +23,20 @@ vendor
 
 # Mac files
 .DS_Store
+
+# Yarn
+yarn-error.log
+yarn-debug.log*
+.pnp/
+.pnp.js
+# Yarn Integrity file
+.yarn-integrity
+
+# Ignore all tempfiles.
+/tmp/*
+!/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep

@@ -1,6 +1,7 @@
 {
   "name": "rickychilcott.com",
   "version": "1.0.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "esbuild": "node esbuild.config.js --minify",
@@ -8,7 +9,7 @@
   },
   "devDependencies": {
     "cssnano": "^7.0.6",
-    "esbuild": "^0.19.2",
+    "esbuild": "^0.20.2",
     "glob": "^10.3.3",
     "postcss": "^8.4.29",
     "postcss-color-mod-function": "^4.1.1",

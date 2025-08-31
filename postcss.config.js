@@ -1,10 +1,7 @@
 module.exports = {
   plugins: {
     'postcss-mixins': {},
-    'postcss-color-mod-function': {
-      // Uncomment the following to import CSS variables for use in `color-mod`:
-      // importFrom: "frontend/styles/variables.css"
-    },
+    'postcss-color-mod-function': {},
     'postcss-flexbugs-fixes': {},
     'postcss-preset-env': {
       autoprefixer: {
