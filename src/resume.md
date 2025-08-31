@@ -1,8 +1,7 @@
 ---
+layout: resume
 template_engine: erb
 ---
-
-<style><%= File.read(__dir__ + "/resume.css") %></style>
 
 # Ricky Chilcott
 
