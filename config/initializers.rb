@@ -1,5 +1,7 @@
 Bundler.require(:default, Bridgetown.environment)
 
+ActiveSupport.to_time_preserves_timezone = true
+
 Bridgetown.configure do |config|
   # You can configure the inflector used by Zeitwerk. In v2.0,
   # ActiveSupport::Inflector will become the default.
