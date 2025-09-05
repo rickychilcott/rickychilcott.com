@@ -32,7 +32,7 @@ And when you handed me that “license” with pride,
 I felt like the world had opened up wide.
 
 You bought a moped, you made it go fast,
-By removing the regulator, it screamed when I asked.
+By modifying the governor, it screamed when I asked.
 You kept it well-oiled and topped off with gas,
 I rode for hours while the summer sun passed.
 
