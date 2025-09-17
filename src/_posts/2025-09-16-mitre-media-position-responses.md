@@ -639,12 +639,12 @@ What are the downsides to this?
 I've been developing in Rails since 2010 or so. In the beginning, there were Rails partials, in ERB.
 
 ```erb
-<# app/views/products/index.html.erb #>
+<%# app/views/products/index.html.erb %>
 <%%= render partial: "product", collection: @products, as: :product %>
-<%%# or even #>
+<%%# or even %>
 <%%= render @products %>
 
-<# app/views/products/_product.html.erb #>
+<%# app/views/products/_product.html.erb %>
 <%% cache ["v2", product, product.updated_at.to_i] do %>
   <article id="<%%= dom_id(product) %>">
     <h3><%%= product.name %></h3>
@@ -713,7 +713,7 @@ But it still felt a little off. Use of `content_tag` was very difficult to skim,
 Got anything else?
 
 **Yes, Phlex!**
-[https://www.phlex.fun/] will keep everything in Ruby-land.
+[Phlex](https://www.phlex.fun/) will keep everything in Ruby-land.
 
 ```ruby
 # app/components/views/product.rb
