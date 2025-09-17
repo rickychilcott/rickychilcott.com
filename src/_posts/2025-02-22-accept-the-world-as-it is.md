@@ -6,7 +6,6 @@ tags:
 abstract: We often want the world to match our ideals, but ignoring reality only leads to frustration. Lasting change comes from first accepting things as they are, then working patiently and persistently to shape a better future.
 kind: professional
 ---
-
 I love coming up with contrarian views about the world. Why? It's more fun that way. When you look like everyone else, you feel boring,
 
 And to some extent it's true.

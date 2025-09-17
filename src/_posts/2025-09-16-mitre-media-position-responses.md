@@ -8,23 +8,25 @@ tags:
   - responses
 abstract: My responses to questions for a Mitre Media position, sharing my thoughts and experiences relevant to the role.
 kind: professional
-sitemap: "false"
-hidden: "true"
+sitemap: false
+hidden: true
 ---
+
 I'm sharing my responses to questions for a Mitre Media position. This post contains my thoughts and experiences that are relevant to the role.
 
 # The Role
-I’m interested in this role because I’ve had a long-standing passion for personal finance, financial advice, and investing. I’ve been engaged with the [FIRE movement](https://www.investopedia.com/terms/f/financial-independence-retire-early-fire.asp) for well over a decade. Along the way, I’ve been a regular listener of [ChooseFI](https://www.choosefi.com/), a dedicated reader of [Mr. Money Mustache](https://www.mrmoneymustache.com/) and [Mad Fientist](https://www.madfientist.com/), and an active user of tools like [Boldin](https://www.boldin.com/).  
 
-I also follow [Money for the Rest of Us](https://moneyfortherestofus.com/), and their recent expansion into investment newsletters has sparked my curiosity about the financial publishing and news industry as a whole.  
+I’m interested in this role because I’ve had a long-standing passion for personal finance, financial advice, and investing. I’ve been engaged with the [FIRE movement](https://www.investopedia.com/terms/f/financial-independence-retire-early-fire.asp) for well over a decade. Along the way, I’ve been a regular listener of [ChooseFI](https://www.choosefi.com/), a dedicated reader of [Mr. Money Mustache](https://www.mrmoneymustache.com/) and [Mad Fientist](https://www.madfientist.com/), and an active user of tools like [Boldin](https://www.boldin.com/).
 
-What excites me most about this position is the opportunity to work with a team committed to delivering **reliable, accurate, and actionable financial information**—content that helps readers make better-informed investment decisions and build financial confidence.  
+I also follow [Money for the Rest of Us](https://moneyfortherestofus.com/), and their recent expansion into investment newsletters has sparked my curiosity about the financial publishing and news industry as a whole.
+
+What excites me most about this position is the opportunity to work with a team committed to delivering **reliable, accurate, and actionable financial information**—content that helps readers make better-informed investment decisions and build financial confidence.
 
 My resume is available at [my website](https://www.rickychilcott.com/resume) and you can view my [github](https://github.com/rickychilcott).
 
 # Pre-screening Questions
 
-## Q1: Reflect on a moment in your career when you felt most proud of how you influenced a team's dynamic (without detailing the project's technical aspects). 
+## Q1: Reflect on a moment in your career when you felt most proud of how you influenced a team's dynamic (without detailing the project's technical aspects).
 
 **What specific action or mindset did you bring to that moment, and why do you think it would resonate with an engineering team striving for innovation and collaboration? Keep your response concise (150-200 words).**
 
@@ -39,18 +41,20 @@ The process wasn't easy—my co-founder resisted the change and the team worried
 **For each technology, justify your rating by explaining a key concept, mechanism, or feature in depth—focusing on how it works under the hood, potential pitfalls or edge cases, and how to address them as well as where this was encountered in your programming experience (could be work or side-project). Use hypothetical examples, code snippets, queries, or diagrams where applicable to illustrate your understanding rather than describing what it was that you were building.**
 
 ### JavaScript - 7/10
+
 I generally keep my JavaScript as minimal glue code with the UI and have leaned into CableReady and Hotwire-based approaches for updating the UI. Where it's needed, I prefer to write a small Stimulus controller to sprinkle in JS.
 
 In this example, I wrote a stimulus controller that formats times in html like this to a local timezone:
 
 ```html
-<meta name="app:date-format" content="%b %-d, %Y" data-turbo-track="reload">
-<meta name="app:time-format" content="%-I:%M %p" data-turbo-track="reload">
+<meta name="app:date-format" content="%b %-d, %Y" data-turbo-track="reload" />
+<meta name="app:time-format" content="%-I:%M %p" data-turbo-track="reload" />
 
 <time
   datetime="2025-09-16T14:30:00Z"
   data-controller="pretty-date"
-  data-pretty-date-time-value="2025-09-16T14:30:00Z">
+  data-pretty-date-time-value="2025-09-16T14:30:00Z"
+>
 </time>
 ```
 
@@ -60,70 +64,79 @@ It will support ISO8601 times and ISO8601 dates and reads the format possibiliti
 
 ```javascript
 // controllers/pretty_date_controller.js
-import { Controller } from "@hotwired/stimulus"
-import { getMeta } from "../lib/meta_helpers"
-import { isTime, iso8601Parse } from "../lib/date_helpers"
-import strftime from "strftime"
-
+import { Controller } from "@hotwired/stimulus";
+import { getMeta } from "../lib/meta_helpers";
+import { isTime, iso8601Parse } from "../lib/date_helpers";
+import strftime from "strftime";
 
 export default class extends Controller {
   static values = {
-    time: String,           // e.g., "2025-09-16" or "14:30" or ISO datetime
-    dateFormat: String,     // optional, e.g., "%b %-d, %Y"
-    timeFormat: String      // optional, e.g., "%-I:%M %p"
-  }
+    time: String, // e.g., "2025-09-16" or "14:30" or ISO datetime
+    dateFormat: String, // optional, e.g., "%b %-d, %Y"
+    timeFormat: String, // optional, e.g., "%-I:%M %p"
+  };
 
   initialize() {
-    this._render = this._render.bind(this)
+    this._render = this._render.bind(this);
   }
 
   connect() {
-    this._render()
+    this._render();
   }
 
   // Re-render when values change
-  timeValueChanged()       { this._render() }
-  dateFormatValueChanged() { this._render() }
-  timeFormatValueChanged() { this._render() }
+  timeValueChanged() {
+    this._render();
+  }
+  dateFormatValueChanged() {
+    this._render();
+  }
+  timeFormatValueChanged() {
+    this._render();
+  }
 
   _render() {
-    if (!this.hasTimeValue || !this.timeValue) return
+    if (!this.hasTimeValue || !this.timeValue) return;
 
-    const date = this._parse(this.timeValue)
-    if (Number.isNaN(date?.valueOf())) return
+    const date = this._parse(this.timeValue);
+    if (Number.isNaN(date?.valueOf())) return;
 
-    const fmt = this._formatFor(this.timeValue)
-    const next = strftime(fmt, date)
+    const fmt = this._formatFor(this.timeValue);
+    const next = strftime(fmt, date);
 
     if (this.element.textContent !== next) {
-      this.element.textContent = next
+      this.element.textContent = next;
     }
   }
 
   _formatFor(v) {
     // Prefer values, then MetaVars, then sane defaults
     if (isTime(v)) {
-      return (this.hasTimeFormatValue && this.timeFormatValue)
-        || getMeta("app:time-format")
-        || "%-I:%M %p"
+      return (
+        (this.hasTimeFormatValue && this.timeFormatValue) ||
+        getMeta("app:time-format") ||
+        "%-I:%M %p"
+      );
     }
-    return (this.hasDateFormatValue && this.dateFormatValue)
-      || getMeta("app:date-format")
-      || "%Y-%m-%d"
+    return (
+      (this.hasDateFormatValue && this.dateFormatValue) ||
+      getMeta("app:date-format") ||
+      "%Y-%m-%d"
+    );
   }
 
   _parse(v) {
     if (isTime(v)) {
       // Accept "HH:MM" or full ISO; ensure local time semantics
-      const d = new Date(v)
-      if (!Number.isNaN(d.valueOf())) return d
-      const [h, m = "0"] = String(v).split(":")
-      const now = new Date()
-      now.setHours(+h || 0, +m || 0, 0, 0)
-      return now
+      const d = new Date(v);
+      if (!Number.isNaN(d.valueOf())) return d;
+      const [h, m = "0"] = String(v).split(":");
+      const now = new Date();
+      now.setHours(+h || 0, +m || 0, 0, 0);
+      return now;
     }
     // Date-only strings: use helper that preserves local date (no UTC shift)
-    return iso8601Parse(v)
+    return iso8601Parse(v);
   }
 }
 ```
@@ -145,6 +158,7 @@ That said, this controller is very fully featured because I chose to:
 1. Upon `initialize`, bind the `_render` function's context to `this` which ensures we can call the function in any location and not lose the `this` of the controller.
 2. I utilize Stimulus's many callbacks for changing of any of the values to trigger a `_render`
 3. Have several fallbacks for deriving from the correct format: from `<meta />` tags, from the html itself, and a sensible default.
+
 ### SQL queries - 5 / 10
 
 I rated myself a little lower on this one because as a Rails dev, I really try to lean into using Active Record as much possible. To me, the Rails ORM is really one of the things that made it rise to prominence, and it's generally super powerful. But of course, there are limitations to what the ORM provides out of the box.
@@ -154,6 +168,7 @@ Where necessary, wrapping more complicated queries in AR scopes to keep things m
 For [Causey](https://www.causey.app) we have an OrganizationSettings model that has many features that can be enabled/disabled based on their settings. Since we use PostgresSQL we store these in a JSON column instead of a unique column for each setting. This is mostly because we often need to look this up once at the beginning of a request (for a given organization) and then show/hide certain features on the screen for the request.
 
 This looks like:
+
 ```ruby
 create_table "organization_settings", force: :cascade do |t|
   t.jsonb "settings", default: {}, null: false
@@ -214,6 +229,7 @@ owner_type: "Organization">
 ```
 
 And we use it like
+
 ```ruby
 organization = Organization.first
 settings = organization.settings
@@ -240,6 +256,7 @@ class OrganizationSetting < ApplicationRecord
   }
 end
 ```
+
 Which now allows:
 
 ```ruby
@@ -248,7 +265,6 @@ Organization
   .joins(:logo_attachment) # ensures presence of logo
   .merge(OrganizationSetting.setting_equals(:show_logo, true))
 ```
-
 
 It might even be nicer to allow for: `OrganizationSetting.setting_equals(show_logo: true, enable_link: true)`
 
@@ -263,9 +279,10 @@ class OrganizationSetting < ApplicationRecord
   }
 end
 ```
+
 ### database optimization - 5 / 10
 
-I also gave myself a lower answer on this one because there is a lot more to learn regarding database optimization. I'd love to pick up a copy of [# High Performance PostgreSQL for Rails](https://pragprog.com/titles/aapsql/high-performance-postgresql-for-rails/) and implement the concepts in this book on real-world data and troubleshoot. I imagine I would learn something on nearly every page, and so I assume I've got basic and intermediate fundamentals, but gaps in my knowledge. 
+I also gave myself a lower answer on this one because there is a lot more to learn regarding database optimization. I'd love to pick up a copy of [# High Performance PostgreSQL for Rails](https://pragprog.com/titles/aapsql/high-performance-postgresql-for-rails/) and implement the concepts in this book on real-world data and troubleshoot. I imagine I would learn something on nearly every page, and so I assume I've got basic and intermediate fundamentals, but gaps in my knowledge.
 
 I have experience looking at Postgres Explain/Analyze results and reading to better understand performance wins or issues that we've run into
 
@@ -291,6 +308,7 @@ EXPLAIN SELECT "organization_settings".* FROM "organization_settings" WHERE "org
  Seq Scan on organization_settings  (cost=0.00..113.47 rows=1 width=906)
    Filter: ((deleted_at IS NULL) AND (settings @> '{"allow_goal_request_mailers": true}'::jsonb))
 ```
+
 If there were lots of OrganizationSettings:
 
 `200_000.times { OrganizationSetting.create(owner: Organization.first) }`
@@ -383,6 +401,7 @@ EXPLAIN SELECT "organization_settings".* FROM "organization_settings" WHERE "org
    ->  Parallel Seq Scan on organization_settings  (cost=0.00..66465.29 rows=6265 width=100)
          Filter: ((deleted_at IS NULL) AND ((settings ->> '{allow_goal_request_mailers: true}'::text) = 'true'::text))
 ```
+
 Still not much slower. But how can we speed this up, if we must?
 
 We'll need to add an expression index on that particular field and the specifics of the query.
@@ -395,14 +414,15 @@ ActiveRecord::Base.connection.execute(<<~SQL)
 SQL
 ```
 
-And now try with a query that will 
+And now try with a query that will
+
 ```ruby
 OrganizationSetting
     .where("(settings->>'allow_goal_request_mailers')::boolean IS TRUE")
     .count
 ```
 
-Less than 10 ms! 
+Less than 10 ms!
 
 ```shell
 OrganizationSetting
@@ -449,14 +469,22 @@ Something I've been exploring recently, and I haven’t reached a conclusion, be
 
 **Utility: Preline**
 When using the Utility framework (Tailwind, in this case), using the Preline components library, an alert is quite easy. Copy and paste the following.
+
 ```html
-<div class="mt-2 bg-gray-800 text-sm text-white rounded-lg p-4 dark:bg-white dark:text-neutral-800" role="alert" tabindex="-1" aria-labelledby="hs-solid-color-dark-label">
-  <span id="hs-solid-color-dark-label" class="font-bold">Dark</span> alert! You should check in on some of those fields below.
+<div
+  class="mt-2 bg-gray-800 text-sm text-white rounded-lg p-4 dark:bg-white dark:text-neutral-800"
+  role="alert"
+  tabindex="-1"
+  aria-labelledby="hs-solid-color-dark-label"
+>
+  <span id="hs-solid-color-dark-label" class="font-bold">Dark</span> alert! You
+  should check in on some of those fields below.
 </div>
 ```
 
 **Framework: Bootstrap**
 In the case of Bootstrap, it's also quite easy:
+
 ```html
 <div class="alert alert-dark" role="alert">
   A simple dark alert—check it out!
@@ -465,6 +493,7 @@ In the case of Bootstrap, it's also quite easy:
 
 **Framework: DIY**
 If you build your own framework, which I've explored, you could get it down to something like:
+
 ```html
 <mm-alert dark size="sm" role="alert">
   A simple dark alert—check it out!
@@ -538,7 +567,7 @@ And then if you need padding, margin, responsive flexbox, or responsive grid, et
 
 There are a few reasons.
 
-1. It forces you to think more in components and have the html, css, and your view layers of your app 
+1. It forces you to think more in components and have the html, css, and your view layers of your app
 2. You are more likely to reuse UI elements throughout your applications.
 3. While Tailwind is arguably one of the most ubiquitous frameworks, and us has been trained on the most, the possibility of hallucinating unnecessary or problematic CSS rules is highly likely.
 4. Utility-only CSS, like Tailwind is hard to keep organized and consistent across projects
@@ -546,14 +575,16 @@ There are a few reasons.
 6. Upgrading Frameworks can be tedious and highly error-prone.
 
 **Where does this fall down?**
+
 1. If your apps have very different looks and feels, creating your own UI components is not going to be something you'll tackle.
 2. It's a lot to get going up front, and if you have a lot of legacy systems and little buy-in from leadership or the development team, you're going to make things worse.
 3. Designers and more junior team members will struggle with creating their own tags and understanding how the system works.
 
 This is not a hill I'm willing to die on, but I'd love to discuss and understand the implications and moving toward this path over time.
+
 ### Ruby - 8 / 10
 
-I've used and been learning using ruby since 2003 or 2004 or so. My favorite bit is using blocks to clean up code, iteration, and concepts. I recently needed to build a way of generating markdown in a file that then was converted to a DocX file format (using [pandoc](https://pandoc.org/)). 
+I've used and been learning using ruby since 2003 or 2004 or so. My favorite bit is using blocks to clean up code, iteration, and concepts. I recently needed to build a way of generating markdown in a file that then was converted to a DocX file format (using [pandoc](https://pandoc.org/)).
 
 Sidenote: we also needed to interject some docx styles into the document, and [ruby-docx](https://github.com/ruby-docx/docx) was extended and merged back to the community to support styling.
 
@@ -570,7 +601,7 @@ class Example < Markdownable
     p do
       plain "Lorem Ipsum is simply dummy text of the printing..."
     end
-    
+
     p do
       strikethrough "strikethrough text"
       newline
@@ -612,12 +643,13 @@ bold do
   plain "hi"
 end
 ```
+
 All of these are equivalent. **Why is this good?**
 
 1. It minimizes developer (or AI) surprise when some things work and others don't.
 2. It allows for extendability in the future
 3. It doesn't currently, but could allow for clarity of deeply nested content. I'm actually working on this right now to support the following:
-   
+
 ```ruby
 unordered_list([1,2,3]) do |outer_item|
   plain outer_item
@@ -630,6 +662,7 @@ end
 The challenge here, in the case of markdown, is knowing where what indent rules are in place and magically passing them to the caller.
 
 What are the downsides to this?
+
 1. There are multiple ways to call content. AI may especially get tripped up and may not know that all are equivalent
 2. the code to implement this nesting isn't straightforward
 3. the DSL may feel a little magical, and it is in a sense, but it's also quite powerful.
@@ -696,6 +729,7 @@ end
 ```
 
 Alternatively, you could drop the `#call` method in the component, and implement in ERB.
+
 ```erb
 <%%# app/components/product_component.html.erb %>
 <%% cache ["v2", @product, @product.updated_at.to_i] do %>
@@ -721,7 +755,7 @@ class Views::Product < Phlex::HTML
   include Rails.application.routes.url_helpers
   include ActionView::Helpers::NumberHelper
   include ActionView::RecordIdentifier # for dom_id
-    
+
   def initialize(product:)
     @product = product
   end
@@ -749,9 +783,9 @@ class Views::Products < Phlex::HTML
       end
     end
   end
-  
+
   private
-  
+
   def empty_products
     section(class: "empty") do
       h3 { "No products found" }
@@ -761,7 +795,6 @@ class Views::Products < Phlex::HTML
 end
 ```
 
-
 ```erb
 <%%# app/views/products/index.html.erb %>
 <%%= render Views::Products.new(products: @products) %>
@@ -769,9 +802,9 @@ end
 
 Why I like this approach:
 
-* **Ruby everywhere** - all `html` tags are really just method calls. No template parsing, "partial lookup" is really just class name resolution. Use composability for wins.
-* **Attributes DSL:** Symbols as keys; underscores → dashes; `data:`/`aria:` hashes merge cleanly.
-* **Safety-first**: Phlex escapes everything by default, but you can opt-out with `raw`
+- **Ruby everywhere** - all `html` tags are really just method calls. No template parsing, "partial lookup" is really just class name resolution. Use composability for wins.
+- **Attributes DSL:** Symbols as keys; underscores → dashes; `data:`/`aria:` hashes merge cleanly.
+- **Safety-first**: Phlex escapes everything by default, but you can opt-out with `raw`
 
 Gotchas? Not a ton. I have run into some odd rendering issues (pre-Phlex V2) which would sometimes cause a rendering error in certain contexts. It will still take some getting used to by juniors and designers, but it's not as big of a lift as HAML, and the performance wins, composability, and linting are big benefits.
 

@@ -6,7 +6,6 @@ tags:
 abstract: A tribute to my grandfather, Paul Bemer, who passed away at 99. Through a poem co-written with my sister, we remember his craft, his love, and the joyful traditions that shaped our lives.
 kind: personal
 ---
-
 On August 29, 2025, my Grandfather, Paul Bemer, passed away. My sister and I co-wrote this poem to celebrate his life, memories, and the impact he had on the world. [Read more](https://www.tributearchive.com/obituaries/44754750/paul-john-bemer) about his life and legacy.
 
 ## More Than A Plumber

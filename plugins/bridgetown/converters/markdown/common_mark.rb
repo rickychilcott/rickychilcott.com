@@ -10,8 +10,6 @@ class Bridgetown::Converters::Markdown::CommonMark
   end
 
   def convert(content)
-    puts "Converting content with CommonMark"
-
     ::Commonmarker.to_html(content, options: {
       parse: {
         smart: true,
