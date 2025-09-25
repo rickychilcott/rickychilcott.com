@@ -177,7 +177,7 @@ Sometimes, the simplest solution is the best one. For many use cases, server-sid
 
 ```erb
 <time>
-  <%= DateTime.parse("2025-09-16T14:30:00Z").to_formatted_s(:long) %>
+  <%%= DateTime.parse("2025-09-16T14:30:00Z").to_formatted_s(:long) %>
 </time>
 ```
 

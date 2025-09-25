@@ -14,7 +14,7 @@ abstract: "A journey through Rails view rendering evolution: from ERB partials t
 kind: technical
 sitemap: true
 ---
-Rails view rendering has evolved significantly over the past 15 years. What started as simple ERB templates has grown into a sophisticated ecosystem of view rendering solutions, each addressing different pain points and use cases.
+Rails view rendering has undergone significant evolution over the past 15 years. What started as simple ERB templates has grown into a sophisticated ecosystem of view rendering solutions, each addressing different pain points and use cases.
 
 In this article, we'll trace this evolution through a practical example: rendering a product list. We'll see how each approach handles the same problem and understand the trade-offs involved.
 
@@ -23,18 +23,18 @@ In this article, we'll trace this evolution through a practical example: renderi
 In the early days of Rails, ERB (Embedded Ruby) was the standard templating engine. Views were built using partials that could be rendered with collections:
 
 ```erb
-<%# app/views/products/index.html.erb %>
-<%= render partial: "product", collection: @products, as: :product %>
-<%# or even %>
-<%= render @products %>
+<%%# app/views/products/index.html.erb %>
+<%%= render partial: "product", collection: @products, as: :product %>
+<%%# or even %>
+<%%= render @products %>
 
-<%# app/views/products/_product.html.erb %>
-<% cache ["v2", product, product.updated_at.to_i] do %>
-  <article id="<%= dom_id(product) %>">
-    <h3><%= product.name %></h3>
-    <p><%= number_to_currency(product.price_cents / 100.0) %></p>
+<%%# app/views/products/_product.html.erb %>
+<%% cache ["v2", product, product.updated_at.to_i] do %>
+  <article id="<%%= dom_id(product) %>">
+    <h3><%%= product.name %></h3>
+    <p><%%= number_to_currency(product.price_cents / 100.0) %></p>
   </article>
-<% end %>
+<%% end %>
 ```
 
 **Pros:**
@@ -46,7 +46,7 @@ In the early days of Rails, ERB (Embedded Ruby) was the standard templating engi
 
 **Cons:**
 
-- Verbose syntax with many `<%= %>` tags
+- Verbose syntax with many `<%%= %>` tags
 - Limited reusability
 - Partial lookup can be slow and magical
 - Difficult to test view logic in isolation
@@ -87,8 +87,8 @@ HAML (HTML Abstraction Markup Language) was introduced to address ERB's verbosit
 ViewComponent was created to address the limitations of partials by providing a more structured, testable approach:
 
 ```erb
-<%# app/views/products/index.html.erb %>
-<%= render ProductComponent.with_collection(@products) %>
+<%%# app/views/products/index.html.erb %>
+<%%= render ProductComponent.with_collection(@products) %>
 ```
 
 ```ruby
@@ -112,13 +112,13 @@ end
 Or with ERB templates:
 
 ```erb
-<%# app/components/product_component.html.erb %>
-<% cache ["v2", @product, @product.updated_at.to_i] do %>
-  <article id="<%= dom_id(@product) %>">
-    <h3><%= @product.name %></h3>
-    <p><%= number_to_currency(@product.price_cents / 100.0) %></p>
+<%%# app/components/product_component.html.erb %>
+<%% cache ["v2", @product, @product.updated_at.to_i] do %>
+  <article id="<%%= dom_id(@product) %>">
+    <h3><%%= @product.name %></h3>
+    <p><%%= number_to_currency(@product.price_cents / 100.0) %></p>
   </article>
-<% end %>
+<%% end %>
 ```
 
 **Pros:**
@@ -187,8 +187,8 @@ end
 ```
 
 ```erb
-<%# app/views/products/index.html.erb %>
-<%= render Views::Products.new(products: @products) %>
+<%%# app/views/products/index.html.erb %>
+<%%= render Views::Products.new(products: @products) %>
 ```
 
 **Pros:**
@@ -303,6 +303,8 @@ The evolution of Rails view rendering reflects the framework's commitment to dev
 - **HAML** offers a cleaner syntax for those who prefer it
 - **ViewComponent** provides better structure and testability
 - **Phlex** delivers maximum performance and composability
+
+One point of note, Marco Roth has been doing some significant work on [HERB](https://github.com/marcoroth/herb), and it was not covered in this article. Check it out to see the performance and ergonomic improvements on top of ERB.
 
 The key is to choose an approach that fits your team's skills, project requirements, and long-term goals. Start simple and evolve your view rendering strategy as your application grows and your team's needs change.
 
