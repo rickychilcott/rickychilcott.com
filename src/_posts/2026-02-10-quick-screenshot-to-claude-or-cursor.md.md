@@ -17,7 +17,7 @@ Here's what I dreamed of for a few weeks **press a shortcut, select a region, an
 
 ## The Setup
 
-One Alfred workflow. Two nodes. Done in under a minute.
+One Alfred workflow. Two nodes. Done in under a minute. ([Not using Alfred?](#not-using-alfred))
 
 **Trigger:** Hotkey set to `Cmd+Opt+3`
 **Action:** Run this script:
@@ -84,6 +84,8 @@ You don't need Alfred for this. The core is just a bash script and a way to trig
 **Raycast:** Create a Script Command with the same bash script. Assign a hotkey in Raycast preferences.
 
 **Hammerspoon:** Bind a hotkey to run the script via `hs.task.new("/bin/bash", nil, {"-c", "/path/to/your/script.sh"}):start()`.
+
+**Shortcuts (macOS Monterey+):** Create a new shortcut in the Shortcuts app, add a "Run Shell Script" action with the script above, then assign a keyboard shortcut to it right from Shortcuts settings. No third-party tools needed — this is fully built into macOS.
 
 **Automator + System Settings:** Create an Automator Quick Action that runs the shell script, then assign it a keyboard shortcut under System Settings → Keyboard → Keyboard Shortcuts → Services.
 
