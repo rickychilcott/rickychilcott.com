@@ -1,14 +1,14 @@
 require "faraday"
-require "active_support/all"
 
 class Builders::PrStats < SiteBuilder
   AUTHOR = "rickychilcott"
   GITHUB_PAT = ENV.fetch("GITHUB_PAT")
   PR_STATS_FILE = "src/_data/pr_stats.yml"
+  TWO_HOURS = 2 * 60 * 60
 
   def build
     hook :site, :post_read do
-      if File.mtime(PR_STATS_FILE).after?(2.hours.ago)
+      if File.mtime(PR_STATS_FILE) > (Time.now - TWO_HOURS)
         info "PR stats file is up to date"
         next
       end
@@ -27,8 +27,7 @@ class Builders::PrStats < SiteBuilder
           .map do |pr|
             pr
               .slice(:pr_created_at, :pr_title, :pr_url, :pr_id)
-              .stringify_keys
-              .transform_keys { |key| key.gsub("pr_", "") }
+              .transform_keys { |key| key.to_s.gsub("pr_", "") }
           end
 
       {
