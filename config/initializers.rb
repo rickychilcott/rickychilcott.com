@@ -21,7 +21,6 @@ Bridgetown.configure do |config|
   #   inflect.acronym "RESTful"
   # end
 
-  init :"bridgetown-quick-search"
   init :"bridgetown-sitemap"
   init :dotenv
 
@@ -48,4 +47,10 @@ Bridgetown.configure do |config|
 
   # For more documentation on how to configure your site using this initializers file,
   # visit: https://edge.bridgetownrb.com/docs/configuration/initializers/
+
+  Bridgetown::Hooks.register_one :site, :post_write do
+    system("npx pagefind --site output --output-subdir pagefind-new")
+    FileUtils.rm_rf("output/pagefind")
+    FileUtils.mv("output/pagefind-new", "output/pagefind")
+  end
 end

@@ -2,7 +2,6 @@ import "$styles/index.css"
 import "$styles/syntax-highlighting.css"
 import { Application } from "@hotwired/stimulus"
 import "@hotwired/turbo"
-import "bridgetown-quick-search"
 
 window.Stimulus = Application.start()
 
