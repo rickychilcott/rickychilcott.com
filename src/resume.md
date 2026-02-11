@@ -16,6 +16,7 @@ Full-stack engineer and product-focused entrepreneur with 15+ years building and
 ### Job History
 
 - **Co-Founder** @ Stoked (2025 - Current)
+- **Senior Software Engineer** @ Imedview (2025 - Current)
 - **CTO/Operator** @ Causey (2025 - Current)
 - **Co-Founder & Principal Software Engineer** @ Rakefire (2011 - Current)
 - **Co-Founder/CTO** @ Mission Met (2019 - 2025)
@@ -32,7 +33,7 @@ Full-stack engineer and product-focused entrepreneur with 15+ years building and
 
 ### Additional Experience With
 
-- **AI-LLMs, Node.js, Python, Docker, DevOps, CI/CD, TailwindCSS, Design Systems, UNIX Tools**
+- **AI-LLMs, Claude (Code, Skills, Agent Teams), Cursor (Editor, Agent), Node.js, Python, Docker, DevOps, CI/CD, TailwindCSS, Design Systems, UNIX Tools**
 
 ### Areas of Interest/Expertise
 

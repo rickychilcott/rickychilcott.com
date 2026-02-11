@@ -9,7 +9,7 @@ title: Home
 
 I live in Southeast Ohio, and I'm a full-stack, product-focused engineer and entrepreneur.
 
-🔭 I'm currently a Senior Software Engineer at [Imedview](https://imedview.com/), building case management software for the claims and litigation industry. On the side, I'm building [Stoked](https://get.stokedhq.com/), a platform that lets shoppers talk to a brand's happiest customers.
+🔭 I'm currently building [Stoked](https://get.stokedhq.com/), a platform that lets shoppers talk to a brand's happiest customers. I'm also a Senior Software Engineer at [Imedview](https://imedview.com/), building case management software for the claims and litigation industry.
 
 📜 Formerly, [Mission Met](https://www.missionmet.com/), a nonprofit strategic planning consultancy. I still run [Causey](https://www.causey.app/), strategic planning software for mission-driven organizations that grew out of that work.
 
