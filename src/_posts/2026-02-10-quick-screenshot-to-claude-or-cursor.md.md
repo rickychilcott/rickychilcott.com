@@ -11,9 +11,6 @@ abstract: The 30-Second Screenshot Trick That Makes AI Coding Tools Way More Use
 kind: technical
 sitemap: true
 ---
-
-# Quick Screenshot to Claude or Cursor
-
 AI coding tools like Claude Code and Cursor can read images. You probably knew that. But _getting_ a screenshot into them is quite annoying. I fumble with Finder, drag-and-drop, or tab completing paths and it's a pain.
 
 Here's what I dreamed of for a few weeks **press a shortcut, select a region, and paste the file path.** That's it. I looked for screenshoting apps, which might do it, but why spend on a subscription.
