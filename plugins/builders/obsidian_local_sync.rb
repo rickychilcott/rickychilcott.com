@@ -1,5 +1,4 @@
 require "open3"
-require "active_support/core_ext/object/inclusion"
 
 class Builders::ObsidianLocalSync < SiteBuilder
   REGEX_WIKILINK = /(?<!!)\[\[([^\]]+?)(?:\|([^\]]+))?\]\]/
@@ -82,7 +81,7 @@ class Builders::ObsidianLocalSync < SiteBuilder
       site
         .collections
         .map { _2 }
-        .select { it.relative_path.in?(location_destination_paths) }
+        .select { location_destination_paths.include?(it.relative_path) }
     end
   end
 
