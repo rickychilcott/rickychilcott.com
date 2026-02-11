@@ -1,7 +1,7 @@
 :root {
-  --body-background: #f2f2f2;
-  --body-color: #444;
-  --heading-color: black;
+  --body-background: #eceadf;
+  --body-color: #3e3e3e;
+  --heading-color: #1a1a1a;
   --action-color: #d64045;
 }
 
@@ -13,17 +13,23 @@ body {
     "Helvetica", "Arial", sans-serif;
   margin: 0 8px;
   font-size: 108%;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 a {
   color: var(--action-color);
   text-decoration: underline;
-  text-decoration-color: #ffb088;
+  text-decoration-color: rgba(214, 64, 69, 0.3);
+  text-underline-offset: 2px;
+  transition: text-decoration-color 0.15s ease;
+}
+
+a:hover {
+  text-decoration-color: var(--action-color);
 }
 
 h1 {
-  margin: 1rem 0 3rem;
+  margin: 1.5rem 0 2rem;
   text-align: center;
   font-weight: 900;
   font-size: 2.5rem;
@@ -49,6 +55,7 @@ body>nav ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   gap: 0.75rem 1.5rem;
   font-size: 1.3rem;
   font-weight: bold;
@@ -66,22 +73,27 @@ body>nav a {
 
 main {
   margin: 2rem auto 4rem;
-  max-width: 65rem;
-  min-height: calc(100vh - 200px);
-  padding: 25px 25px 50px;
+  max-width: 48rem;
+  min-height: calc(100vh - 250px);
+  padding: 40px 48px 50px;
   background: white;
-  box-shadow: 2px 3px 3px #ddd;
-  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.06);
+  border-radius: 6px;
 
   @media (max-width: 500px) {
-    padding: 16px 16px 50px;
+    padding: 20px 20px 50px;
   }
+}
+
+main p {
+  max-width: 65ch;
 }
 
 footer {
   text-align: center;
   margin-bottom: 4rem;
   font-size: 1em;
+  color: #888;
 }
 
 hr {
