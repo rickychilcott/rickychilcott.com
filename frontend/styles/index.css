@@ -222,6 +222,47 @@ hr {
   }
 }
 
+/* Heading anchor links */
+h2, h3, h4, h5, h6 {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35em;
+}
+
+a.anchor {
+  order: 1;
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  cursor: pointer;
+}
+
+a.anchor::before {
+  content: "#";
+  color: #ccc;
+  font-weight: 400;
+}
+
+a.anchor.copied {
+  opacity: 1;
+  font-size: 0.6em;
+  color: #999;
+  font-weight: 600;
+}
+
+a.anchor.copied::before {
+  content: none;
+}
+
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor,
+a.anchor:focus {
+  opacity: 1;
+}
+
 pre[lang] {
   padding: 0.25em 1em;
   position: relative;

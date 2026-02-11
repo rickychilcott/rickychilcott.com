@@ -22,7 +22,8 @@ class Bridgetown::Converters::Markdown::CommonMark
         tagfilter: false,
         spoiler: true,
         alerts: true,
-        underline: true
+        underline: true,
+        header_ids: ""
       },
       plugins: {
         syntax_highlighter: {
