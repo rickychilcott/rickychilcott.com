@@ -89,6 +89,11 @@ main p {
   max-width: 65ch;
 }
 
+main img {
+  max-width: 100%;
+  height: auto;
+}
+
 footer {
   text-align: center;
   margin-bottom: 4rem;
