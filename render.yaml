@@ -8,6 +8,10 @@ services:
     envVars:
       - key: BRIDGETOWN_ENV
         value: production
+    routes:
+      - type: redirect
+        source: /2026/02/10/quick-screenshot-to-claude-or-cursor.md
+        destination: /2026/02/10/quick-screenshot-to-claude-or-cursor
     headers:
       - path: /*
         name: X-Frame-Options
