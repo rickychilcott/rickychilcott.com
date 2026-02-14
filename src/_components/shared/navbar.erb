@@ -1,11 +1,11 @@
-<header>
+<header class="m-4 text-center">
 </header>
 <nav>
-  <ul>
-    <li><a href="<%= relative_url '/' %>">Home</a></li>
-    <li><a href="<%= relative_url '/posts' %>">Posts</a></li>
-    <li><a href="<%= relative_url '/out-and-about' %>">Out And About</a></li>
-    <li><a href="<%= relative_url '/resume' %>?changed=<%= Time.now.to_i %>">Resume</a></li>
+  <ul class="my-8 p-0 list-none flex flex-wrap justify-center items-center gap-y-3 gap-x-6 text-[1.3rem] font-bold max-xs:text-[1.1rem] max-xs:gap-y-2 max-xs:gap-x-4 max-xs:my-4">
+    <li><a class="no-underline" href="<%= relative_url '/' %>">Home</a></li>
+    <li><a class="no-underline" href="<%= relative_url '/posts' %>">Posts</a></li>
+    <li><a class="no-underline" href="<%= relative_url '/out-and-about' %>">Out And About</a></li>
+    <li><a class="no-underline" href="<%= relative_url '/resume' %>?changed=<%= Time.now.to_i %>">Resume</a></li>
     <li class="nav-search" data-controller="search"></li>
   </ul>
 </nav>

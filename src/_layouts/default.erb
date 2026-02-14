@@ -3,10 +3,10 @@
   <head>
     <%= render "head", metadata: site.metadata, title: data.title %>
   </head>
-  <body class="<%= data.layout %> <%= data.page_class %>">
+  <body class="bg-surface text-body font-sans mx-2 text-[108%] leading-relaxed <%= data.layout %> <%= data.page_class %>">
     <%= render Shared::Navbar.new(metadata: site.metadata, resource: resource) %>
 
-    <main data-pagefind-body>
+    <main class="mx-auto mt-8 mb-16 max-w-3xl min-h-[calc(100vh-250px)] px-12 py-10 pb-12 max-xs:px-5 bg-white shadow-md rounded-md prose" data-pagefind-body>
       <%= yield %>
     </main>
 

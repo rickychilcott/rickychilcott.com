@@ -1,6 +1,6 @@
-<article class="h-entry">
-  <h2><a href="<%= @url %>"><%= @title %></a></h2>
-  <aside role="note">
+<article class="h-entry not-prose">
+  <h2 class="text-2xl font-bold text-heading leading-snug mt-6 mb-[0.1em]"><a class="text-heading no-underline hover:text-action" href="<%= @url %>"><%= @title %></a></h2>
+  <aside class="mt-0 text-sm text-[#888] tracking-wide" role="note">
     <time class="dt-published" datetime="<%= @date.to_s %>"><%= @date.strftime("%B %d, %Y") %></time>
     · <%= @reading_time %> min read
   </aside>

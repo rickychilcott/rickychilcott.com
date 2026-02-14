@@ -1,143 +1,59 @@
-:root {
-  --body-background: #eceadf;
-  --body-color: #3e3e3e;
-  --heading-color: #1a1a1a;
-  --action-color: #d64045;
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-surface: #eceadf;
+  --color-body: #3e3e3e;
+  --color-heading: #1a1a1a;
+  --color-action: #d64045;
+  --color-action-hover: #c13538;
+
+  --font-sans: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+
+  --breakpoint-xs: 500px;
 }
 
-body {
-  background: var(--body-background);
-  color: var(--body-color);
-  font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    "Helvetica", "Arial", sans-serif;
-  margin: 0 8px;
-  font-size: 108%;
-  line-height: 1.6;
-}
-
-a {
-  color: var(--action-color);
-  text-decoration: underline;
-  text-decoration-color: rgba(214, 64, 69, 0.3);
-  text-underline-offset: 2px;
-  transition: text-decoration-color 0.15s ease;
-}
-
-a:hover {
-  text-decoration-color: var(--action-color);
-}
-
-h1 {
-  margin: 1.5rem 0 2rem;
-  text-align: center;
-  font-weight: 900;
-  font-size: 2.5rem;
-  color: var(--heading-color);
-  line-height: 1.2;
-}
-
-body>header {
-  margin: 1rem;
-  text-align: center;
-}
-
-body>header img {
-  display: inline-block;
-  width: 400px;
-  max-width: 100%;
-}
-
-body>nav ul {
-  margin: 2rem 0;
-  padding: 0;
-  list-style-type: none;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 0.75rem 1.5rem;
-  font-size: 1.3rem;
-  font-weight: bold;
-
-  @media (max-width: 500px) {
-    font-size: 1.1rem;
-    gap: 0.5rem 1rem;
-    margin: 1rem 0;
+@layer base {
+  a {
+    color: var(--color-action);
+    text-decoration: underline;
+    text-decoration-color: rgba(214, 64, 69, 0.3);
+    text-underline-offset: 2px;
+    transition: text-decoration-color 0.15s ease;
+  }
+  a:hover {
+    text-decoration-color: var(--color-action);
+  }
+  h1 {
+    margin: 1.5rem 0 2rem;
+    text-align: center;
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: var(--color-heading);
+    line-height: 1.2;
   }
 }
 
-body>nav a {
-  text-decoration: none;
-}
-
-.h-entry h2 {
-  margin-bottom: 0.1em;
-}
-
-.h-entry h2 a {
-  color: var(--heading-color);
-  text-decoration: none;
-
-  &:hover {
-    color: var(--action-color);
-  }
-}
-
-.h-entry aside[role="note"] {
-  margin-top: 0;
-}
-
-main {
-  margin: 2rem auto 4rem;
-  max-width: 48rem;
-  min-height: calc(100vh - 250px);
-  padding: 40px 48px 50px;
-  background: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.06);
-  border-radius: 6px;
-
-  @media (max-width: 500px) {
-    padding: 20px 20px 50px;
-  }
-}
-
-main p {
-  max-width: 65ch;
-}
-
-main img {
-  max-width: 100%;
-  height: auto;
-}
-
-footer {
-  text-align: center;
-  margin-bottom: 4rem;
-  font-size: 1em;
-  color: #888;
-}
-
+/* HR — markdown-generated */
 hr {
   border: none;
   border-top: 2px dotted #bbb;
   margin: 3rem 0;
 }
 
-
 /* Pagefind search in navbar */
 .nav-search {
   --pagefind-ui-scale: 0.75;
-  --pagefind-ui-primary: var(--action-color);
-  --pagefind-ui-text: var(--body-color);
+  --pagefind-ui-primary: var(--color-action);
+  --pagefind-ui-text: var(--color-body);
   --pagefind-ui-background: white;
   --pagefind-ui-border: #ddd;
   --pagefind-ui-tag: #f5f5f5;
   --pagefind-ui-border-width: 1px;
   --pagefind-ui-border-radius: 6px;
-  --pagefind-ui-font: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-    "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  --pagefind-ui-font: var(--font-sans);
   position: relative;
   width: 200px;
   min-height: calc(48px * 0.75);
@@ -149,13 +65,13 @@ hr {
 }
 
 .nav-search .pagefind-ui__search-input:focus {
-  border-color: var(--action-color);
+  border-color: var(--color-action);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08),
     0 0 0 2px rgba(214, 64, 69, 0.15);
 }
 
 .nav-search .pagefind-ui__search-clear {
-  color: var(--action-color);
+  color: var(--color-action);
   font-weight: 600;
 }
 
@@ -185,12 +101,12 @@ hr {
 }
 
 .nav-search .pagefind-ui__result-link {
-  color: var(--heading-color) !important;
+  color: var(--color-heading) !important;
   font-weight: 700;
 }
 
 .nav-search .pagefind-ui__result-link:hover {
-  color: var(--action-color) !important;
+  color: var(--color-action) !important;
 }
 
 .nav-search .pagefind-ui__result-excerpt {
@@ -200,14 +116,14 @@ hr {
 
 .nav-search .pagefind-ui__result-excerpt mark {
   background: rgba(214, 64, 69, 0.12);
-  color: var(--action-color);
+  color: var(--color-action);
   padding: 1px 2px;
   border-radius: 2px;
   font-weight: 600;
 }
 
 .nav-search .pagefind-ui__button {
-  background: var(--action-color);
+  background: var(--color-action);
   color: white;
   border: none;
   border-radius: 6px;
@@ -216,7 +132,7 @@ hr {
 }
 
 .nav-search .pagefind-ui__button:hover {
-  background: #c13538;
+  background: var(--color-action-hover);
   color: white;
   border: none;
 }
@@ -239,7 +155,7 @@ hr {
   }
 }
 
-/* Heading anchor links */
+/* Heading anchor links — markdown-generated */
 h2, h3, h4, h5, h6 {
   display: flex;
   align-items: baseline;
@@ -280,23 +196,23 @@ a.anchor:focus {
   opacity: 1;
 }
 
+/* Code blocks — JS-injected language labels + copy button */
 pre[lang] {
   padding: 0.25em 1em;
   position: relative;
   overflow-x: auto;
+}
 
-  &::before {
-    content: attr(lang);
-
-    position: absolute;
-    top: 0.25rem;
-    right: 0.5rem;
-    font-size: 0.75rem;
-    font-family: monospace;
-    color: #aaa;
-    padding: 0.1em 0.4em;
-    border-radius: 4px;
-  }
+pre[lang]::before {
+  content: attr(lang);
+  position: absolute;
+  top: 0.25rem;
+  right: 0.5rem;
+  font-size: 0.75rem;
+  font-family: monospace;
+  color: #aaa;
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
 }
 
 .code-copy-btn {
@@ -313,22 +229,23 @@ pre[lang] {
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.15s;
+}
 
-  &:hover {
-    color: #333;
-    border-color: #bbb;
-  }
+.code-copy-btn:hover {
+  color: #333;
+  border-color: #bbb;
+}
 
-  &.copied {
-    color: #16a34a;
-    border-color: #16a34a;
-  }
+.code-copy-btn.copied {
+  color: #16a34a;
+  border-color: #16a34a;
 }
 
 div:has(> pre) {
   position: relative;
-
-  &:hover .code-copy-btn {
-    opacity: 1;
-  }
 }
+
+div:has(> pre):hover .code-copy-btn {
+  opacity: 1;
+}
+
