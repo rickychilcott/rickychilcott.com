@@ -71,6 +71,23 @@ body>nav a {
   text-decoration: none;
 }
 
+.h-entry h2 {
+  margin-bottom: 0.1em;
+}
+
+.h-entry h2 a {
+  color: var(--heading-color);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--action-color);
+  }
+}
+
+.h-entry aside[role="note"] {
+  margin-top: 0;
+}
+
 main {
   margin: 2rem auto 4rem;
   max-width: 48rem;
@@ -266,6 +283,7 @@ a.anchor:focus {
 pre[lang] {
   padding: 0.25em 1em;
   position: relative;
+  overflow-x: auto;
 
   &::before {
     content: attr(lang);
@@ -278,5 +296,39 @@ pre[lang] {
     color: #aaa;
     padding: 0.1em 0.4em;
     border-radius: 4px;
+  }
+}
+
+.code-copy-btn {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  padding: 0.2em 0.5em;
+  font-size: 0.75rem;
+  font-family: monospace;
+  color: #666;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s;
+
+  &:hover {
+    color: #333;
+    border-color: #bbb;
+  }
+
+  &.copied {
+    color: #16a34a;
+    border-color: #16a34a;
+  }
+}
+
+div:has(> pre) {
+  position: relative;
+
+  &:hover .code-copy-btn {
+    opacity: 1;
   }
 }
