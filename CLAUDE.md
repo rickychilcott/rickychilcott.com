@@ -37,3 +37,9 @@ Source of truth for Ricky's voice: how he actually talks in conversation. Existi
 - Code blocks with language identifier when showing config or commands
 - Images where they add genuine value
 - Audience: Rails developers, indie hackers, one-person-framework folks
+
+## Blog Post Locations
+
+Posts live in two places — keep them in sync:
+- **Site:** `src/_posts/YYYY-MM-DD-slug.md`
+- **Obsidian source:** `/Users/rickychilcott/github/Home/Personal/Website/posts/YYYY-MM-DD-slug.md`

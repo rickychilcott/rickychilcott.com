@@ -29,6 +29,11 @@ timezone: America/New_York
 pagination:
   enabled: true
 
+additional_watch_paths:
+  - ../Home/Personal/Website/posts
+  - ../Home/Personal/Website/projects
+  - ../Home/Personal/Website/til
+
 obsidian_local_sync:
   vault_base_path: ~/github/Home/
   locations:
