@@ -41,6 +41,7 @@ jobs:
         run: bin/bridgetown deploy
         env:
           BRIDGETOWN_ENV: production
+          API2PDF_API_KEY: ${{ secrets.API2PDF_API_KEY }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
