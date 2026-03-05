@@ -21,9 +21,13 @@ class Builders::GeneratePdf < SiteBuilder
 
         info "Generating PDF: #{output_file}"
 
-        pdf_adapter
-          .new(content, filename: output_filename, options:)
-          .write_file(output_file)
+        begin
+          pdf_adapter
+            .new(content, filename: output_filename, options:)
+            .write_file(output_file)
+        rescue => e
+          warn "PDF generation failed: #{e.message}"
+        end
       end
     end
   end
@@ -66,14 +70,16 @@ class Builders::GeneratePdf < SiteBuilder
     end
 
     def converted_url
-      @converted_url ||=
-        faraday_connection
+      @converted_url ||= begin
+        response = faraday_connection
           .post("/chrome/pdf/html") do |req|
-            body = api_2_pdf_options.to_json
-            req.body = body
+            req.body = api_2_pdf_options.to_json
           end
-          .body
-          .fetch("FileUrl")
+        body = response.body
+        url = body["FileUrl"]
+        raise "API2PDF error: #{body}" if url.nil? || url.empty?
+        url
+      end
     end
 
     attr_reader :html, :filename, :options
