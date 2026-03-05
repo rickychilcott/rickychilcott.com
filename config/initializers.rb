@@ -49,7 +49,8 @@ Bridgetown.configure do |config|
   # visit: https://edge.bridgetownrb.com/docs/configuration/initializers/
 
   Bridgetown::Hooks.register_one :site, :post_write do
-    system("npx pagefind --site output --output-subdir pagefind-new")
+    pagefind_cmd = system("which pagefind > /dev/null 2>&1") ? "pagefind" : "npx pagefind"
+    system("#{pagefind_cmd} --site output --output-subdir pagefind-new")
     FileUtils.rm_rf("output/pagefind")
     FileUtils.mv("output/pagefind-new", "output/pagefind")
   end
