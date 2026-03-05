@@ -2,7 +2,7 @@ require "faraday"
 
 class Builders::PrStats < SiteBuilder
   AUTHOR = "rickychilcott"
-  GITHUB_PAT = ENV.fetch("GITHUB_PAT")
+  GITHUB_PAT = ENV.fetch("GH_PAT")
   PR_STATS_FILE = "src/_data/pr_stats.yml"
   TWO_HOURS = 2 * 60 * 60
 
