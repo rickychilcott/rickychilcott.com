@@ -1,6 +1,8 @@
 ---
 layout: resume
 template_engine: erb
+title: Resume
+description: Full-stack engineer and product-focused entrepreneur with 15+ years building and scaling SaaS platforms in Ruby on Rails.
 ---
 
 # Ricky Chilcott

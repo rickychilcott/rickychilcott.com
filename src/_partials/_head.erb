@@ -1,8 +1,24 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <% resource_title = strip_html(strip_newlines(title)) %>
-<title><% if resource_title != "Index" %><%= resource_title %> | <%= metadata.title %><% else %><%= metadata.title %>: <%= metadata.tagline %><% end %></title>
-<meta name="description" content="<%= metadata.description %>" />
+<% page_description = description.presence || metadata.description %>
+<% full_title = resource_title != "Index" ? "#{resource_title} | #{metadata.title}" : "#{metadata.title}: #{metadata.tagline}" %>
+<title><%= full_title %></title>
+<meta name="description" content="<%= page_description %>" />
+<link rel="canonical" href="<%= resource.absolute_url %>" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="<%= full_title %>" />
+<meta property="og:description" content="<%= page_description %>" />
+<meta property="og:url" content="<%= resource.absolute_url %>" />
+<meta property="og:site_name" content="<%= metadata.title %>" />
+<meta property="og:type" content="<%= resource.data.layout == "post" ? "article" : "website" %>" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="<%= full_title %>" />
+<meta name="twitter:description" content="<%= page_description %>" />
+
 <link rel="stylesheet" href="<%= asset_path :css %>" data-turbo-track="reload" />
 <script src="<%= asset_path :js %>" defer data-turbo-track="reload"></script>
 <script src="https://kit.fontawesome.com/347397420b.js" crossorigin="anonymous" data-turbo-track="reload"></script>

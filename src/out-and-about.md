@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Out and About
+description: Articles, presentations, and podcast episodes by Ricky Chilcott on Ruby, Rails, and web development.
 ---
 
 I’ve written articles, delivered presentations, and taken part podcast episodes over the years on a variety of topics. Below is a list of them, along with links and commentary.

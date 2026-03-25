@@ -3,6 +3,7 @@
 
 layout: default
 title: Home
+description: Ricky Chilcott is a full-stack developer based in Southeast Ohio, writing about Ruby, Rails, web development, and enterprise IT.
 ---
 
 # Hi 👋, I'm Ricky

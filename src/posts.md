@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Posts
+description: Blog posts by Ricky Chilcott on Ruby, Rails, web development, and running a software business.
 ---
 
 <% collections.posts.resources.each do |post| %>
