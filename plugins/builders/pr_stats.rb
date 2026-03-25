@@ -2,17 +2,12 @@ require "faraday"
 
 class Builders::PrStats < SiteBuilder
   AUTHOR = "rickychilcott"
-  GITHUB_PAT = ENV["GH_PAT"]
+  GITHUB_PAT = ENV.fetch("GH_PAT")
   PR_STATS_FILE = "src/_data/pr_stats.yml"
   TWO_HOURS = 2 * 60 * 60
 
   def build
     hook :site, :post_read do
-      unless GITHUB_PAT
-        info "GH_PAT not set, skipping PR stats update"
-        next
-      end
-
       if File.mtime(PR_STATS_FILE) > (Time.now - TWO_HOURS)
         info "PR stats file is up to date"
         next
