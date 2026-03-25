@@ -1,6 +1,8 @@
 ---
 layout: page
 title: CommonMark Cheat Sheet
+sitemap: false
+noindex: true
 ---
 
 Bold text: `**bold**` → **bold**

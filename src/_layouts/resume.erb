@@ -1,6 +1,27 @@
 <!doctype html>
 <html lang="<%= site.locale %>">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <% page_description = data.description.to_s.empty? ? site.metadata.description : data.description %>
+    <% full_title = "#{data.title} | #{site.metadata.title}" %>
+    <title><%= full_title %></title>
+    <meta name="description" content="<%= page_description %>" />
+    <link rel="canonical" href="<%= resource.absolute_url.split("?").first %>" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="<%= full_title %>" />
+    <meta property="og:description" content="<%= page_description %>" />
+    <meta property="og:url" content="<%= resource.absolute_url.split("?").first %>" />
+    <meta property="og:site_name" content="<%= site.metadata.title %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="<%= site.config.url %>/images/og-image.png" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="<%= full_title %>" />
+    <meta name="twitter:description" content="<%= page_description %>" />
+
     <style>
       <%= File.read(File.join(site.source, "resume.css")) %>
     </style>
