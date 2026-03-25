@@ -1,7 +1,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <% resource_title = strip_html(strip_newlines(title)) %>
-<% page_description = description.presence || metadata.description %>
+<% page_description = description.to_s.empty? ? metadata.description : description %>
 <% full_title = resource_title != "Index" ? "#{resource_title} | #{metadata.title}" : "#{metadata.title}: #{metadata.tagline}" %>
 <title><%= full_title %></title>
 <meta name="description" content="<%= page_description %>" />
