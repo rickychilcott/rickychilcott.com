@@ -7,6 +7,7 @@ gem "commonmarker", "~> 2.0"
 gem "dotenv", "~> 3.0", require: "dotenv/load"
 gem "faraday", "~> 2.0"
 gem "nokogiri"
+gem "reverse_markdown", "~> 3.0"
 gem "truncato", "~> 0.7"
 
 group :development do

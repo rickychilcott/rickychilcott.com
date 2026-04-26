@@ -1,0 +1,89 @@
+---
+layout: none
+permalink: /llms.txt
+---
+<%
+  # llms.txt — https://llmstxt.org
+  # Front-matter API:
+  #   llms_txt: false       → exclude from llms.txt entirely
+  #   llms_txt: optional    → place in the "Optional" section
+  llms_excluded = ->(resource) {
+    next true if resource.data.published == false
+    next true if resource.data.noindex
+    next true if resource.data.llms_txt == false
+    next true if resource.relative_url.match?(/\.(xml|json|txt|js)$/)
+    next true if resource.relative_url == "/404"
+    next true if resource.relative_url == "/500"
+    false
+  }
+
+  llms_md_url = ->(resource) {
+    if resource.relative_url.end_with?("/")
+      "#{resource.relative_url}index.md"
+    else
+      resource.relative_url.sub(/\.html$/, "") + ".md"
+    end
+  }
+
+  pages = site.collections.pages.resources.reject { |p| llms_excluded.(p) }
+  posts = site.collections.posts.resources
+    .reject { |p| llms_excluded.(p) }
+    .sort_by { |p| p.data.date }
+    .reverse
+
+  projects = (site.collections.projects&.resources || []).reject { |p| llms_excluded.(p) }
+
+  optional_pages = pages.select { |p| p.data.llms_txt == "optional" }
+  primary_pages = pages - optional_pages
+
+  desc_for = ->(resource) { resource.data.description.to_s.strip }
+  title_for = ->(resource) { resource.data.title || resource.relative_url }
+  link_line = ->(title, url, description) {
+    line = "- [#{title}](#{url})"
+    line += ": #{description}" if description && !description.to_s.strip.empty?
+    line
+  }
+
+  agent_skills = (site.data["agent_skills"]&.dig("skills") || []).map do |s|
+    {
+      name: s["name"],
+      description: s["description"],
+      url: "/.well-known/agent-skills/#{s["name"]}/SKILL.md"
+    }
+  end
+%># Ricky Chilcott
+
+> <%= site.metadata.tagline %>
+
+<%= site.metadata.description %>
+
+Markdown versions of every page are available at `/path/index.md` (URL-suffix convention per llmstxt.org). The site also publishes structured agent skills at `/.well-known/agent-skills/index.json`.
+
+## Core pages
+<% primary_pages.sort_by(&:relative_url).each do |p| %>
+<%== link_line.(title_for.(p), llms_md_url.(p), desc_for.(p)) %>
+<% end -%>
+<% if projects.any? %>
+
+## Projects
+<% projects.sort_by(&:relative_url).each do |p| %>
+<%== link_line.(title_for.(p), llms_md_url.(p), desc_for.(p)) %>
+<% end -%>
+<% end %>
+
+## Agent skills
+<% agent_skills.each do |s| %>
+- [<%== s[:name].split("-").map(&:capitalize).join(" ") %>](<%= s[:url] %>): <%== s[:description] %>
+<% end -%>
+
+## Blog
+<% posts.each do |p| %>
+<%== link_line.(title_for.(p), llms_md_url.(p), desc_for.(p)) %>
+<% end -%>
+<% if optional_pages.any? %>
+
+## Optional
+<% optional_pages.sort_by(&:relative_url).each do |p| %>
+<%== link_line.(title_for.(p), llms_md_url.(p), desc_for.(p)) %>
+<% end -%>
+<% end %>

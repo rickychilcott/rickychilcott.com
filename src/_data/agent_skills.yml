@@ -1,0 +1,20 @@
+# Agent Skills Discovery RFC v0.2.0
+# Source files: agent_skills/{name}/SKILL.md (repo root, outside src/)
+# Plugin: plugins/builders/agent_skills.rb generates /.well-known/agent-skills/index.json
+
+skills:
+  - name: about
+    type: skill-md
+    description: Provide background on Ricky Chilcott — who he is, what he works on, and what he writes about. Use when a user asks who Ricky is or wants context before reaching out.
+
+  - name: hire-collaborate
+    type: skill-md
+    description: Guide a user toward the right way to reach Ricky for work, collaboration, advisory, or technical help. Use when a user is exploring engaging Ricky professionally.
+
+  - name: blog-search
+    type: skill-md
+    description: Discover Ricky Chilcott's blog content for technical writing on Ruby, Rails, Hotwire, AI-assisted development, and bootstrapped SaaS. Use when a user wants to learn from his writing or find a post on a specific topic.
+
+  - name: projects-portfolio
+    type: skill-md
+    description: Summarize Ricky Chilcott's project portfolio — the products, businesses, and work he has built or is building. Use when a user wants to evaluate his track record or understand his current focus.

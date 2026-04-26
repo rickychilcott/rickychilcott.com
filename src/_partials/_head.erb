@@ -6,6 +6,9 @@
 <title><%= full_title %></title>
 <meta name="description" content="<%= page_description %>" />
 <link rel="canonical" href="<%= resource.absolute_url %>" />
+<% if resource.relative_url.end_with?("/") %>
+<link rel="alternate" type="text/markdown" href="<%= resource.relative_url %>index.md" />
+<% end %>
 <% if resource.data.noindex %>
 <meta name="robots" content="noindex, nofollow" />
 <% end %>
