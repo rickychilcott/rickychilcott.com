@@ -30,18 +30,18 @@ pagination:
   enabled: true
 
 additional_watch_paths:
-  - ../Home/Personal/Website/posts
-  - ../Home/Personal/Website/projects
-  - ../Home/Personal/Website/til
+  - ../Home/Areas/Personal/Website/posts
+  - ../Home/Areas/Personal/Website/projects
+  - ../Home/Areas/Personal/Website/til
 
 obsidian_local_sync:
   vault_base_path: ~/github/Home/
   locations:
-    - from: Personal/Website/posts
+    - from: Areas/Personal/Website/posts
       to: _posts
-    - from: Personal/Website/projects
+    - from: Areas/Personal/Website/projects
       to: _projects
-    - from: Personal/Website/til
+    - from: Areas/Personal/Website/til
       to: _til
 
 generate_pdf:

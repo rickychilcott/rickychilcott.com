@@ -104,6 +104,7 @@ GEM
     fiber-storage (1.0.1)
     freyia (0.6.2)
     hash_with_dot_access (2.2.0)
+    htmlcompressor (0.4.0)
     htmlentities (4.3.4)
     i18n (1.14.8)
       concurrent-ruby (~> 1.0)
@@ -274,6 +275,7 @@ DEPENDENCIES
   down (~> 5.2)
   faraday (~> 2.0)
   ferrum (~> 0.16)
+  htmlcompressor (~> 0.4)
   nokogiri
   puma (~> 7)
   reverse_markdown (~> 3.0)

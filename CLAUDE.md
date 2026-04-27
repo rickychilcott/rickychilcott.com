@@ -42,4 +42,4 @@ Source of truth for Ricky's voice: how he actually talks in conversation. Existi
 
 Posts live in two places — keep them in sync:
 - **Site:** `src/_posts/YYYY-MM-DD-slug.md`
-- **Obsidian source:** `/Users/rickychilcott/github/Home/Personal/Website/posts/YYYY-MM-DD-slug.md`
+- **Obsidian source:** `/Users/rickychilcott/github/Home/Areas/Personal/Website/posts/YYYY-MM-DD-slug.md`
