@@ -21,13 +21,9 @@ class Builders::GeneratePdf < SiteBuilder
 
         info "Generating PDF: #{output_file}"
 
-        begin
-          pdf_adapter
-            .new(content, filename: output_filename, options:)
-            .write_file(output_file)
-        rescue => e
-          warn "PDF generation failed: #{e.message}"
-        end
+        pdf_adapter
+          .new(content, filename: output_filename, options:)
+          .write_file(output_file)
       end
     end
   end
