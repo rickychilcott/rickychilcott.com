@@ -38,10 +38,11 @@ jobs:
         run: npm ci
 
       - name: Refresh Derby data from Horse Racing Nation
-        run: node scripts/derby-refresh.js
+        run: node scripts/derby-refresh.cjs || echo "Refresh failed; continuing with existing data"
         env:
           DERBY_OUT_DIR: src/derby
           CI: "true"
+        continue-on-error: true
 
       - name: Install pagefind binary
         run: |
