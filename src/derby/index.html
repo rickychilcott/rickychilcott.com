@@ -1,0 +1,2765 @@
+---
+permalink: /derby/
+layout: none
+sitemap: false
+noindex: true
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#7a1f2b" />
+<title>Derby Day 2026 — Track Companion</title>
+<style>
+  :root {
+    --rose: #7a1f2b;
+    --rose-dk: #5a131c;
+    --gold: #c9a23a;
+    --bg: #fbf7f0;
+    --surface: #ffffff;
+    --ink: #1a1a1a;
+    --muted: #6b6b6b;
+    --line: #e6dfd1;
+    --good: #15803d;
+    --good-bg: #dcfce7;
+    --bad: #b91c1c;
+    --bad-bg: #fee2e2;
+    --warn: #a16207;
+    --warn-bg: #fef3c7;
+    --shadow: 0 1px 2px rgba(0,0,0,.06), 0 4px 12px rgba(0,0,0,.04);
+    --radius: 10px;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font: 16px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    padding-bottom: 120px;
+  }
+  /* HEADER */
+  header.top {
+    position: sticky; top: 0; z-index: 50;
+    background: linear-gradient(135deg, var(--rose) 0%, var(--rose-dk) 100%);
+    color: #fff;
+    padding: env(safe-area-inset-top) 0 0 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,.15);
+  }
+  .brand {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 12px;
+  }
+  .brand h1 {
+    margin: 0; font-size: 16px; font-weight: 700; letter-spacing: .5px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .brand .rose { color: var(--gold); }
+  .gear-btn {
+    background: transparent; border: 1px solid rgba(255,255,255,.4);
+    color: #fff; padding: 4px 10px; font-size: 13px; border-radius: 6px;
+    font-weight: 600; cursor: pointer;
+  }
+  .gear-btn:active { background: rgba(255,255,255,.15); }
+  .bank-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 4px; padding: 6px 8px 8px;
+    font-size: 11px;
+  }
+  .bank-cell {
+    background: rgba(255,255,255,.12);
+    border-radius: 6px; padding: 4px 6px; text-align: center;
+  }
+  .bank-cell .lbl { opacity: .8; font-size: 10px; text-transform: uppercase; letter-spacing: .5px; }
+  .bank-cell .val { font-weight: 700; font-size: 14px; margin-top: 1px; }
+  .bank-cell .val.pos { color: #6ee7b7; }
+  .bank-cell .val.neg { color: #fca5a5; }
+
+  /* RACE TABS */
+  nav.races {
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    padding: 6px 6px;
+    position: sticky;
+    top: 0;
+    z-index: 49;
+  }
+  /* tabs sit below header in stacking; sticky inside header above */
+  header.top nav.races { position: static; }
+  nav.races::-webkit-scrollbar { display: none; }
+  .race-pill {
+    display: inline-flex; flex-direction: column; align-items: center;
+    padding: 5px 10px; margin-right: 4px;
+    background: #f3ece0; color: var(--ink);
+    border-radius: 8px; min-width: 56px;
+    font-size: 11px; font-weight: 600;
+    border: 2px solid transparent;
+    cursor: pointer;
+  }
+  .race-pill.active { background: var(--gold); color: #1a1a1a; border-color: var(--rose-dk); }
+  .race-pill .num { font-size: 14px; font-weight: 800; }
+  .race-pill .stake { font-size: 9px; text-transform: uppercase; letter-spacing: .5px; opacity: .7; margin-top: 1px; }
+  .race-pill.has-bet::after {
+    content: "•"; color: var(--rose); font-size: 16px; line-height: 0;
+    position: relative; top: -2px;
+  }
+
+  /* MAIN */
+  main { padding: 12px; max-width: 720px; margin: 0 auto; }
+
+  .card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .card-head {
+    padding: 10px 12px;
+    background: linear-gradient(180deg, #fdfcf8 0%, #f5efe1 100%);
+    border-bottom: 1px solid var(--line);
+  }
+  .card-head h2 {
+    margin: 0; font-size: 17px; font-weight: 700; color: var(--rose-dk);
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 10px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase;
+    padding: 2px 6px; border-radius: 3px;
+    background: var(--gold); color: #1a1a1a;
+  }
+  .badge.g1 { background: #7a1f2b; color: #fff; }
+  .badge.g2 { background: #b8531e; color: #fff; }
+  .badge.g3 { background: #6b6b6b; color: #fff; }
+  .race-meta {
+    margin-top: 4px; font-size: 12px; color: var(--muted);
+  }
+  .race-meta b { color: var(--ink); font-weight: 600; }
+  .pace-note {
+    font-size: 12px; line-height: 1.45; padding: 8px 12px;
+    background: #fffbeb; border-bottom: 1px solid var(--line);
+    color: #78350f;
+  }
+
+  /* HORSE TABLE */
+  .horses {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+  }
+  .horses th, .horses td {
+    padding: 6px 4px; text-align: right; border-bottom: 1px solid var(--line);
+    vertical-align: middle;
+  }
+  .horses th {
+    background: #f8f4ea; font-size: 10px; text-transform: uppercase; letter-spacing: .5px;
+    color: var(--muted); font-weight: 700;
+    position: sticky; top: 0;
+  }
+  .horses th:first-child, .horses td:first-child { padding-left: 10px; text-align: center; }
+  .horses td.name { text-align: left; font-weight: 600; }
+  .horses td.name small { display: block; font-weight: 400; color: var(--muted); font-size: 10px; }
+  .post-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 24px; height: 24px; border-radius: 4px;
+    font-weight: 800; font-size: 12px;
+    background: var(--rose-dk); color: #fff;
+  }
+  .horse-row.scratched { opacity: .35; }
+  .horse-row.scratched .post-num { background: var(--muted); text-decoration: line-through; }
+  .scr-btn {
+    margin-left: 6px; vertical-align: middle;
+    border: 1px solid var(--line); background: #fff; color: var(--muted);
+    padding: 1px 5px; border-radius: 3px; font-size: 9px; font-weight: 700;
+    line-height: 1.2; cursor: pointer; letter-spacing: .5px;
+  }
+  .scr-btn.on { background: var(--bad); color: #fff; border-color: var(--bad); }
+  .odds-input {
+    width: 60px; padding: 5px 6px; text-align: right;
+    border: 1px solid var(--line); border-radius: 4px;
+    font-size: 13px; font-family: ui-monospace, SF Mono, Menlo, monospace;
+    background: #fafafa;
+  }
+  .odds-input:focus { outline: 2px solid var(--gold); border-color: var(--gold); background: #fff; }
+  .pct { font-family: ui-monospace, SF Mono, Menlo, monospace; font-size: 12px; }
+  .edge { font-family: ui-monospace, SF Mono, Menlo, monospace; font-weight: 700; font-size: 12px; padding: 2px 5px; border-radius: 3px; }
+  .edge.pos { background: var(--good-bg); color: var(--good); }
+  .edge.neg { background: var(--bad-bg); color: var(--bad); }
+  .edge.zero { color: var(--muted); }
+  .stake-pill {
+    display: inline-block;
+    padding: 2px 6px; border-radius: 12px;
+    font-family: ui-monospace, SF Mono, Menlo, monospace;
+    font-size: 11px; font-weight: 700;
+    background: #fef3c7; color: #78350f;
+  }
+  .stake-pill.zero { background: #f3f3f3; color: var(--muted); font-weight: 400; }
+
+  /* RECOMMENDED */
+  .recs {
+    padding: 10px 12px; background: #f0fdf4; border-top: 1px solid #bbf7d0;
+  }
+  .recs h3 {
+    margin: 0 0 8px 0; font-size: 12px; text-transform: uppercase; letter-spacing: .5px;
+    color: var(--good); font-weight: 700;
+  }
+  .rec-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 10px; background: #fff; border-radius: 6px; margin-bottom: 6px;
+    border-left: 3px solid var(--good); font-size: 13px;
+  }
+  .rec-item:last-child { margin-bottom: 0; }
+  .rec-info b { color: var(--rose-dk); }
+  .rec-info small { display: block; color: var(--muted); font-size: 11px; margin-top: 2px; }
+  .rec-bet-btn {
+    background: var(--good); color: #fff; border: 0; padding: 6px 10px;
+    border-radius: 6px; font-weight: 600; font-size: 12px; cursor: pointer; flex-shrink: 0;
+  }
+  .recs.empty { background: #fafafa; border-top-color: var(--line); }
+  .recs.empty h3 { color: var(--muted); }
+  .recs.empty p { margin: 0; font-size: 12px; color: var(--muted); }
+
+  /* BET ENTRY */
+  .bet-section {
+    padding: 10px 12px; border-top: 1px solid var(--line);
+  }
+  .bet-section h3 {
+    margin: 0 0 6px 0; font-size: 12px; text-transform: uppercase; letter-spacing: .5px;
+    color: var(--muted); font-weight: 700;
+  }
+  .bet-form {
+    display: grid; grid-template-columns: 1fr 1fr 90px 70px; gap: 6px; margin-bottom: 8px;
+  }
+  .bet-form select, .bet-form input {
+    padding: 8px 6px; border: 1px solid var(--line); border-radius: 5px;
+    font-size: 13px; background: #fff;
+  }
+  .bet-form button {
+    background: var(--rose); color: #fff; border: 0; border-radius: 5px;
+    font-weight: 600; cursor: pointer; font-size: 13px;
+  }
+  .bet-list { font-size: 12px; }
+  .bet-list-item {
+    display: grid; grid-template-columns: 1fr auto auto;
+    gap: 6px; align-items: center;
+    padding: 6px 0; border-bottom: 1px dashed var(--line);
+  }
+  .bet-list-item:last-child { border-bottom: 0; }
+  .bet-list-item .desc { font-weight: 500; }
+  .bet-list-item .desc small { display: block; color: var(--muted); font-size: 10px; }
+  .bet-list-item .stake-amt { font-family: ui-monospace, SF Mono, Menlo, monospace; font-weight: 700; }
+  .bet-list-item .actions { display: flex; gap: 4px; }
+  .mini-btn {
+    border: 1px solid var(--line); background: #fff;
+    padding: 3px 7px; font-size: 11px; border-radius: 4px;
+    cursor: pointer; font-weight: 600;
+  }
+  .mini-btn.win { color: var(--good); border-color: var(--good); }
+  .mini-btn.loss { color: var(--bad); border-color: var(--bad); }
+  .mini-btn.del { color: var(--muted); }
+  .bet-result-tag {
+    font-size: 10px; font-weight: 700; padding: 2px 5px; border-radius: 3px;
+    text-transform: uppercase;
+  }
+  .bet-result-tag.won { background: var(--good-bg); color: var(--good); }
+  .bet-result-tag.lost { background: var(--bad-bg); color: var(--bad); }
+
+  .notes-box {
+    padding: 10px 12px; background: #fafafa; border-top: 1px solid var(--line);
+    font-size: 12px; line-height: 1.5; color: #4a4a4a;
+  }
+  .notes-box b { color: var(--rose-dk); }
+
+  /* ADD HORSE FORM */
+  .add-horse-form {
+    display: grid; grid-template-columns: 50px 1fr 80px 80px;
+    gap: 4px; padding: 8px 10px; border-top: 1px solid var(--line);
+    background: #fafafa;
+  }
+  .add-horse-form input {
+    padding: 6px; font-size: 12px; border: 1px solid var(--line); border-radius: 4px;
+  }
+  .add-horse-form button {
+    grid-column: 1/-1; padding: 6px; background: var(--ink); color: #fff;
+    border: 0; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer;
+  }
+
+  /* SETTINGS DRAWER */
+  .drawer {
+    position: fixed; top: 0; right: 0; bottom: 0;
+    width: min(360px, 90vw);
+    background: #fff;
+    box-shadow: -4px 0 16px rgba(0,0,0,.15);
+    transform: translateX(100%); transition: transform .2s ease;
+    z-index: 100; padding: 16px;
+    overflow-y: auto;
+  }
+  .drawer.open { transform: translateX(0); }
+  .drawer-back {
+    position: fixed; inset: 0; background: rgba(0,0,0,.4);
+    opacity: 0; pointer-events: none; transition: opacity .2s ease;
+    z-index: 99;
+  }
+  .drawer-back.open { opacity: 1; pointer-events: auto; }
+  .drawer h2 { margin: 0 0 16px 0; font-size: 18px; }
+  .field-row { margin-bottom: 14px; }
+  .field-row label {
+    display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .5px;
+    color: var(--muted); font-weight: 700; margin-bottom: 4px;
+  }
+  .field-row input {
+    width: 100%; padding: 8px; border: 1px solid var(--line); border-radius: 5px;
+    font-size: 14px;
+  }
+  .field-row .hint { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .danger-btn {
+    background: var(--bad); color: #fff; border: 0; padding: 10px;
+    border-radius: 5px; font-weight: 600; cursor: pointer; width: 100%;
+    margin-top: 16px;
+  }
+
+  /* COLLAPSE */
+  .toggle-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 12px; cursor: pointer; user-select: none;
+    background: #fafafa; border-top: 1px solid var(--line);
+    font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: .5px;
+  }
+  .toggle-row .chev { transition: transform .15s; }
+  .collapsed .chev { transform: rotate(-90deg); }
+  .collapsed + .collapse-target { display: none; }
+
+  /* LANDSCAPE / TABLET */
+  @media (min-width: 600px) {
+    .horses { font-size: 14px; }
+    .horses th, .horses td { padding: 8px 6px; }
+    .odds-input { width: 70px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <h1><span class="rose">🌹</span> Derby Day 2026 <span style="opacity:.7;font-size:12px;font-weight:400;">· Churchill Downs</span></h1>
+    <button class="gear-btn" onclick="toggleDrawer()">⚙ Settings</button>
+  </div>
+  <div class="bank-strip">
+    <div class="bank-cell"><div class="lbl">Bank</div><div class="val" id="bk-bank">$500</div></div>
+    <div class="bank-cell"><div class="lbl">Wagered</div><div class="val" id="bk-wagered">$0</div></div>
+    <div class="bank-cell"><div class="lbl">Returned</div><div class="val" id="bk-returned">$0</div></div>
+    <div class="bank-cell"><div class="lbl">P/L</div><div class="val" id="bk-pl">$0</div></div>
+  </div>
+  <nav class="races" id="raceTabs"></nav>
+</header>
+
+<main id="raceContent"></main>
+
+<div class="drawer-back" id="drawerBack" onclick="toggleDrawer()"></div>
+<aside class="drawer" id="drawer">
+  <h2>Settings</h2>
+  <div class="field-row">
+    <label>Starting bankroll ($)</label>
+    <input type="number" id="setBankroll" min="20" step="20" />
+    <div class="hint">Total you brought to bet today.</div>
+  </div>
+  <div class="field-row">
+    <label>Kelly fraction (0–1)</label>
+    <input type="number" id="setKelly" min="0.05" max="1" step="0.05" />
+    <div class="hint">0.25 = quarter Kelly (recommended). Lower = safer; 1.0 = full Kelly = max growth but volatile.</div>
+  </div>
+  <div class="field-row">
+    <label>Min edge to recommend (%)</label>
+    <input type="number" id="setMinEdge" min="0" max="50" step="1" />
+    <div class="hint">Don't suggest a bet unless model edge over live odds exceeds this.</div>
+  </div>
+  <div class="field-row">
+    <label>Max stake per race ($)</label>
+    <input type="number" id="setMaxStake" min="0" step="5" />
+    <div class="hint">Hard cap regardless of Kelly. Set to 0 for no cap.</div>
+  </div>
+  <button class="gear-btn" style="background:var(--rose);border-color:var(--rose);width:100%;padding:10px;" onclick="saveSettings()">Save</button>
+  <button class="danger-btn" onclick="resetAll()">Reset all bets & odds</button>
+  <p style="font-size:11px;color:var(--muted);margin-top:24px;line-height:1.5;">
+    Data persists in your browser via localStorage. To export: open DevTools → <code>copy(JSON.stringify(STATE))</code>.
+    To restart fresh, tap Reset above.
+  </p>
+</aside>
+
+<script>
+// ============================================================
+// DATA — embedded for offline at-the-track use
+// ============================================================
+const RACE_DATA = {
+  "meta": {
+    "track": "Churchill Downs",
+    "date": "2026-05-02",
+    "event": "152nd Kentucky Derby Day",
+    "lastUpdated": "2026-05-02T15:18:00.813Z",
+    "primarySource": "https://entries.horseracingnation.com/entries-results/churchill-downs/2026-05-02"
+  },
+  "races": [
+    {
+      "raceNum": 1,
+      "postTime": "11:00 AM",
+      "name": "Maiden Special Weight",
+      "grade": null,
+      "purse": 120000,
+      "distance": "1 1/16M",
+      "surface": "Dirt",
+      "age": "Open | 3 Year Olds And Up",
+      "field": [
+        {
+          "post": 1,
+          "name": "Bhatia",
+          "jockey": "Luis Saez",
+          "trainer": "Christopher Davis",
+          "mlOdds": "15-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 2,
+          "name": "Stakeholder",
+          "jockey": "Brian Joseph Hernandez, Jr.",
+          "trainer": "Ian R. Wilkes",
+          "mlOdds": "20-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 3,
+          "name": "Silent Way",
+          "jockey": "Flavien Prat",
+          "trainer": "Peter Eurton",
+          "mlOdds": "4-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 4,
+          "name": "Ingleborough",
+          "jockey": "Martin Garcia",
+          "trainer": "Dale L. Romans",
+          "mlOdds": "20-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 5,
+          "name": "Get Them Roses",
+          "jockey": "Tyler Gaffalione",
+          "trainer": "Brendan P. Walsh",
+          "mlOdds": "15-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 6,
+          "name": "Cromwell",
+          "jockey": "Jose L. Ortiz",
+          "trainer": "Cherie DeVaux",
+          "mlOdds": "6-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 7,
+          "name": "Time to Strike",
+          "jockey": "John R. Velazquez",
+          "trainer": "Mark E. Casse",
+          "mlOdds": "20-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 8,
+          "name": "Bourbon Dream",
+          "jockey": "Mario Gutierrez",
+          "trainer": "Fausto Gutierrez",
+          "mlOdds": "5-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 9,
+          "name": "Winston Ave",
+          "jockey": "Juan J. Hernandez",
+          "trainer": "Bob Baffert",
+          "mlOdds": "9-2",
+          "modelAdj": 1.05,
+          "notes": "Baffert maiden, often well-meant."
+        },
+        {
+          "post": 10,
+          "name": "Midnight Playboy",
+          "jockey": "Junior Alvarado",
+          "trainer": "Riley Mott",
+          "mlOdds": "15-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 11,
+          "name": "Powershift",
+          "jockey": "Irad Ortiz, Jr.",
+          "trainer": "Todd A. Pletcher",
+          "mlOdds": "3-1",
+          "modelAdj": 1.05,
+          "notes": "Pletcher MSW + Irad. Likely tote favorite."
+        }
+      ],
+      "pace": "11-horse maiden field. Pace shape unknown without PPs.",
+      "expertPicks": [],
+      "notes": "Opening race. Powershift (Pletcher/Irad) and Silent Way (Prat) likely co-favorites. Pass unless you've studied the program — first race of 14 is no time to bleed bankroll."
+    },
+    {
+      "raceNum": 2,
+      "postTime": "11:32 AM",
+      "name": "Allowance Optional Claiming",
+      "grade": null,
+      "purse": 127000,
+      "distance": "1 1/16M",
+      "surface": "Dirt",
+      "age": "Open | 3 Year Olds",
+      "field": [
+        {
+          "post": 1,
+          "name": "Out of the Woods",
+          "jockey": "John R. Velazquez",
+          "trainer": "Philip D'Amato",
+          "mlOdds": "6-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 2,
+          "name": "Sovereign Law",
+          "jockey": "Manuel Franco",
+          "trainer": "Brad H. Cox",
+          "mlOdds": "8-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 3,
+          "name": "Steel",
+          "jockey": "Junior Alvarado",
+          "trainer": "William I. Mott",
+          "mlOdds": "20-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 4,
+          "name": "Memory",
+          "jockey": "Flavien Prat",
+          "trainer": "Bob Baffert",
+          "mlOdds": "9-2",
+          "modelAdj": 1.05,
+          "notes": "Baffert + Prat in an allowance."
+        },
+        {
+          "post": 5,
+          "name": "Seal Bay",
+          "jockey": "Summer Pauly",
+          "trainer": "Ed Moger, Jr.",
+          "mlOdds": "30-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 6,
+          "name": "Make My Day",
+          "jockey": "Luis Saez",
+          "trainer": "Todd A. Pletcher",
+          "mlOdds": "8-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 7,
+          "name": "Very Connected",
+          "jockey": "Christopher Elliott",
+          "trainer": "Kenneth G. McPeek",
+          "mlOdds": "12-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 8,
+          "name": "Taptastic",
+          "jockey": "Irad Ortiz, Jr.",
+          "trainer": "Steven M. Asmussen",
+          "mlOdds": "3-1",
+          "modelAdj": 1.05,
+          "notes": "Asmussen + Irad — likely favorite."
+        },
+        {
+          "post": 9,
+          "name": "Our Moneyman",
+          "jockey": "Axel Concepcion",
+          "trainer": "W. Bret Calhoun",
+          "mlOdds": "6-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 10,
+          "name": "J J Grey",
+          "jockey": "Brian Joseph Hernandez, Jr.",
+          "trainer": "Kenneth G. McPeek",
+          "mlOdds": "15-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 11,
+          "name": "Lincoln's Law",
+          "jockey": "Tyler Gaffalione",
+          "trainer": "Philip A. Bauer",
+          "mlOdds": "10-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 12,
+          "name": "Spirit of Royal",
+          "jockey": "Cristian A. Torres",
+          "trainer": "Dallas Stewart",
+          "mlOdds": "30-1",
+          "modelAdj": 1,
+          "notes": ""
+        }
+      ],
+      "pace": "Allowance, 12 horses, 1 1/16mi dirt. No prior analysis available.",
+      "expertPicks": [],
+      "notes": "Pass unless you've handicapped from the program. Big field allowances are exacta-trifecta lottery without homework."
+    },
+    {
+      "raceNum": 3,
+      "postTime": "12:05 PM",
+      "name": "Allowance Optional Claiming",
+      "grade": null,
+      "purse": 134000,
+      "distance": "1M",
+      "surface": "Dirt",
+      "age": "Open | 3 Year Olds And Up",
+      "field": [
+        {
+          "post": 1,
+          "name": "Arro Smash",
+          "jockey": "Gerardo Corrales",
+          "trainer": "Philip A. Bauer",
+          "mlOdds": "15-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 2,
+          "name": "Vamos Carlitos",
+          "jockey": "Tyler Gaffalione",
+          "trainer": "Gregory D. Foley",
+          "mlOdds": "15-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 3,
+          "name": "Special Caliber",
+          "jockey": "Edgar Morales",
+          "trainer": "Michel Douaihy",
+          "mlOdds": "30-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 4,
+          "name": "Comport",
+          "jockey": "Jose L. Ortiz",
+          "trainer": "Eddie Kenneally",
+          "mlOdds": "15-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 5,
+          "name": "John Hancock",
+          "jockey": "Irad Ortiz, Jr.",
+          "trainer": "Brad H. Cox",
+          "mlOdds": "6-1",
+          "modelAdj": 1.05,
+          "notes": "Cox + Irad."
+        },
+        {
+          "post": 6,
+          "name": "Who Dey",
+          "jockey": "Brian Joseph Hernandez, Jr.",
+          "trainer": "Thomas Drury, Jr.",
+          "mlOdds": "9-2",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 7,
+          "name": "Mitochondria",
+          "jockey": "Mario Gutierrez",
+          "trainer": "Anthony Stephen",
+          "mlOdds": "30-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 8,
+          "name": "Racing Driver",
+          "jockey": "Luan Machado",
+          "trainer": "Gustavo Delgado",
+          "mlOdds": "20-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 9,
+          "name": "Keewaydin",
+          "jockey": "Jaime A. Torres",
+          "trainer": "William Walden",
+          "mlOdds": "8-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 10,
+          "name": "Vibe",
+          "jockey": "Luis Saez",
+          "trainer": "Todd A. Pletcher",
+          "mlOdds": "6-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 11,
+          "name": "Aleman",
+          "jockey": "Danny Sheehy",
+          "trainer": "Kathy Jarvis",
+          "mlOdds": "30-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 12,
+          "name": "Praetor",
+          "jockey": "Flavien Prat",
+          "trainer": "Chad C. Brown",
+          "mlOdds": "3-1",
+          "modelAdj": 1.05,
+          "notes": "Brown + Prat — likely favorite."
+        },
+        {
+          "post": 13,
+          "name": "Attache",
+          "jockey": "Juan J. Hernandez",
+          "trainer": "Michael J. Maker",
+          "mlOdds": "20-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 14,
+          "name": "Bullard",
+          "jockey": "John R. Velazquez",
+          "trainer": "Michael W. McCarthy",
+          "mlOdds": "12-1",
+          "modelAdj": 1,
+          "notes": ""
+        }
+      ],
+      "pace": "14 horses at 1mi dirt — full gate. Pace shape unknown.",
+      "expertPicks": [],
+      "notes": "Big-field allowance. Praetor (Brown/Prat) and John Hancock (Cox/Irad) the morning-line standouts. Without serious handicapping, pass."
+    },
+    {
+      "raceNum": 4,
+      "postTime": "12:38 PM",
+      "name": "Derby City Distaff",
+      "grade": null,
+      "purse": 1000000,
+      "distance": "7F",
+      "surface": "Dirt",
+      "age": "Fillies & Mares | 4 Year Olds And Up",
+      "field": [
+        {
+          "post": 1,
+          "name": "Usha",
+          "jockey": "Juan J. Hernandez",
+          "trainer": "Bob Baffert",
+          "mlOdds": "9-2",
+          "modelAdj": 1,
+          "notes": "Baffert. Solid Distaff player."
+        },
+        {
+          "post": 2,
+          "name": "Haulin Ice",
+          "jockey": "Francisco Arrieta",
+          "trainer": "Saffie A. Joseph, Jr.",
+          "mlOdds": "4-1",
+          "modelAdj": 0.95,
+          "notes": "Also entered Friday Unbridled Sidney (turf). Coupled-effort question."
+        },
+        {
+          "post": 3,
+          "name": "Autumn Evening",
+          "jockey": "Irad Ortiz, Jr.",
+          "trainer": "Jose Francisco D'Angelo",
+          "mlOdds": "20-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 4,
+          "name": "Ways and Means",
+          "jockey": "Jose L. Ortiz",
+          "trainer": "Chad C. Brown",
+          "mlOdds": "8-5",
+          "modelAdj": 1,
+          "notes": "ML favorite. 5yo Practical Joke mare. Brown's barn in form."
+        },
+        {
+          "post": 5,
+          "name": "Splendora",
+          "jockey": "Flavien Prat",
+          "trainer": "Bob Baffert",
+          "mlOdds": "2-1",
+          "modelAdj": 1.1,
+          "notes": "Reigning BC F&M Sprint (G1) winner. 5-race win streak. Undefeated this year. CLASS edge — possible primary play."
+        },
+        {
+          "post": 6,
+          "name": "R Disaster",
+          "jockey": "Tyler Gaffalione",
+          "trainer": "Saffie A. Joseph, Jr.",
+          "mlOdds": "6-1",
+          "modelAdj": 1,
+          "notes": "Joseph's other entry."
+        }
+      ],
+      "pace": "Short field of 6 at 7f dirt. Two-horse race between Ways and Means (8-5) and Splendora (2-1). Tactical 7f — speed/pressers preferred.",
+      "expertPicks": [
+        {
+          "source": "BloodHorse preview",
+          "picks": [
+            "Splendora",
+            "Ways and Means"
+          ]
+        }
+      ],
+      "notes": "Splendora has the class edge as the reigning BC F&M Sprint G1 champion. 2-1 is fair value. Ways and Means at 8-5 is the underlay — Brown trains both well. Suggested: WIN on #5 Splendora, or $2 exacta box 4-5 ($4)."
+    },
+    {
+      "raceNum": 5,
+      "postTime": "1:12 PM",
+      "name": "Twin Spires Turf Sprint",
+      "grade": null,
+      "purse": 600000,
+      "distance": "5 1/2F",
+      "surface": "Turf",
+      "age": "Open | 3 Year Olds And Up",
+      "field": [
+        {
+          "post": 1,
+          "name": "Wendelssohn",
+          "jockey": "Brian Joseph Hernandez, Jr.",
+          "trainer": "Chris A. Hartman",
+          "mlOdds": "15-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 2,
+          "name": "Bear River",
+          "jockey": "James Graham",
+          "trainer": "J. Keith Desormeaux",
+          "mlOdds": "30-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 3,
+          "name": "My Boy Prince",
+          "jockey": "Jose L. Ortiz",
+          "trainer": "Mark E. Casse",
+          "mlOdds": "5-2",
+          "modelAdj": 1,
+          "notes": "ML favorite."
+        },
+        {
+          "post": 4,
+          "name": "Full Disclosure",
+          "jockey": "Adam Beschizza",
+          "trainer": "Amzadali Jehaludi",
+          "mlOdds": "30-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 5,
+          "name": "Possiblemente",
+          "jockey": "Manuel Franco",
+          "trainer": "Joe Sharp",
+          "mlOdds": "10-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 6,
+          "name": "Its Bourbon Thirty",
+          "jockey": "Luan Machado",
+          "trainer": "Jeremiah O'Dwyer",
+          "mlOdds": "15-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 7,
+          "name": "Yellow Card",
+          "jockey": "Flavien Prat",
+          "trainer": "Michael W. McCarthy",
+          "mlOdds": "9-2",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 8,
+          "name": "Mondogetsbuckets",
+          "jockey": "Tyler Gaffalione",
+          "trainer": "Chris M. Block",
+          "mlOdds": "8-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 9,
+          "name": "Litigation",
+          "jockey": "Irad Ortiz, Jr.",
+          "trainer": "Brian A. Lynch",
+          "mlOdds": "3-1",
+          "modelAdj": 1,
+          "notes": "Co-favorite. Irad up."
+        },
+        {
+          "post": 10,
+          "name": "Joe Shiesty",
+          "jockey": "Fernando De La Cruz",
+          "trainer": "Eric N. Foster",
+          "mlOdds": "6-1",
+          "modelAdj": 1,
+          "notes": ""
+        }
+      ],
+      "pace": "Turf sprint = chaos. Pace is fast by definition; closers can come from off it. Trips matter heavily.",
+      "expertPicks": [],
+      "notes": "Turf sprints are notoriously tough to handicap. 5-1/3-1 favorites My Boy Prince and Litigation lead the pack. Without inside info, consider passing or playing a small exacta box of two short prices."
+    },
+    {
+      "raceNum": 6,
+      "postTime": "1:53 PM",
+      "name": "Knicks Go Overnight Stakes",
+      "grade": null,
+      "purse": 200000,
+      "distance": "1M",
+      "surface": "Dirt",
+      "age": "Open | 4 Year Olds And Up",
+      "field": [
+        {
+          "post": 1,
+          "name": "Brotha Keny",
+          "jockey": "Manuel Franco",
+          "trainer": "Jose Francisco D'Angelo",
+          "mlOdds": "15-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 2,
+          "name": "Dragoon Guard",
+          "jockey": "Irad Ortiz, Jr.",
+          "trainer": "Brad H. Cox",
+          "mlOdds": "3-1",
+          "modelAdj": 1.05,
+          "notes": "Cox + Irad. ML favorite."
+        },
+        {
+          "post": 3,
+          "name": "Banjo Chris",
+          "jockey": "Edgar Morales",
+          "trainer": "Troy S. Wismer",
+          "mlOdds": "20-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 4,
+          "name": "Be You",
+          "jockey": "John R. Velazquez",
+          "trainer": "Todd A. Pletcher",
+          "mlOdds": "7-2",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 5,
+          "name": "Prince of Power",
+          "jockey": "Mario Gutierrez",
+          "trainer": "Andres Cambray",
+          "mlOdds": "30-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 6,
+          "name": "Tour Player",
+          "jockey": "Flavien Prat",
+          "trainer": "D. Whitworth Beckman",
+          "mlOdds": "4-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 7,
+          "name": "Will Take It",
+          "jockey": "Brian Joseph Hernandez, Jr.",
+          "trainer": "Dallas Stewart",
+          "mlOdds": "8-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 8,
+          "name": "Bernin Hot",
+          "jockey": "Ben Curtis",
+          "trainer": "Rohan G. Crichton",
+          "mlOdds": "30-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 9,
+          "name": "Scotland",
+          "jockey": "Luis Saez",
+          "trainer": "William I. Mott",
+          "mlOdds": "20-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 10,
+          "name": "Capital Idea",
+          "jockey": "Junior Alvarado",
+          "trainer": "William I. Mott",
+          "mlOdds": "5-1",
+          "modelAdj": 1,
+          "notes": "Mott's other entry."
+        },
+        {
+          "post": 11,
+          "name": "Moonlight",
+          "jockey": "Jose L. Ortiz",
+          "trainer": "Chris M. Block",
+          "mlOdds": "8-1",
+          "modelAdj": 1,
+          "notes": ""
+        }
+      ],
+      "pace": "Mile dirt for older horses. Tactical race.",
+      "expertPicks": [],
+      "notes": "Listed stakes — quality below Graded. Dragoon Guard (Cox/Irad) likely heavily backed. Without serious handicapping, pass or take a small win/place on Dragoon Guard if odds drift to 4-1+."
+    },
+    {
+      "raceNum": 7,
+      "postTime": "2:38 PM",
+      "name": "Longines Churchill Distaff Turf Mile",
+      "grade": null,
+      "purse": 1000000,
+      "distance": "1M",
+      "surface": "Turf",
+      "age": "Fillies & Mares | 4 Year Olds And Up",
+      "field": [
+        {
+          "post": 1,
+          "name": "Italian Soiree",
+          "jockey": "Manuel Franco",
+          "trainer": "H. Graham Motion",
+          "mlOdds": "10-1",
+          "modelAdj": 1.05,
+          "notes": "Motion turf-mile barn."
+        },
+        {
+          "post": 2,
+          "name": "Sweet Rebecca",
+          "jockey": "Tyler Gaffalione",
+          "trainer": "Brendan P. Walsh",
+          "mlOdds": "5-2",
+          "modelAdj": 1,
+          "notes": "ML favorite."
+        },
+        {
+          "post": 3,
+          "name": "Portfolio Duration (GB)",
+          "jockey": "Flavien Prat",
+          "trainer": "Chad C. Brown",
+          "mlOdds": "4-1",
+          "modelAdj": 1.1,
+          "notes": "Brown's #1 turf entry. Brown owns this category."
+        },
+        {
+          "post": 5,
+          "name": "Classic Q",
+          "jockey": "John R. Velazquez",
+          "trainer": "Mark E. Casse",
+          "mlOdds": "6-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 6,
+          "name": "Vina Arana (IRE)",
+          "jockey": "Adam Beschizza",
+          "trainer": "Jack Sisterson",
+          "mlOdds": "20-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 7,
+          "name": "Movin' On Up",
+          "jockey": "Jose L. Ortiz",
+          "trainer": "Saffie A. Joseph, Jr.",
+          "mlOdds": "12-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 8,
+          "name": "Pin Up Betty",
+          "jockey": "Juan J. Hernandez",
+          "trainer": "Michael J. Maker",
+          "mlOdds": "7-2",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 9,
+          "name": "Maggie Go (ARG)",
+          "jockey": "Irad Ortiz, Jr.",
+          "trainer": "Chad C. Brown",
+          "mlOdds": "8-1",
+          "modelAdj": 1.05,
+          "notes": "Brown's other entry."
+        }
+      ],
+      "pace": "Turf mile, tactical. Brown/Mott/Motion barns dominate this class. 9-horse field manageable.",
+      "expertPicks": [],
+      "notes": "Brown enters two — Portfolio Duration (4-1) and Maggie Go (8-1). Pin Up Betty at 7-2 is the lurker for Maker. If model surfaces value, consider WIN on Brown entry or exacta key Brown horse over Pin Up Betty/Sweet Rebecca."
+    },
+    {
+      "raceNum": 8,
+      "postTime": "3:23 PM",
+      "name": "Pat Day Mile",
+      "grade": null,
+      "purse": 750000,
+      "distance": "1M",
+      "surface": "Dirt",
+      "age": "Open | 3 Year Olds",
+      "field": [
+        {
+          "post": 1,
+          "name": "Englishman",
+          "jockey": "Jose L. Ortiz",
+          "trainer": "Cherie DeVaux",
+          "mlOdds": "3-1",
+          "modelAdj": 1.1,
+          "notes": "2-for-2. Romped Fair Grounds Feb earning 95 Beyer. Stakes debut. Inside post, tactical speed."
+        },
+        {
+          "post": 2,
+          "name": "Trouble Calling",
+          "jockey": "Luis Saez",
+          "trainer": "Gregory D. Foley",
+          "mlOdds": "5-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 3,
+          "name": "Work",
+          "jockey": "Edwin A. Maldonado",
+          "trainer": "Doug F. O'Neill",
+          "mlOdds": "50-1",
+          "modelAdj": 0.95,
+          "notes": ""
+        },
+        {
+          "post": 4,
+          "name": "Secured Freedom",
+          "jockey": "John R. Velazquez",
+          "trainer": "Tim Yakteen",
+          "mlOdds": "20-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 5,
+          "name": "Stop the Car",
+          "jockey": "Tyler Gaffalione",
+          "trainer": "Brendan P. Walsh",
+          "mlOdds": "20-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 6,
+          "name": "Crude Velocity",
+          "jockey": "Florent Geroux",
+          "trainer": "Bob Baffert",
+          "mlOdds": "5-2",
+          "modelAdj": 1.05,
+          "notes": "Co-favorite. Baffert + Geroux. Lightly raced focal horse."
+        },
+        {
+          "post": 7,
+          "name": "Crown the Buckeye",
+          "jockey": "Flavien Prat",
+          "trainer": "Michael J. Maker",
+          "mlOdds": "6-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 8,
+          "name": "Creole Chrome",
+          "jockey": "Irad Ortiz, Jr.",
+          "trainer": "Joe Sharp",
+          "mlOdds": "8-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 9,
+          "name": "Lockstocknpharoah",
+          "jockey": "Edgar Morales",
+          "trainer": "Thomas Drury, Jr.",
+          "mlOdds": "20-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 10,
+          "name": "Great White",
+          "jockey": "Alex Achard",
+          "trainer": "John Ennis",
+          "mlOdds": "12-1",
+          "modelAdj": 0.85,
+          "notes": "WAIT — listed in Derby too. Likely scratched here if running Derby. Confirm at track."
+        },
+        {
+          "post": 11,
+          "name": "One More Freud",
+          "jockey": "Juan J. Hernandez",
+          "trainer": "Robert B. Hess, Jr.",
+          "mlOdds": "15-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 12,
+          "name": "Baytown Dreamer",
+          "jockey": "Danny Sheehy",
+          "trainer": "Paul McEntee",
+          "mlOdds": "50-1",
+          "modelAdj": 0.95,
+          "notes": ""
+        }
+      ],
+      "pace": "Mile is tactical. Englishman has both class and tactical speed. Crude Velocity also tactical. Likely a two-horse race up front.",
+      "expertPicks": [
+        {
+          "source": "VSiN",
+          "picks": [
+            "Englishman",
+            "Crude Velocity"
+          ]
+        }
+      ],
+      "notes": "Englishman vs Crude Velocity is the focal matchup. Both 5/2 to 3/1 — fair prices for both. Possible exacta box 1-6 ($4 for $2 base). If Englishman drifts to 7/2+ post-time, primary WIN. NOTE: Great White is also listed in the Derby at #21 (AE) — confirm scratch at track."
+    },
+    {
+      "raceNum": 9,
+      "postTime": "4:06 PM",
+      "name": "American Turf",
+      "grade": null,
+      "purse": 1000000,
+      "distance": "1 1/16M",
+      "surface": "Turf",
+      "age": "Open | 3 Year Olds",
+      "field": [
+        {
+          "post": 1,
+          "name": "Street Beast",
+          "jockey": "Luan Machado",
+          "trainer": "Ben Colebrook",
+          "mlOdds": "15-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 2,
+          "name": "Let's Be Frank",
+          "jockey": "Manuel Franco",
+          "trainer": "Michael W. McCarthy",
+          "mlOdds": "30-1",
+          "modelAdj": 1.1,
+          "notes": "Aragona TOP pick. Maiden on the way in. Inside post helps tendency to lug in. ML drifted to 30-1 = significant overlay if Aragona right."
+        },
+        {
+          "post": 3,
+          "name": "Blinging It Back",
+          "jockey": "Axel Concepcion",
+          "trainer": "Mark E. Casse",
+          "mlOdds": "30-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 4,
+          "name": "Stark Contrast",
+          "jockey": "Flavien Prat",
+          "trainer": "Michael W. McCarthy",
+          "mlOdds": "4-1",
+          "modelAdj": 1,
+          "notes": "Both analysts have him 3rd."
+        },
+        {
+          "post": 5,
+          "name": "Blackout Time",
+          "jockey": "Luis Saez",
+          "trainer": "Kenneth G. McPeek",
+          "mlOdds": "10-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 6,
+          "name": "Black Hornet",
+          "jockey": "Declan Cannon",
+          "trainer": "Brendan P. Walsh",
+          "mlOdds": "20-1",
+          "modelAdj": 1.2,
+          "notes": "Beer's TOP pick at 20-1. Perfect 2-for-2 turf. Bad-trip excuse for synthetic loss. MAJOR VALUE."
+        },
+        {
+          "post": 7,
+          "name": "Alpyland",
+          "jockey": "Javier Castellano",
+          "trainer": "Mark E. Casse",
+          "mlOdds": "8-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 8,
+          "name": "Greenwich Village",
+          "jockey": "Juan J. Hernandez",
+          "trainer": "Bob Baffert",
+          "mlOdds": "6-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 9,
+          "name": "Honey Dutch",
+          "jockey": "Tyler Gaffalione",
+          "trainer": "D. Whitworth Beckman",
+          "mlOdds": "12-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 10,
+          "name": "Vasy (IRE)",
+          "jockey": "John R. Velazquez",
+          "trainer": "Brendan P. Walsh",
+          "mlOdds": "10-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 11,
+          "name": "Steel Imperium",
+          "jockey": "Jaime A. Torres",
+          "trainer": "Caio Caramori",
+          "mlOdds": "30-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 12,
+          "name": "Remember Mamba",
+          "jockey": "Jose L. Ortiz",
+          "trainer": "Cherie DeVaux",
+          "mlOdds": "9-2",
+          "modelAdj": 1.05,
+          "notes": "Undefeated 3-for-3. Likely tote favorite. Drew bad post 12."
+        },
+        {
+          "post": 13,
+          "name": "Thousandsticks",
+          "jockey": "Joel Rosario",
+          "trainer": "Brian A. Lynch",
+          "mlOdds": "15-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 14,
+          "name": "Final Score",
+          "jockey": "Irad Ortiz, Jr.",
+          "trainer": "Todd A. Pletcher",
+          "mlOdds": "8-1",
+          "modelAdj": 1,
+          "notes": "Pletcher + Irad."
+        }
+      ],
+      "pace": "Big-field 14-horse turf chaos. Trips matter more than pace — wide draws hurt.",
+      "expertPicks": [
+        {
+          "source": "Aragona",
+          "picks": [
+            "Let's Be Frank",
+            "Remember Mamba",
+            "Stark Contrast"
+          ]
+        },
+        {
+          "source": "Beer",
+          "picks": [
+            "Black Hornet",
+            "Let's Be Frank",
+            "Stark Contrast"
+          ]
+        }
+      ],
+      "notes": "Big-field turf race = chaos. Black Hornet at 20-1 is the standout value (Beer #1). Let's Be Frank at 30-1 is a major overlay (Aragona #1) IF you trust the trip-troubled maiden angle. SUGGESTED: WIN on #6 Black Hornet at 15-1+. Trifecta key: #6 Black Hornet OVER #2/#4/#12 OVER #2/#4/#7/#8 — costs ~$24 for $1 base, swings hard if Black Hornet wins."
+    },
+    {
+      "raceNum": 10,
+      "postTime": "4:50 PM",
+      "name": "Churchill Downs Stakes",
+      "grade": null,
+      "purse": 1000000,
+      "distance": "7F",
+      "surface": "Dirt",
+      "age": "Open | 4 Year Olds And Up",
+      "field": [
+        {
+          "post": 1,
+          "name": "Disco Time",
+          "jockey": "John R. Velazquez",
+          "trainer": "Brad H. Cox",
+          "mlOdds": "6-1",
+          "modelAdj": 1,
+          "notes": "Cox entry."
+        },
+        {
+          "post": 2,
+          "name": "Cornucopian",
+          "jockey": "Juan J. Hernandez",
+          "trainer": "Bob Baffert",
+          "mlOdds": "7-2",
+          "modelAdj": 1,
+          "notes": "Baffert."
+        },
+        {
+          "post": 3,
+          "name": "Macho Music",
+          "jockey": "Javier Castellano",
+          "trainer": "Rohan G. Crichton",
+          "mlOdds": "30-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 4,
+          "name": "Hall of Fame",
+          "jockey": "Jose L. Ortiz",
+          "trainer": "Steven M. Asmussen",
+          "mlOdds": "20-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 5,
+          "name": "Disruptor",
+          "jockey": "Irad Ortiz, Jr.",
+          "trainer": "Todd A. Pletcher",
+          "mlOdds": "8-1",
+          "modelAdj": 1.1,
+          "notes": "Mailloux top pick. Stepped up in last two without reservation."
+        },
+        {
+          "post": 6,
+          "name": "Knightsbridge",
+          "jockey": "Junior Alvarado",
+          "trainer": "William I. Mott",
+          "mlOdds": "9-5",
+          "modelAdj": 0.9,
+          "notes": "ML favorite. Class jump questions per analysts. Likely underlay."
+        },
+        {
+          "post": 7,
+          "name": "Imagination",
+          "jockey": "Flavien Prat",
+          "trainer": "Bob Baffert",
+          "mlOdds": "6-1",
+          "modelAdj": 1.15,
+          "notes": "Buccola top pick. 7f distance is opposite of his sprint weakness — fits perfect."
+        },
+        {
+          "post": 8,
+          "name": "T O Elvis",
+          "jockey": "Ryusei Sakai",
+          "trainer": "Daisuke Takayanagi",
+          "mlOdds": "30-1",
+          "modelAdj": 0.95,
+          "notes": "Japan import."
+        },
+        {
+          "post": 9,
+          "name": "Crazy Mason",
+          "jockey": "Manuel Franco",
+          "trainer": "Gregory D. Sacco",
+          "mlOdds": "15-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 10,
+          "name": "Banishing",
+          "jockey": "Tyler Gaffalione",
+          "trainer": "David Jacobson",
+          "mlOdds": "12-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 11,
+          "name": "Point Dume",
+          "jockey": "Edwin Gonzalez",
+          "trainer": "Timothy C. Kreiser",
+          "mlOdds": "15-1",
+          "modelAdj": 1,
+          "notes": ""
+        }
+      ],
+      "pace": "7f is speed-favoring. Imagination has the speed and the distance fits. Cornucopian also tactical.",
+      "expertPicks": [
+        {
+          "source": "Buccola",
+          "picks": [
+            "Imagination"
+          ]
+        },
+        {
+          "source": "Mailloux",
+          "picks": [
+            "Disruptor"
+          ]
+        }
+      ],
+      "notes": "Knightsbridge is the likely overbet favorite. Imagination at 6-1 (Buccola top, distance fits) is the value angle. Disruptor at 8-1 (Mailloux top) is the other live one. SUGGESTED: WIN on #7 Imagination. Exacta key #7 OVER #5 Disruptor / #6 Knightsbridge / #2 Cornucopian."
+    },
+    {
+      "raceNum": 11,
+      "postTime": "5:39 PM",
+      "name": "Old Forester Bourbon Turf Classic",
+      "grade": null,
+      "purse": 1500000,
+      "distance": "1 1/8 m",
+      "surface": "Turf",
+      "age": "Open | 4 Year Olds And Up",
+      "field": [
+        {
+          "post": 1,
+          "name": "Corruption",
+          "jockey": "John R. Velazquez",
+          "trainer": "Mark E. Casse",
+          "mlOdds": "15-1",
+          "modelAdj": 1.2,
+          "notes": "Aragona TOP pick at 15-1. Won at Churchill at 9f before. Tactical edge with Velazquez. MAJOR VALUE."
+        },
+        {
+          "post": 2,
+          "name": "Dashman",
+          "jockey": "Joel Rosario",
+          "trainer": "Brian A. Lynch",
+          "mlOdds": "20-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 3,
+          "name": "Asbury Park (GB)",
+          "jockey": "Flavien Prat",
+          "trainer": "Chad C. Brown",
+          "mlOdds": "8-1",
+          "modelAdj": 1.1,
+          "notes": "Both analysts #2. Brown wins this race a lot."
+        },
+        {
+          "post": 4,
+          "name": "Program Trading (GB)",
+          "jockey": "Tyler Gaffalione",
+          "trainer": "Chad C. Brown",
+          "mlOdds": "4-1",
+          "modelAdj": 1.05,
+          "notes": "Brown's other entry — stronger market signal."
+        },
+        {
+          "post": 5,
+          "name": "Mercante",
+          "jockey": "Joseph D. Ramos",
+          "trainer": "Brian Knippenberg",
+          "mlOdds": "12-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 6,
+          "name": "Rhetorical",
+          "jockey": "Irad Ortiz, Jr.",
+          "trainer": "William Walden",
+          "mlOdds": "5-2",
+          "modelAdj": 0.9,
+          "notes": "Heavy ML favorite. Possible underlay if class-testing."
+        },
+        {
+          "post": 7,
+          "name": "Gold Phoenix (IRE)",
+          "jockey": "Hector Isaac Berrios",
+          "trainer": "Philip D'Amato",
+          "mlOdds": "10-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 8,
+          "name": "Astronomer",
+          "jockey": "Javier Castellano",
+          "trainer": "Simon Callaghan",
+          "mlOdds": "30-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 9,
+          "name": "Test Score",
+          "jockey": "Manuel Franco",
+          "trainer": "H. Graham Motion",
+          "mlOdds": "7-2",
+          "modelAdj": 1.15,
+          "notes": "Beer's top pick. 3-for-4 at 1 1/8 turf incl. G1 Belmont Derby and Pegasus WC Turf. CLASS horse."
+        }
+      ],
+      "pace": "1 1/8 turf is Test Score's wheelhouse. Class likely decides it; tactical turf race.",
+      "expertPicks": [
+        {
+          "source": "Aragona",
+          "picks": [
+            "Corruption",
+            "Asbury Park",
+            "Test Score"
+          ]
+        },
+        {
+          "source": "Beer",
+          "picks": [
+            "Test Score",
+            "Asbury Park",
+            "Make Me King"
+          ]
+        }
+      ],
+      "notes": "Test Score is the class horse but 7/2 isn't huge value. Corruption at 15-1 is the strong overlay if Velazquez gets a tactical trip. SUGGESTED: WIN on #1 Corruption (Aragona #1, value play) AND/OR small WIN on #9 Test Score (Beer #1, class). Trifecta: #9 Test Score OVER #1 Corruption / #3 Asbury Park / #10 Make Me King OVER same."
+    },
+    {
+      "raceNum": 12,
+      "postTime": "6:57 PM",
+      "name": "Kentucky Derby",
+      "grade": null,
+      "purse": 5000000,
+      "distance": "1 1/4M",
+      "surface": "Dirt",
+      "age": "Open | 3 Year Olds",
+      "field": [
+        {
+          "post": 1,
+          "name": "Renegade",
+          "jockey": "Irad Ortiz, Jr.",
+          "trainer": "Todd A. Pletcher",
+          "mlOdds": "4-1",
+          "modelAdj": 0.8,
+          "notes": "ML fav at 4-1. Won G1 Arkansas Derby. Closer. NEGATIVES: Post 1 (no winner since 1986). Pletcher 0-13 last Derby starters. Ortiz 0-9 lifetime CD. Demling fade. Even more overbet now."
+        },
+        {
+          "post": 2,
+          "name": "Albus",
+          "jockey": "Manuel Franco",
+          "trainer": "Riley Mott",
+          "mlOdds": "30-1",
+          "modelAdj": 0.95,
+          "notes": "Off-pace. Won G2 Wood Memorial. Riley Mott first Derby starter."
+        },
+        {
+          "post": 3,
+          "name": "Intrepido",
+          "jockey": "Hector Isaac Berrios",
+          "trainer": "Jeff Mullins",
+          "mlOdds": "50-1",
+          "modelAdj": 1.05,
+          "notes": "Stalker — fits pace setup. 4th Santa Anita Derby. Fastest 5f workout of field. Live longshot."
+        },
+        {
+          "post": 4,
+          "name": "Litmus Test",
+          "jockey": "Martin Garcia",
+          "trainer": "Bob Baffert",
+          "mlOdds": "50-1",
+          "modelAdj": 0.95,
+          "notes": "7th Arkansas Derby. Sired by 2016 Derby winner. Baffert always live but form underwhelming."
+        },
+        {
+          "post": 5,
+          "name": "Right to Party",
+          "jockey": "Christopher Elliott",
+          "trainer": "Kenneth G. McPeek",
+          "mlOdds": "30-1",
+          "modelAdj": 1,
+          "notes": "SCRATCHED."
+        },
+        {
+          "post": 6,
+          "name": "Commandment",
+          "jockey": "Luis Saez",
+          "trainer": "Brad H. Cox",
+          "mlOdds": "6-1",
+          "modelAdj": 1.15,
+          "notes": "Won G1 Florida Derby. Multiple 100+ Beyers (101). STALKER fits projected pace meltdown. Strong play."
+        },
+        {
+          "post": 7,
+          "name": "Danon Bourbon",
+          "jockey": "Atsuya Nishimura",
+          "trainer": "Manabu Ikezoe",
+          "mlOdds": "20-1",
+          "modelAdj": 1.15,
+          "notes": "Demling top pick. Japanese, romped Fukuryu Stakes by 10L. First U.S. start. Front-runner — could wire. 20-1 is real overlay."
+        },
+        {
+          "post": 8,
+          "name": "So Happy",
+          "jockey": "Mike E. Smith",
+          "trainer": "Mark Glatt",
+          "mlOdds": "15-1",
+          "modelAdj": 1.05,
+          "notes": "Won Santa Anita Derby. Stalker. Drifted from 6-1 to 15-1 ML — significant value if you respect SA Derby form."
+        },
+        {
+          "post": 9,
+          "name": "The Puma",
+          "jockey": "Javier Castellano",
+          "trainer": "Gustavo Delgado",
+          "mlOdds": "10-1",
+          "modelAdj": 1,
+          "notes": "SCRATCHED — leg swelling from skin infection."
+        },
+        {
+          "post": 11,
+          "name": "Incredibolt",
+          "jockey": "Jaime A. Torres",
+          "trainer": "Riley Mott",
+          "mlOdds": "20-1",
+          "modelAdj": 0.95,
+          "notes": "Won Virginia Derby. Tightened from 37-1 to 20-1 — market sees something. Pedigree-driven."
+        },
+        {
+          "post": 12,
+          "name": "Chief Wallabee",
+          "jockey": "Junior Alvarado",
+          "trainer": "William I. Mott",
+          "mlOdds": "8-1",
+          "modelAdj": 1.05,
+          "notes": "3rd Florida Derby behind Commandment. Pressing stalker. Only 3 races. Tightened to 8-1 — pace fit holds."
+        },
+        {
+          "post": 13,
+          "name": "Silent Tactic",
+          "jockey": "Cristian A. Torres",
+          "trainer": "Mark E. Casse",
+          "mlOdds": "20-1",
+          "modelAdj": 1,
+          "notes": "SCRATCHED — foot injury."
+        },
+        {
+          "post": 14,
+          "name": "Potente",
+          "jockey": "Juan J. Hernandez",
+          "trainer": "Bob Baffert",
+          "mlOdds": "20-1",
+          "modelAdj": 0.85,
+          "notes": "2nd Santa Anita Derby. SPEED — gets compromised by other front-runners."
+        },
+        {
+          "post": 15,
+          "name": "Emerging Market",
+          "jockey": "Flavien Prat",
+          "trainer": "Chad C. Brown",
+          "mlOdds": "15-1",
+          "modelAdj": 1.05,
+          "notes": "Won Louisiana Derby. Mid-pack. Only 2 career starts — extreme inexperience for Derby."
+        },
+        {
+          "post": 16,
+          "name": "Pavlovian",
+          "jockey": "Edwin A. Maldonado",
+          "trainer": "Doug F. O'Neill",
+          "mlOdds": "30-1",
+          "modelAdj": 0.8,
+          "notes": "Front-runner. SPEED in speed-laden field — likely cooked."
+        },
+        {
+          "post": 17,
+          "name": "Six Speed",
+          "jockey": "Brian Joseph Hernandez, Jr.",
+          "trainer": "Bhupat Seemar",
+          "mlOdds": "50-1",
+          "modelAdj": 0.8,
+          "notes": "Front-runner. SPEED in speed field — cooked."
+        },
+        {
+          "post": 18,
+          "name": "Further Ado",
+          "jockey": "John R. Velazquez",
+          "trainer": "Brad H. Cox",
+          "mlOdds": "6-1",
+          "modelAdj": 1.2,
+          "notes": "Won G1 Blue Grass with 106 Beyer (TOP figure, +5pts on next). Stalker — perfect pace fit. PRIMARY play. Tightened to 6-1."
+        },
+        {
+          "post": 19,
+          "name": "Golden Tempo",
+          "jockey": "Jose L. Ortiz",
+          "trainer": "Cherie DeVaux",
+          "mlOdds": "30-1",
+          "modelAdj": 1.05,
+          "notes": "Deep closer. 3rd Louisiana Derby. By Curlin (stamina). Lives if pace truly collapses — bomb potential for tri/super."
+        },
+        {
+          "post": 20,
+          "name": "Fulleffort",
+          "jockey": "Tyler Gaffalione",
+          "trainer": "Brad H. Cox",
+          "mlOdds": "20-1",
+          "modelAdj": 1,
+          "notes": "SCRATCHED — ankle injury."
+        },
+        {
+          "post": 21,
+          "name": "Great White",
+          "jockey": "Alex Achard",
+          "trainer": "John Ennis",
+          "mlOdds": "50-1",
+          "modelAdj": 0.95,
+          "notes": "5th Blue Grass. 17.2 hands. Underbet on appearance — but form says no. Also entered Pat Day Mile.",
+          "scratched": true
+        },
+        {
+          "post": 22,
+          "name": "Ocelli",
+          "jockey": "Joseph D. Ramos",
+          "trainer": "D. Whitworth Beckman",
+          "mlOdds": "50-1",
+          "modelAdj": 0.7,
+          "notes": "MAIDEN (0-for-6). Should not be in this race. Pure dart.",
+          "scratched": true
+        },
+        {
+          "post": 23,
+          "name": "Robusta",
+          "jockey": "Emisael Jaramillo",
+          "trainer": "Doug F. O'Neill",
+          "mlOdds": "50-1",
+          "modelAdj": 0.85,
+          "notes": "Front-runner. 7th Santa Anita Derby. O'Neill won Derby twice but speed cooked here.",
+          "scratched": true
+        },
+        {
+          "post": 24,
+          "name": "Corona de Oro",
+          "jockey": "Brian Joseph Hernandez, Jr.",
+          "trainer": "Dallas Stewart",
+          "mlOdds": "50-1",
+          "modelAdj": 1,
+          "notes": "Also-eligible — only runs if more scratches. Stewart longshot specialist.",
+          "scratched": true
+        }
+      ],
+      "pace": "FAST PACE PROJECTED. Multiple front-runners (Pavlovian, Six Speed, Robusta, Danon Bourbon, Potente) likely produce ~45.5 half mile. Historically benefits stalkers/mid-pack closers — Further Ado, Commandment, Chief Wallabee profile best.",
+      "expertPicks": [
+        {
+          "source": "Demling",
+          "picks": [
+            "Danon Bourbon"
+          ],
+          "fades": [
+            "Renegade"
+          ]
+        },
+        {
+          "source": "Top Beyers",
+          "picks": [
+            "Further Ado (106)",
+            "Commandment (101)"
+          ]
+        },
+        {
+          "source": "Pace fit",
+          "picks": [
+            "Further Ado",
+            "Commandment",
+            "Intrepido",
+            "Chief Wallabee"
+          ]
+        }
+      ],
+      "notes": "PRIMARY: Further Ado (#18) — top Beyer + perfect pace fit. SECONDARY: Commandment (#6) — figures + pace fit. VALUE OVERLAYS: Danon Bourbon (#7) at 20-1, So Happy (#8) at 15-1, Chief Wallabee (#12) at 8-1. SUGGESTED TICKETS: (a) WIN on #18 Further Ado at 6-1+. (b) WIN on #7 Danon Bourbon and/or #8 So Happy as overlay plays. (c) $2 Exacta box Further Ado/Commandment ($4). (d) $1 Trifecta key: #18 Further Ado OVER #6 Commandment / #12 Chief Wallabee / #7 Danon Bourbon / #3 Intrepido OVER same 4 = $24, pays huge if Further Ado wins. (e) Optional bomb: $2 Win on Golden Tempo (#19) or Intrepido (#3) as pace-collapse plays. AVOID: Renegade (overbet rail), Ocelli (#22 maiden), pure speed bombs (#16/#17/#23)."
+    },
+    {
+      "raceNum": 13,
+      "postTime": "8:00 PM",
+      "name": "Allowance Optional Claiming",
+      "grade": null,
+      "purse": 127000,
+      "distance": "6 1/2F",
+      "surface": "Dirt",
+      "age": "Open | 3 Year Olds",
+      "field": [
+        {
+          "post": 1,
+          "name": "Small Town",
+          "jockey": "Flavien Prat",
+          "trainer": "Michael W. McCarthy",
+          "mlOdds": "8-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 2,
+          "name": "Heartily",
+          "jockey": "John R. Velazquez",
+          "trainer": "Wesley A. Ward",
+          "mlOdds": "12-1",
+          "modelAdj": 1.05,
+          "notes": "Ward is sprint specialist."
+        },
+        {
+          "post": 3,
+          "name": "Red Lad",
+          "jockey": "Danny Sheehy",
+          "trainer": "Paul McEntee",
+          "mlOdds": "30-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 4,
+          "name": "Ring Curl",
+          "jockey": "William Antongeorgi III",
+          "trainer": "Troy S. Wismer",
+          "mlOdds": "15-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 5,
+          "name": "Hulkamania",
+          "jockey": "Tyler Gaffalione",
+          "trainer": "D. Whitworth Beckman",
+          "mlOdds": "8-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 6,
+          "name": "Cruisin Chuck",
+          "jockey": "Edgar Morales",
+          "trainer": "Gregory D. Foley",
+          "mlOdds": "15-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 7,
+          "name": "Sav'n Money",
+          "jockey": "Brian Joseph Hernandez, Jr.",
+          "trainer": "Wayne M. Catalano",
+          "mlOdds": "20-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 8,
+          "name": "Gilded Bandit",
+          "jockey": "Junior Alvarado",
+          "trainer": "William I. Mott",
+          "mlOdds": "3-1",
+          "modelAdj": 1,
+          "notes": "Mott + Alvarado."
+        },
+        {
+          "post": 9,
+          "name": "Thunder Buck",
+          "jockey": "Luis Saez",
+          "trainer": "Brendan P. Walsh",
+          "mlOdds": "15-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 10,
+          "name": "Buetane",
+          "jockey": "Irad Ortiz, Jr.",
+          "trainer": "Bob Baffert",
+          "mlOdds": "5-2",
+          "modelAdj": 1.05,
+          "notes": "Baffert + Irad. ML favorite."
+        },
+        {
+          "post": 11,
+          "name": "Noble Affair",
+          "jockey": "Jose L. Ortiz",
+          "trainer": "Steven M. Asmussen",
+          "mlOdds": "9-2",
+          "modelAdj": 1,
+          "notes": ""
+        }
+      ],
+      "pace": "6.5f sprint. Speed-favoring distance.",
+      "expertPicks": [],
+      "notes": "Post-Derby allowance. Buetane (Baffert/Irad) and Gilded Bandit (Mott/Alvarado) the morning-line standouts. Stay disciplined after the Derby payout (or non-payout) — don't chase."
+    },
+    {
+      "raceNum": 14,
+      "postTime": "8:33 PM",
+      "name": "Maiden Special Weight",
+      "grade": null,
+      "purse": 120000,
+      "distance": "7F",
+      "surface": "Dirt",
+      "age": "Open | 3 Year Olds And Up",
+      "field": [
+        {
+          "post": 1,
+          "name": "Boylston",
+          "jockey": "John R. Velazquez",
+          "trainer": "William Walden",
+          "mlOdds": "10-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 2,
+          "name": "Bestball",
+          "jockey": "James Graham",
+          "trainer": "Destin G. Heath",
+          "mlOdds": "30-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 3,
+          "name": "Interrogator",
+          "jockey": "Irad Ortiz, Jr.",
+          "trainer": "Steven M. Asmussen",
+          "mlOdds": "6-1",
+          "modelAdj": 1.05,
+          "notes": "Asmussen + Irad."
+        },
+        {
+          "post": 4,
+          "name": "Sleeping Warrior",
+          "jockey": "Gerardo Corrales",
+          "trainer": "Philip A. Bauer",
+          "mlOdds": "15-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 5,
+          "name": "Don's Winner",
+          "jockey": "Jose L. Ortiz",
+          "trainer": "Joe Sharp",
+          "mlOdds": "8-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 6,
+          "name": "Prize Pick",
+          "jockey": "Joel Rosario",
+          "trainer": "Brian A. Lynch",
+          "mlOdds": "12-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 7,
+          "name": "Act of Parliament",
+          "jockey": "Luis Saez",
+          "trainer": "Brad H. Cox",
+          "mlOdds": "6-1",
+          "modelAdj": 1.05,
+          "notes": "Cox MSW."
+        },
+        {
+          "post": 8,
+          "name": "Find No Fault",
+          "jockey": "Tyler Gaffalione",
+          "trainer": "Dale L. Romans",
+          "mlOdds": "9-2",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 9,
+          "name": "Big Jake",
+          "jockey": "Flavien Prat",
+          "trainer": "Bob Baffert",
+          "mlOdds": "8-1",
+          "modelAdj": 1.05,
+          "notes": "Baffert + Prat."
+        },
+        {
+          "post": 10,
+          "name": "Chianti Town",
+          "jockey": "Axel Concepcion",
+          "trainer": "Dallas Stewart",
+          "mlOdds": "20-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 11,
+          "name": "Great Moment",
+          "jockey": "Edgar Morales",
+          "trainer": "Gregory D. Foley",
+          "mlOdds": "12-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 12,
+          "name": "Big Braciole",
+          "jockey": "Gabriel Saez",
+          "trainer": "Kent Knudsen",
+          "mlOdds": "30-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 13,
+          "name": "Noble Anthem",
+          "jockey": "Javier Castellano",
+          "trainer": "Ron Moquett",
+          "mlOdds": "20-1",
+          "modelAdj": 1,
+          "notes": ""
+        },
+        {
+          "post": 14,
+          "name": "Brave Pilot",
+          "jockey": "Juan J. Hernandez",
+          "trainer": "Michael W. McCarthy",
+          "mlOdds": "8-1",
+          "modelAdj": 1,
+          "notes": ""
+        }
+      ],
+      "pace": "Full-field 14-horse maiden sprint at 7f.",
+      "expertPicks": [],
+      "notes": "Final race of the day. Big-field maiden = lottery. Pass unless you've handicapped from the program. Discipline > sunk-cost fallacy."
+    }
+  ]
+};
+
+// ============================================================
+// STATE
+// ============================================================
+const STATE_KEY = "derby2026_state_v1";
+const DEFAULT_STATE = {
+  bankroll: 500,
+  kellyMult: 0.25,
+  minEdgePct: 5,
+  maxStakePerRace: 100,
+  liveOdds: {},      // { "12-15": 7.5 }   raceNum-postNum -> decimal odds
+  customHorses: {},  // { 1: [{post, name, ...}] }
+  scratches: {},     // { "12-7": true } user-marked scratches (overrides RACE_DATA)
+  bets: [],          // { id, raceNum, type, horses, stake, odds, status: 'pending'|'won'|'lost', payout }
+  activeRace: 12     // start on Derby
+};
+
+function isScratched(raceNum, horse) {
+  if (horse.scratched) return true;
+  return !!STATE.scratches[`${raceNum}-${horse.post}`];
+}
+
+let STATE = loadState();
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STATE_KEY);
+    if (raw) return Object.assign({}, DEFAULT_STATE, JSON.parse(raw));
+  } catch (e) {}
+  return JSON.parse(JSON.stringify(DEFAULT_STATE));
+}
+function saveState() {
+  try { localStorage.setItem(STATE_KEY, JSON.stringify(STATE)); } catch (e) {}
+}
+
+// ============================================================
+// MODEL
+// ============================================================
+function parseOdds(str) {
+  // accepts "5-1", "5/1", "9-5", "2.50", "5"
+  if (typeof str === 'number') return str + 1; // assume decimal-1?  no — assume fractional like "5"
+  if (!str || str === 'TBD') return null;
+  const s = String(str).trim();
+  if (s === 'SCR' || s === 'scratched') return null;
+  // fractional
+  let m = s.match(/^(\d+(?:\.\d+)?)[-\/](\d+(?:\.\d+)?)$/);
+  if (m) {
+    const num = parseFloat(m[1]), den = parseFloat(m[2]);
+    if (den === 0) return null;
+    return num / den + 1; // decimal odds (incl. stake)
+  }
+  // decimal
+  const f = parseFloat(s);
+  if (!isNaN(f)) {
+    if (f >= 1.01) return f;       // already decimal odds
+    return f + 1;                   // treat as fractional X-1 e.g. "0.5" -> 1.5
+  }
+  return null;
+}
+
+function decimalToFractional(dec) {
+  if (!dec || dec <= 1) return "—";
+  const fr = dec - 1;
+  if (fr >= 1) return `${fr.toFixed(fr < 10 ? 1 : 0)}-1`;
+  // fr < 1, e.g. 0.4 = 2/5
+  // try simple fractions
+  for (const den of [2,3,4,5]) {
+    const num = Math.round(fr * den);
+    if (Math.abs(fr - num/den) < 0.05 && num > 0) return `${num}-${den}`;
+  }
+  return `${fr.toFixed(2)}-1`;
+}
+
+function getAllHorses(race) {
+  const custom = STATE.customHorses[race.raceNum] || [];
+  return [...race.field, ...custom];
+}
+
+function getRaceHorseKey(raceNum, post) { return `${raceNum}-${post}`; }
+
+function getEffectiveOdds(raceNum, horse) {
+  // 1. Live odds entered
+  const k = getRaceHorseKey(raceNum, horse.post);
+  if (STATE.liveOdds[k] != null) return STATE.liveOdds[k];
+  // 2. Morning line
+  return parseOdds(horse.mlOdds);
+}
+
+function modelProbabilities(race) {
+  const horses = getAllHorses(race).filter(h => !isScratched(race.raceNum, h));
+  if (horses.length === 0) return new Map();
+  const raw = horses.map(h => {
+    const dec = parseOdds(h.mlOdds);
+    if (!dec) return 0;
+    return (1 / dec) * (h.modelAdj ?? 1.0);
+  });
+  const sum = raw.reduce((a,b) => a+b, 0) || 1;
+  const probs = raw.map(r => r / sum);
+  const map = new Map();
+  horses.forEach((h, i) => map.set(getRaceHorseKey(race.raceNum, h.post), probs[i]));
+  return map;
+}
+
+function evaluateRace(race) {
+  const probs = modelProbabilities(race);
+  const horses = getAllHorses(race);
+  return horses.map(h => {
+    const key = getRaceHorseKey(race.raceNum, h.post);
+    const prob = probs.get(key) ?? 0;
+    const dec = getEffectiveOdds(race.raceNum, h);
+    const ev = (dec && prob) ? prob * dec - 1 : null;
+    let kelly = 0;
+    if (dec && prob && dec > 1) {
+      const k = (prob * dec - 1) / (dec - 1);
+      kelly = Math.max(0, k);
+    }
+    return { horse: h, key, prob, dec, ev, kelly, scratched: !!isScratched(race.raceNum, h) };
+  });
+}
+
+function recommendedBets(race) {
+  const evals = evaluateRace(race).filter(e => !e.scratched && e.ev != null);
+  // Suppress recs if field is too small — model probabilities would be inflated
+  if (evals.length < 5) return [];
+  if (!evals.length) return [];
+  evals.sort((a,b) => b.ev - a.ev);
+  const recs = [];
+  const minEdge = STATE.minEdgePct / 100;
+  const maxStake = STATE.maxStakePerRace > 0 ? STATE.maxStakePerRace : Infinity;
+
+  // 1. Win recommendations: top 1-2 horses with positive edge
+  for (const e of evals.slice(0, 3)) {
+    if (e.ev > minEdge) {
+      const fullKelly = STATE.bankroll * e.kelly;
+      const stake = Math.min(maxStake, fullKelly * STATE.kellyMult);
+      const stakeRounded = Math.max(2, Math.round(stake / 2) * 2);
+      if (stakeRounded >= 2) {
+        recs.push({
+          type: 'WIN',
+          horses: [e.horse],
+          stake: stakeRounded,
+          odds: e.dec,
+          edgePct: e.ev * 100,
+          modelProb: e.prob,
+          rationale: `Model ${(e.prob*100).toFixed(0)}% vs market ${((1/e.dec)*100).toFixed(0)}% → +${(e.ev*100).toFixed(0)}% edge. Kelly ${(e.kelly*100).toFixed(0)}% · ${(STATE.kellyMult*100).toFixed(0)}% multiplier.`
+        });
+      }
+    }
+  }
+
+  // 2. Exacta box of top 2 if both have edge AND combined model prob is meaningful
+  if (evals.length >= 2 && evals[0].ev > minEdge && evals[1].ev > minEdge / 2) {
+    const stake = Math.min(maxStake, Math.max(4, Math.round(STATE.bankroll * 0.01 / 2) * 2));
+    recs.push({
+      type: 'EXACTA BOX',
+      horses: [evals[0].horse, evals[1].horse],
+      stake: stake,
+      odds: null,
+      edgePct: null,
+      modelProb: null,
+      rationale: `Both top picks show edge — boxing covers either order. Total cost = $${stake} (2× $${stake/2}).`
+    });
+  }
+
+  // 3. Trifecta key: if top horse has strong edge AND there are 3+ live horses
+  if (evals.length >= 4 && evals[0].ev > 0.10) {
+    const key = evals[0].horse;
+    const second = evals.slice(1, 4).map(e => e.horse);
+    const third = evals.slice(1, 5).map(e => e.horse);
+    const ticketCost = 1 * second.length * (third.length - 1); // $1 base, key x N x (N-1) since same horse
+    const stake = Math.min(maxStake, Math.max(ticketCost, ticketCost));
+    recs.push({
+      type: 'TRIFECTA KEY ($1)',
+      horses: [key, ...second.slice(0,3)],
+      stake: stake,
+      odds: null,
+      edgePct: null,
+      modelProb: null,
+      rationale: `Key #${key.post} ${key.name} OVER ${second.map(h=>'#'+h.post).join('/')} OVER same. $1 base × ${second.length} × ${third.length-1} = $${ticketCost}.`
+    });
+  }
+
+  return recs;
+}
+
+// ============================================================
+// RENDER
+// ============================================================
+const $ = sel => document.querySelector(sel);
+const $$ = sel => document.querySelectorAll(sel);
+
+function renderTabs() {
+  const tabs = RACE_DATA.races.map(r => {
+    const active = r.raceNum === STATE.activeRace;
+    const hasBet = STATE.bets.some(b => b.raceNum === r.raceNum);
+    return `<div class="race-pill ${active?'active':''} ${hasBet?'has-bet':''}" onclick="selectRace(${r.raceNum})">
+      <span class="num">R${r.raceNum}</span>
+      <span class="stake">${r.postTime.replace(' ET','').replace(/AM|PM/i,m=>m.toLowerCase())}</span>
+    </div>`;
+  }).join('');
+  $('#raceTabs').innerHTML = tabs;
+}
+
+function renderBank() {
+  const wagered = STATE.bets.filter(b=>b.status!=='deleted').reduce((s,b)=>s+b.stake, 0);
+  const returned = STATE.bets.filter(b=>b.status==='won').reduce((s,b)=>s+(b.payout||0), 0);
+  const settledBets = STATE.bets.filter(b=>b.status==='won' || b.status==='lost');
+  const settledWagered = settledBets.reduce((s,b)=>s+b.stake, 0);
+  const settledReturned = settledBets.filter(b=>b.status==='won').reduce((s,b)=>s+(b.payout||0), 0);
+  const pl = settledReturned - settledWagered;
+  $('#bk-bank').textContent = `$${(STATE.bankroll - wagered + returned).toFixed(0)}`;
+  $('#bk-wagered').textContent = `$${wagered.toFixed(0)}`;
+  $('#bk-returned').textContent = `$${returned.toFixed(0)}`;
+  const plEl = $('#bk-pl');
+  plEl.textContent = (pl>=0?'+':'-') + '$' + Math.abs(pl).toFixed(0);
+  plEl.className = 'val ' + (pl>0?'pos':pl<0?'neg':'');
+}
+
+function renderRace() {
+  const race = RACE_DATA.races.find(r => r.raceNum === STATE.activeRace);
+  if (!race) { $('#raceContent').innerHTML = ''; return; }
+  const horses = getAllHorses(race);
+  const evals = evaluateRace(race);
+  const evalMap = new Map(evals.map(e => [e.key, e]));
+  const recs = recommendedBets(race);
+
+  // Header
+  let gradeBadge = '';
+  if (race.grade) {
+    const cls = race.grade.toLowerCase().replace(/[^a-z0-9]/g,'');
+    gradeBadge = `<span class="badge ${cls}">${race.grade}</span>`;
+  }
+
+  // Horses table
+  let horsesHtml = '';
+  if (horses.length === 0) {
+    horsesHtml = `<div style="padding:20px;text-align:center;color:var(--muted);font-size:13px;">
+      No horses entered yet.<br>Add horses below as you see them in your program.
+    </div>`;
+  } else {
+    horsesHtml = `<div style="overflow-x:auto;">
+      <table class="horses">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Horse / Conn.</th>
+            <th>ML</th>
+            <th>Live</th>
+            <th>Mod%</th>
+            <th>Edge</th>
+            <th>Kelly $</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${horses.map(h => renderHorseRow(race, h, evalMap.get(getRaceHorseKey(race.raceNum, h.post)))).join('')}
+        </tbody>
+      </table>
+    </div>`;
+  }
+
+  // Recs
+  let recsHtml = '';
+  if (recs.length) {
+    recsHtml = `<div class="recs">
+      <h3>📊 Recommended bets (model + your live odds)</h3>
+      ${recs.map((r, i) => `
+        <div class="rec-item">
+          <div class="rec-info">
+            <b>${r.type}: ${r.horses.map(h => `#${h.post} ${h.name}`).join(' / ')}</b>
+            <small>${r.rationale}</small>
+          </div>
+          <button class="rec-bet-btn" onclick='addBetFromRec(${race.raceNum}, ${i})'>+ $${r.stake}</button>
+        </div>
+      `).join('')}
+    </div>`;
+  } else {
+    const liveCount = horses.filter(h => !isScratched(race.raceNum, h)).length;
+    const reason = liveCount < 5
+      ? `Add at least 5 horses to enable model recommendations (currently ${liveCount}).`
+      : `No positive-edge bets at current odds. Either pass this race or wait for line moves.`;
+    recsHtml = `<div class="recs empty">
+      <h3>📊 Recommendations</h3>
+      <p>${reason}</p>
+    </div>`;
+  }
+
+  // Bet entry & log for this race
+  const raceBets = STATE.bets.filter(b => b.raceNum === race.raceNum && b.status !== 'deleted');
+  let betsHtml = '';
+  if (raceBets.length) {
+    betsHtml = raceBets.map((b, idx) => {
+      const tag = b.status === 'won' ? `<span class="bet-result-tag won">WON +$${(b.payout-b.stake).toFixed(0)}</span>`
+                : b.status === 'lost' ? `<span class="bet-result-tag lost">LOST</span>` : '';
+      const horseDesc = b.horseDesc || '';
+      return `<div class="bet-list-item">
+        <div class="desc">${b.type} — ${horseDesc} ${tag}<small>${new Date(b.ts).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</small></div>
+        <div class="stake-amt">$${b.stake.toFixed(0)}</div>
+        <div class="actions">
+          ${b.status==='pending' ? `
+            <button class="mini-btn win" onclick="markBet('${b.id}', 'won')">W</button>
+            <button class="mini-btn loss" onclick="markBet('${b.id}', 'lost')">L</button>` : ''}
+          <button class="mini-btn del" onclick="deleteBet('${b.id}')">✕</button>
+        </div>
+      </div>`;
+    }).join('');
+  } else {
+    betsHtml = `<div style="font-size:12px;color:var(--muted);padding:6px 0;">No bets yet for this race.</div>`;
+  }
+
+  // Add-horse form (always available)
+  const addHorseHtml = `
+    <div class="toggle-row" onclick="this.classList.toggle('collapsed')"><span>+ Add horse to this race</span><span class="chev">▾</span></div>
+    <div class="collapse-target">
+      <div class="add-horse-form">
+        <input id="ah-post" placeholder="#" inputmode="numeric" />
+        <input id="ah-name" placeholder="Horse name" />
+        <input id="ah-ml" placeholder="ML (e.g. 5-1)" />
+        <input id="ah-trainer" placeholder="Trainer (opt)" />
+        <button onclick="addCustomHorse(${race.raceNum})">Add to race</button>
+      </div>
+    </div>`;
+
+  // Manual bet entry (always available)
+  const horsesForSelect = horses.filter(h => !isScratched(race.raceNum, h));
+  const horseOpts = horsesForSelect.map(h => `<option value="${h.post}">#${h.post} ${h.name}</option>`).join('');
+  const manualBetHtml = `
+    <div class="bet-section">
+      <h3>Log a wager</h3>
+      <div class="bet-form">
+        <select id="bf-type-${race.raceNum}">
+          <option value="WIN">Win</option>
+          <option value="PLACE">Place</option>
+          <option value="SHOW">Show</option>
+          <option value="EXACTA">Exacta (in order)</option>
+          <option value="EXACTA BOX">Exacta box</option>
+          <option value="TRIFECTA">Trifecta (in order)</option>
+          <option value="TRIFECTA BOX">Trifecta box</option>
+          <option value="TRIFECTA KEY">Trifecta key</option>
+          <option value="OTHER">Other</option>
+        </select>
+        <input id="bf-horses-${race.raceNum}" placeholder="Horses e.g. 15 or 15/5" list="horsesList${race.raceNum}" />
+        <datalist id="horsesList${race.raceNum}">${horseOpts}</datalist>
+        <input id="bf-stake-${race.raceNum}" type="number" inputmode="decimal" placeholder="Stake $" />
+        <button onclick="addManualBet(${race.raceNum})">Log</button>
+      </div>
+      <div class="bet-list">${betsHtml}</div>
+    </div>`;
+
+  // Notes
+  const expertHtml = race.expertPicks && race.expertPicks.length
+    ? `<div style="margin-top:6px;"><b style="color:var(--rose-dk);font-size:12px;">Experts:</b> ${race.expertPicks.map(ep => `${ep.source}: ${ep.picks.join(' → ')}${ep.fades?` (fade: ${ep.fades.join(', ')})`:''}`).join(' · ')}</div>`
+    : '';
+
+  $('#raceContent').innerHTML = `
+    <div class="card">
+      <div class="card-head">
+        <h2>R${race.raceNum} — ${race.name} ${gradeBadge}</h2>
+        <div class="race-meta">
+          <b>${race.postTime}</b> · ${race.distance} · ${race.surface} · ${race.age || ''}
+          ${race.purse ? ` · $${(race.purse/1000).toFixed(0)}K` : ''}
+        </div>
+      </div>
+      ${race.pace ? `<div class="pace-note"><b>Pace:</b> ${race.pace}</div>` : ''}
+      ${horses.length > 0 && horses.filter(h=>!isScratched(race.raceNum, h)).length < 5 ? `<div class="pace-note" style="background:#fef3c7;color:#78350f;"><b>⚠️ Partial field (${horses.filter(h=>!isScratched(race.raceNum, h)).length} horses).</b> Model probabilities will be inflated until full field is entered. Use the "Add horse" form below.</div>` : ''}
+      ${horsesHtml}
+      ${recsHtml}
+      ${manualBetHtml}
+      ${addHorseHtml}
+      ${race.notes ? `<div class="notes-box"><b>Strategy:</b> ${race.notes}${expertHtml}</div>` : ''}
+    </div>
+  `;
+}
+
+function renderHorseRow(race, h, ev) {
+  const key = getRaceHorseKey(race.raceNum, h.post);
+  const liveOdds = STATE.liveOdds[key];
+  const liveStr = liveOdds != null ? decimalToFractional(liveOdds) : '';
+  const probPct = ev && ev.prob ? (ev.prob * 100).toFixed(0) + '%' : '—';
+  const evClass = !ev || ev.ev == null ? 'zero' : (ev.ev > 0 ? 'pos' : 'neg');
+  const evText = ev && ev.ev != null ? ((ev.ev > 0 ? '+' : '') + (ev.ev * 100).toFixed(0) + '%') : '—';
+  const kellyDollar = ev && ev.kelly ? Math.round(STATE.bankroll * ev.kelly * STATE.kellyMult) : 0;
+  const kellyClass = kellyDollar >= 5 ? '' : 'zero';
+  const trainerLine = h.trainer && h.trainer !== 'TBD' ? h.trainer : '';
+  const jockeyLine = h.jockey && h.jockey !== 'TBD' ? h.jockey : '';
+  const subLine = [jockeyLine, trainerLine].filter(Boolean).join(' / ');
+  const scr = isScratched(race.raceNum, h);
+  const userScr = !!STATE.scratches[key];
+  return `<tr class="horse-row ${scr?'scratched':''}">
+    <td><span class="post-num">${h.post}</span></td>
+    <td class="name">${h.name}${subLine?`<small>${subLine}</small>`:''}
+      <button class="scr-btn ${userScr?'on':''}" onclick="toggleScratch(${race.raceNum},'${h.post}')" title="Mark as scratched">${userScr?'SCR':'scr?'}</button>
+    </td>
+    <td>${h.mlOdds || '—'}</td>
+    <td><input class="odds-input" type="text" inputmode="decimal" placeholder="${h.mlOdds||''}" value="${liveStr}" onchange="setLiveOdds(${race.raceNum},'${h.post}',this.value)" ${scr?'disabled':''}/></td>
+    <td><span class="pct">${probPct}</span></td>
+    <td><span class="edge ${evClass}">${evText}</span></td>
+    <td><span class="stake-pill ${kellyClass}">${kellyDollar?`$${kellyDollar}`:'—'}</span></td>
+  </tr>`;
+}
+
+// ============================================================
+// EVENT HANDLERS
+// ============================================================
+function selectRace(num) {
+  STATE.activeRace = num;
+  saveState();
+  renderTabs();
+  renderRace();
+  window.scrollTo({top: 0, behavior: 'instant'});
+}
+
+function toggleScratch(raceNum, post) {
+  const key = `${raceNum}-${post}`;
+  if (STATE.scratches[key]) delete STATE.scratches[key];
+  else STATE.scratches[key] = true;
+  saveState();
+  renderRace();
+}
+
+function setLiveOdds(raceNum, post, val) {
+  const key = `${raceNum}-${post}`;
+  const dec = parseOdds(val);
+  if (dec == null || val.trim() === '') {
+    delete STATE.liveOdds[key];
+  } else {
+    STATE.liveOdds[key] = dec;
+  }
+  saveState();
+  renderRace();  // recompute everything
+}
+
+function addCustomHorse(raceNum) {
+  const post = $('#ah-post').value.trim();
+  const name = $('#ah-name').value.trim();
+  const ml = $('#ah-ml').value.trim() || '20-1';
+  const trainer = $('#ah-trainer').value.trim();
+  if (!post || !name) { alert('Need post # and name'); return; }
+  if (!STATE.customHorses[raceNum]) STATE.customHorses[raceNum] = [];
+  STATE.customHorses[raceNum].push({ post, name, jockey: 'TBD', trainer, mlOdds: ml, modelAdj: 1.0, notes: 'Added at track.' });
+  saveState();
+  renderRace();
+}
+
+function addBetFromRec(raceNum, recIdx) {
+  const race = RACE_DATA.races.find(r => r.raceNum === raceNum);
+  const recs = recommendedBets(race);
+  const rec = recs[recIdx];
+  if (!rec) return;
+  const horseDesc = rec.horses.map(h => `#${h.post} ${h.name}`).join(rec.type.includes('BOX')?' & ':' over ');
+  STATE.bets.push({
+    id: 'b' + Date.now() + Math.random().toString(36).slice(2,5),
+    raceNum, type: rec.type, horseDesc,
+    stake: rec.stake, odds: rec.odds, status: 'pending',
+    ts: Date.now()
+  });
+  saveState();
+  renderTabs();
+  renderRace();
+  renderBank();
+}
+
+function addManualBet(raceNum) {
+  const type = $(`#bf-type-${raceNum}`).value;
+  const horsesStr = $(`#bf-horses-${raceNum}`).value.trim();
+  const stake = parseFloat($(`#bf-stake-${raceNum}`).value);
+  if (!horsesStr || !stake || stake <= 0) { alert('Need horses and stake'); return; }
+  const race = RACE_DATA.races.find(r => r.raceNum === raceNum);
+  const all = getAllHorses(race);
+  const lookup = {};
+  all.forEach(h => lookup[String(h.post)] = h);
+  const tokens = horsesStr.split(/[\s,/]+/).filter(Boolean);
+  const horseDesc = tokens.map(t => lookup[t] ? `#${t} ${lookup[t].name}` : `#${t}`).join(type.includes('BOX')?' & ':' / ');
+  STATE.bets.push({
+    id: 'b' + Date.now() + Math.random().toString(36).slice(2,5),
+    raceNum, type, horseDesc,
+    stake, status: 'pending',
+    ts: Date.now()
+  });
+  $(`#bf-horses-${raceNum}`).value = '';
+  $(`#bf-stake-${raceNum}`).value = '';
+  saveState();
+  renderTabs();
+  renderRace();
+  renderBank();
+}
+
+function markBet(id, status) {
+  const bet = STATE.bets.find(b => b.id === id);
+  if (!bet) return;
+  if (status === 'won') {
+    const payoutStr = prompt(`Payout for $${bet.stake} bet (total returned, including stake)?`, '');
+    if (payoutStr == null) return;
+    const payout = parseFloat(payoutStr);
+    if (isNaN(payout) || payout < 0) return;
+    bet.payout = payout;
+  } else {
+    bet.payout = 0;
+  }
+  bet.status = status;
+  saveState();
+  renderTabs();
+  renderRace();
+  renderBank();
+}
+
+function deleteBet(id) {
+  if (!confirm('Delete this wager?')) return;
+  STATE.bets = STATE.bets.filter(b => b.id !== id);
+  saveState();
+  renderTabs();
+  renderRace();
+  renderBank();
+}
+
+function toggleDrawer() {
+  $('#drawer').classList.toggle('open');
+  $('#drawerBack').classList.toggle('open');
+  if ($('#drawer').classList.contains('open')) {
+    $('#setBankroll').value = STATE.bankroll;
+    $('#setKelly').value = STATE.kellyMult;
+    $('#setMinEdge').value = STATE.minEdgePct;
+    $('#setMaxStake').value = STATE.maxStakePerRace;
+  }
+}
+
+function saveSettings() {
+  const b = parseFloat($('#setBankroll').value);
+  const k = parseFloat($('#setKelly').value);
+  const e = parseFloat($('#setMinEdge').value);
+  const m = parseFloat($('#setMaxStake').value);
+  if (b > 0) STATE.bankroll = b;
+  if (k > 0 && k <= 1) STATE.kellyMult = k;
+  if (e >= 0) STATE.minEdgePct = e;
+  if (m >= 0) STATE.maxStakePerRace = m;
+  saveState();
+  toggleDrawer();
+  renderRace();
+  renderBank();
+}
+
+function resetAll() {
+  if (!confirm('Reset all bets, live odds, and custom horses? Settings will keep.')) return;
+  STATE.bets = [];
+  STATE.liveOdds = {};
+  STATE.customHorses = {};
+  saveState();
+  renderTabs();
+  renderRace();
+  renderBank();
+}
+
+// ============================================================
+// INIT
+// ============================================================
+function init() {
+  renderTabs();
+  renderRace();
+  renderBank();
+}
+init();
+</script>
+</body>
+</html>

@@ -4,7 +4,8 @@ on:
   push:
     branches: [main, master]
   schedule:
-    - cron: "0 6 * * *"  # Rebuild daily at 6am UTC
+    - cron: "0 6 * * *"     # Rebuild daily at 6am UTC
+    - cron: "*/30 * * * *"  # Refresh Derby data every 30 min (script no-ops after event date)
   workflow_dispatch:
 
 permissions:
@@ -35,6 +36,12 @@ jobs:
 
       - name: Install npm dependencies
         run: npm ci
+
+      - name: Refresh Derby data from Horse Racing Nation
+        run: node scripts/derby-refresh.js
+        env:
+          DERBY_OUT_DIR: src/derby
+          CI: "true"
 
       - name: Install pagefind binary
         run: |
