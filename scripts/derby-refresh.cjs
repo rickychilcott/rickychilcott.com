@@ -33,6 +33,12 @@ if (FAIL_SOFT && today > DATE) {
 const STAKES_HINT = /(stakes|kentucky derby|distaff|turf classic|pat day mile|knicks go|twin spires|american turf|churchill downs)/i;
 const GRADE_RE    = /(grade\s*([1-3]|i{1,3})|listed)/i;
 
+// Manual overrides — HRN scratch column is unreliable for the Derby specifically.
+// Source of truth: https://www.kentuckyderby.com/derby-horses/
+const SCRATCH_OVERRIDES = {
+  12: ['Right to Party', 'The Puma', 'Silent Tactic', 'Fulleffort']  // Derby scratches per official KY Derby site
+};
+
 async function main() {
   console.log(`Fetching ${URL} ...`);
   const res = await fetch(URL, { headers: { 'User-Agent': 'Mozilla/5.0 derby-companion/1.0' } });
@@ -124,6 +130,16 @@ function parseRaces(html) {
     // Horse rows
     const field = parseHorses(block);
 
+    // Apply manual scratch overrides (HRN doesn't always reflect day-of scratches)
+    const overrides = SCRATCH_OVERRIDES[raceNum] || [];
+    for (const scrName of overrides) {
+      const horse = field.find(h => h.name.toLowerCase().includes(scrName.toLowerCase()));
+      if (horse && !horse.scratched) {
+        horse.scratched = true;
+        horse.notes = `SCRATCHED (per official source). ${horse.notes || ''}`.trim();
+      }
+    }
+
     races.push({
       raceNum, postTime, name, grade, purse,
       distance: distance || 'TBD',
@@ -144,7 +160,12 @@ function parseHorses(block) {
     const row = rm[1];
     if (!/data-label="Post Position"/.test(row)) continue;
     const post = takeText(row, /data-label="Post Position"[^>]*>([\s\S]*?)<\/td>/);
-    const name = takeText(row, /class="horse-link"[^>]*>([\s\S]*?)<\/a>/);
+    // Horse name: try the link first, then fall back to the h4 contents (some entries lack the link)
+    let name = takeText(row, /class="horse-link"[^>]*>([\s\S]*?)<\/a>/);
+    if (!name) {
+      const h4 = row.match(/data-label="Horse \/ Sire"[\s\S]*?<h4>([\s\S]*?)<\/h4>/);
+      if (h4) name = cleanText(h4[1].replace(/<span[^>]*>[\s\S]*?<\/span>/g, ''));
+    }
     if (!post || !name) continue;
     const trJk = row.match(/data-label="Trainer \/ Jockey"[\s\S]*?<\/td>/);
     let trainer = '', jockey = '';
@@ -153,8 +174,10 @@ function parseHorses(block) {
       [trainer, jockey] = [ps[0] || '', ps[1] || ''];
     }
     const ml = takeText(row, /data-label="Morning Line Odds"[\s\S]*?<p>([\s\S]*?)<\/p>/) || '';
-    const scrCell = (row.match(/data-label="Scratched\?"[^>]*>([\s\S]*?)<\/td>/) || [, ''])[1];
-    const scratched = /[A-Za-z]/.test(scrCell.replace(/<[^>]+>/g, '')) || /^scr/i.test(ml);
+    const scrCell = cleanText((row.match(/data-label="Scratched\?"[^>]*>([\s\S]*?)<\/td>/) || [, ''])[1]);
+    // Distinguish a real scratch from "Also-eligible" (AE = entry that may run if scratches occur)
+    const isAE = /also[-\s]?eligible|^AE\b/i.test(scrCell);
+    const scratched = (!isAE && /scratch|^scr|withdrew/i.test(scrCell)) || /^scr/i.test(ml);
     horses.push({
       post: /^\d+$/.test(post) ? parseInt(post) : post,
       name: cleanText(name),
@@ -162,8 +185,9 @@ function parseHorses(block) {
       trainer,
       mlOdds: ml.replace('/', '-'),
       modelAdj: 1.0,
-      notes: '',
-      ...(scratched ? { scratched: true } : {})
+      notes: isAE ? 'Also-eligible — only runs if scratches occur.' : '',
+      ...(scratched ? { scratched: true } : {}),
+      ...(isAE ? { ae: true } : {})
     });
   }
   return horses;
