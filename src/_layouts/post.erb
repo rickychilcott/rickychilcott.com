@@ -7,3 +7,26 @@ layout: default
 <div data-controller="anchor-copy code-copy">
 <%= yield %>
 </div>
+
+<%
+  visible_posts = collections.posts.resources.reject { |post| post.data.hidden }.sort_by { |post| post.data.date }
+  current_index = visible_posts.find_index { |post| post.relative_url == resource.relative_url }
+  newer_post = current_index && current_index < visible_posts.size - 1 ? visible_posts[current_index + 1] : nil
+  older_post = current_index && current_index > 0 ? visible_posts[current_index - 1] : nil
+%>
+<% if newer_post || older_post %>
+<nav class="not-prose mt-16 pt-6 border-t border-[#eee] flex flex-wrap gap-6 justify-between" aria-label="More posts">
+  <% if newer_post %>
+  <a class="no-underline text-heading hover:text-action max-w-[47%]" href="<%= newer_post.relative_url %>">
+    <span class="block text-sm text-[#888] tracking-wide">Newer post</span>
+    <span class="font-bold"><%= newer_post.data.title %></span>
+  </a>
+  <% end %>
+  <% if older_post %>
+  <a class="no-underline text-heading hover:text-action max-w-[47%] ml-auto text-right" href="<%= older_post.relative_url %>">
+    <span class="block text-sm text-[#888] tracking-wide">Older post</span>
+    <span class="font-bold"><%= older_post.data.title %></span>
+  </a>
+  <% end %>
+</nav>
+<% end %>
