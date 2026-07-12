@@ -16,7 +16,7 @@ kind: technical
 sitemap: true
 ---
 
-This is part 3 of a short series on modernizing my static sites. [Part 1](https://www.rickychilcott.com/blog/why-i-moved-my-static-sites-from-jekyll-to-bridgetown/) was the Jekyll-to-Bridgetown migration. [Part 2](https://www.rickychilcott.com/blog/a-shared-github-actions-workflow-for-my-static-sites/) was the deploy workflow. This is the one I've been quietly the most excited about: making each site legible to AI agents, not just to browsers.
+This is part 3 of a short series on modernizing my static sites. [Part 1](https://www.rickychilcott.com/2026/04/28/why-i-moved-from-jekyll-to-bridgetown/) was the Jekyll-to-Bridgetown migration. [Part 2](https://www.rickychilcott.com/2026/04/29/shared-github-actions-workflow-for-static-sites/) was the deploy workflow. This is the one I've been quietly the most excited about: making each site legible to AI agents, not just to browsers.
 
 The premise of all this is unfashionable to argue against in 2026, but I'll state it plainly anyway: the next set of users for my marketing sites are agents. Sometimes they're acting on behalf of a person evaluating Stoked or Causey. Sometimes they're answering a question their human asked, where the answer happens to be on my site. Sometimes they're a search index that prefers structured data over scraped HTML. None of those readers want me to ship them a 200kb HTML page wrapped in JS and ad scripts. They want the content, in a form they can use, with a clear contract about what they can and can't do with it.
 
@@ -171,4 +171,4 @@ That's the third post. Thanks for reading the series. The next set of posts on t
 
 ---
 
-_Series: [Part 1 — Why I moved from Jekyll to Bridgetown](https://www.rickychilcott.com/blog/why-i-moved-my-static-sites-from-jekyll-to-bridgetown/) · [Part 2 — A shared GitHub Actions workflow](https://www.rickychilcott.com/blog/a-shared-github-actions-workflow-for-my-static-sites/) · Part 3 (this post)._
+_Series: [Part 1 — Why I moved from Jekyll to Bridgetown](https://www.rickychilcott.com/2026/04/28/why-i-moved-from-jekyll-to-bridgetown/) · [Part 2 — A shared GitHub Actions workflow](https://www.rickychilcott.com/2026/04/29/shared-github-actions-workflow-for-static-sites/) · Part 3 (this post)._

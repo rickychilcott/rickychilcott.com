@@ -14,7 +14,7 @@ kind: technical
 sitemap: true
 ---
 
-This is part 2 of a short series on modernizing my static sites and getting them ready for the agentic future. [Part 1 was the Jekyll-to-Bridgetown migration](https://www.rickychilcott.com/blog/why-i-moved-my-static-sites-from-jekyll-to-bridgetown/); this one is about how those sites actually deploy now, and the small handful of builders that took GitHub Pages from "publish a folder" to something that feels closer to a real release pipeline.
+This is part 2 of a short series on modernizing my static sites and getting them ready for the agentic future. [Part 1 was the Jekyll-to-Bridgetown migration](https://www.rickychilcott.com/2026/04/28/why-i-moved-from-jekyll-to-bridgetown/); this one is about how those sites actually deploy now, and the small handful of builders that took GitHub Pages from "publish a folder" to something that feels closer to a real release pipeline.
 
 Fair warning up front: this isn't a clever trick. It's the deploy workflow I copy-paste across all four of my static sites — [rickychilcott.com](https://www.rickychilcott.com/), [Rakefire](https://www.rakefire.io/), the [Causey](https://www.causey.app/) marketing site, and [get.stokedhq.com](https://get.stokedhq.com/) — and the value isn't in any one piece. It's in the boring fact that all four sites now do the same handful of useful things automatically, and I never have to think about any of it.
 

@@ -7,4 +7,4 @@ Allow: /
 
 Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
-Sitemap: {{ site.url }}/sitemap.xml
+Sitemap: <%= site.config.url %>/sitemap.xml
